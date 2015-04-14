@@ -2,8 +2,22 @@
 
 **_Advanced REST API Client_**
 
-```
+```js
 Stability: 1 - Experimental
+```
+
+## Usage
+
+```js
+var rail = require('rail');
+
+var client = rail();
+
+var call = client.call({
+
+}, function(response) {
+
+});
 ```
 
 ## Tests
