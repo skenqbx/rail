@@ -20,6 +20,11 @@ suite('http', function() {
 
   suiteSetup(function(done) {
     rail = new RAIL();
+    rail.use('buffer', {
+      default: true
+    });
+    rail.use('redirect');
+
     server = http.createServer(listener);
     server.listen(57647, done);
   });
