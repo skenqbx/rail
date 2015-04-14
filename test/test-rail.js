@@ -11,6 +11,15 @@ suite('RAIL', function() {
 
   test('new RAIL', function() {
     rail = new RAIL();
+
+    rail.use('auth');
+    rail.use('buffer');
+    rail.use('cache');
+    rail.use('cookies');
+    rail.use('json');
+    rail.use('redirect');
+    rail.use('retry');
+    rail.use('validate');
   });
 
   // test('call', function() {
