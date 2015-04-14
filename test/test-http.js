@@ -29,9 +29,7 @@ suite('http', function() {
         }
       }
     });
-    rail.use('buffer', {
-      default: true
-    });
+    rail.use('cookies');
     rail.use('redirect');
 
     server = http.createServer(listener);
@@ -43,6 +41,9 @@ suite('http', function() {
     onrequest = function(request, response) {
       assert(request.headers.hello);
       assert.strictEqual(request.headers.hello, 'World');
+      response.writeHead(200, {
+        'set-cookie': 'name=value; Path=/; Secure'
+      });
       response.end('pong');
     };
 
@@ -50,6 +51,13 @@ suite('http', function() {
       proto: 'http',
       port: 57647
     }, function(response) {
+      assert(response.cookies);
+      assert(response.cookies.name);
+      assert.strictEqual(response.cookies.name.name, 'name');
+      assert.strictEqual(response.cookies.name.value, 'value');
+      assert.strictEqual(response.cookies.name.path, '/');
+      assert.strictEqual(response.cookies.name.secure, true);
+
       response.on('readable', function() {
         response.read();
       });
