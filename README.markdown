@@ -26,11 +26,35 @@ var rail = require('rail');
 
 var client = rail();
 
-var call = client.call({
-
-}, function(response) {
-
+client.use('buffer', {
+  default: true // buffer responses by default
 });
+
+client.use('redirect', {
+  max: 2,
+  codes: [301, 302, 308]
+});
+
+var call = client.call({
+  request: {
+    proto: 'https',
+    method: 'GET',
+    path: '/',
+    host: '127.0.0.1',
+    port: 442
+  },
+  buffer: false,  // disable buffering for this call
+  redirect: {
+    max: 1        // allow only one redirect
+  }
+}, function(response) {
+  // ... consume the response
+});
+
+call.on('error', function(err) { /* ... */ });
+
+call.write('hello');
+call.end('world');
 ```
 
 ## Tests
