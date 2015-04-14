@@ -19,7 +19,16 @@ suite('http', function() {
 
 
   suiteSetup(function(done) {
-    rail = new RAIL();
+    rail = new RAIL({
+      buffer: {
+        default: true
+      },
+      request: {
+        headers: {
+          'Hello': 'World'
+        }
+      }
+    });
     rail.use('buffer', {
       default: true
     });
@@ -32,6 +41,8 @@ suite('http', function() {
 
   test('call', function(done) {
     onrequest = function(request, response) {
+      assert(request.headers.hello);
+      assert.strictEqual(request.headers.hello, 'World');
       response.end('pong');
     };
 

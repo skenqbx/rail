@@ -24,15 +24,17 @@ Stability: 1 - Experimental
 ```js
 var rail = require('rail');
 
-var client = rail();
-
-client.use('buffer', {
-  default: true // buffer responses by default
-});
-
-client.use('redirect', {
-  max: 2,
-  codes: [301, 302, 308]
+var client = rail({
+  request: {
+    host: 'github.com'  // set default host
+  },
+  buffer: {
+    default: true // buffer responses by default
+  },
+  redirect: {
+    max: 2,
+    codes: [301, 302, 308]
+  }
 });
 
 var call = client.call({
