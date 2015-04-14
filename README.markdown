@@ -1,5 +1,7 @@
 # RAIL
 
+[![Build Status](https://secure.travis-ci.org/skenqbx/rail.png)](http://travis-ci.org/skenqbx/rail)
+
 **_Enhanced HTTP Client_**
 
 ```js
