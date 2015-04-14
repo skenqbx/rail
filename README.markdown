@@ -1,10 +1,23 @@
 # RAIL
 
-**_Advanced REST API Client_**
+**_Enhanced HTTP Client_**
 
 ```js
 Stability: 1 - Experimental
 ```
+
+## _Planned_ Features
+
+  - **protocols**: `https`, [`http2`](https://www.npmjs.com/package/http2) & `http`
+  - **plugins**:
+    - `auth` - authentication & authorization
+    - `buffer` - response buffers
+    - `cache` - _what the name says_
+    - `cookies` - _what the name says_
+    - `json` - json & json+stream parsing
+    - `redirect` - _what the name says_
+    - `retry` - timed multi-target retry
+    - `validate` - response validation
 
 ## Usage
 
