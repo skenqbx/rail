@@ -27,7 +27,10 @@ Stability: 1 - Experimental
 var rail = require('rail');
 
 var client = rail({
+  proto: 'https',
   request: {
+    method: 'GET',
+    path: '/',
     host: 'github.com'  // set default host
   },
   buffer: {
@@ -41,11 +44,7 @@ var client = rail({
 
 var call = client.call({
   request: {
-    proto: 'https',
-    method: 'GET',
-    path: '/',
-    host: '127.0.0.1',
-    port: 442
+    host: '127.0.0.1'   // overwrite default host
   },
   buffer: false,  // disable buffering for this call
   redirect: {
@@ -71,8 +70,7 @@ firefox coverage/lcov-report/index.html
 ### Coverage
 
 ```
-Statements   : XX.XX% ( YY/ZZ )
-Branches     : XX.XX% ( YY/ZZ )
-Functions    : XX.XX% ( YY/ZZ )
-Lines        : XX.XX% ( YY/ZZ )
+Statements   : 83.95% ( 204/243 )
+Branches     : 82.76% ( 96/116 )
+Functions    : 56.86% ( 29/51 )
 ```
