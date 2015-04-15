@@ -38,7 +38,7 @@ var client = rail({
     default: true // buffer responses by default
   },
   redirect: {
-    max: 2,
+    limit: 2,
     codes: [301, 302, 308]
   }
 });
@@ -50,7 +50,7 @@ var call = client.call({
   },
   buffer: false,  // disable buffering for this call
   redirect: {
-    max: 1        // allow only one redirect
+    limit: 1        // allow only one redirect
   }
 }, function(response) {
   // ... consume the response
