@@ -51,6 +51,8 @@ suite('http', function() {
       proto: 'http',
       port: 57647
     }, function(response) {
+      assert.strictEqual(response.statusCode, 200);
+
       assert(response.cookies);
       assert(response.cookies.name);
       assert.strictEqual(response.cookies.name.name, 'name');
@@ -58,13 +60,11 @@ suite('http', function() {
       assert.strictEqual(response.cookies.name.path, '/');
       assert.strictEqual(response.cookies.name.secure, true);
 
-      response.on('readable', function() {
-        response.read();
-      });
-      response.on('end', function() {
-        assert.strictEqual(response.statusCode, 200);
-        done();
-      });
+      assert(response.body);
+      assert.strictEqual(response.body.length, 4);
+      assert.strictEqual(response.body.toString(), 'pong');
+
+      done();
     }).end('ping');
   });
 
