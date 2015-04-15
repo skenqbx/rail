@@ -26,6 +26,7 @@ Stability: 1 - Experimental
 ```js
 var rail = require('rail');
 
+// create a client that holds defaults & plugins
 var client = rail({
   proto: 'https',
   request: {
@@ -42,6 +43,7 @@ var client = rail({
   }
 });
 
+// create a request
 var call = client.call({
   request: {
     host: '127.0.0.1'   // overwrite default host
