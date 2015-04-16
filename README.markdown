@@ -1,6 +1,7 @@
 # RAIL
 
 [![Build Status](https://secure.travis-ci.org/skenqbx/rail.png)](http://travis-ci.org/skenqbx/rail)
+![dependencies](https://david-dm.org/skenqbx/rail.svg)
 
 **_Enhanced HTTP Client_**
 
