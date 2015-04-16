@@ -21,7 +21,8 @@
   },
   "private": true,
   "dependencies": {
-    "http2": "3.2.0"
+    "http2": "3.2.0",
+    "mgl-validate": "1.0.0"
   },
   "devDependencies": {
     "eslint": "0.19.0",
