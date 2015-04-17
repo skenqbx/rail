@@ -57,11 +57,8 @@ suite('http:cookies', function() {
       assert.strictEqual(response.cookies.name.secure, true);
 
       assert(rail.plugins.cookies.jar.localhost);
-      assert(rail.plugins.cookies.jar.localhost.name);
-      assert.strictEqual(rail.plugins.cookies.jar.localhost.name.name, 'name');
-      assert.strictEqual(rail.plugins.cookies.jar.localhost.name.value, 'value');
-      assert.strictEqual(rail.plugins.cookies.jar.localhost.name.path, '/');
-      assert.strictEqual(rail.plugins.cookies.jar.localhost.name.secure, true);
+      assert.strictEqual(rail.plugins.cookies.jar.localhost.name,
+          response.cookies.name);
 
       response.on('readable', function() {
         var data = response.read();
