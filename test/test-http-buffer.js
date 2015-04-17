@@ -46,7 +46,7 @@ suite('http:buffer', function() {
       assert.strictEqual(response.body.toString(), 'pong');
 
       done();
-    }).end('ping');
+    }).end();
   });
 
 
