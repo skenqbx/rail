@@ -9,16 +9,20 @@
 Stability: 1 - Experimental
 ```
 
-## _Planned_ Features
+## Features
 
   - **protocols**: `https`, [`http2`](https://www.npmjs.com/package/http2) & `http`
   - **plugins**:
-    - `auth` - authentication & authorization
     - `buffer` - response buffers
+    - `cookies` - _what the name says_ (no expiry)
+    - `redirect` - _what the name says_ (unlimited)
+
+## _Planned_ Features
+
+  - **plugins**:
+    - `auth` - authentication & authorization
     - `cache` - _what the name says_
-    - `cookies` - _what the name says_
     - `json` - json & json+stream parsing
-    - `redirect` - _what the name says_
     - `retry` - timed multi-target retry
     - `validate` - response validation
 
@@ -35,7 +39,7 @@ var client = rail({
     path: '/',
     host: 'github.com'  // set default host
   },
-  buffer: {
+  buffer: { // auto-loads buffer plugin
     default: true // buffer responses by default
   },
   redirect: {
@@ -73,7 +77,8 @@ firefox coverage/lcov-report/index.html
 ### Coverage
 
 ```
-Statements   : 83.95% ( 204/243 )
-Branches     : 82.76% ( 96/116 )
-Functions    : 56.86% ( 29/51 )
+Statements   : 84.81% ( 240/283 )
+Branches     : 73.72% ( 115/156 )
+Functions    : 81.08% ( 30/37 )
+Lines        : 84.81% ( 240/283 )
 ```
