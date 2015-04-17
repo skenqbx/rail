@@ -20,20 +20,15 @@ suite('http', function() {
 
   suiteSetup(function(done) {
     rail = new RAIL({
-      buffer: {
-        default: true
-      },
       request: {
         headers: {
           'Hello': 'World'
         }
       }
     });
-    rail.use('cookies');
-    rail.use('redirect');
 
     server = http.createServer(listener);
-    server.listen(57647, done);
+    server.listen(common.port, done);
   });
 
 
@@ -41,30 +36,30 @@ suite('http', function() {
     onrequest = function(request, response) {
       assert(request.headers.hello);
       assert.strictEqual(request.headers.hello, 'World');
-      response.writeHead(200, {
-        'set-cookie': 'name=value; Path=/; Secure'
-      });
       response.end('pong');
     };
 
     rail.call({
       proto: 'http',
-      port: 57647
+      port: common.port
     }, function(response) {
       assert.strictEqual(response.statusCode, 200);
+      var body = [];
 
-      assert(response.cookies);
-      assert(response.cookies.name);
-      assert.strictEqual(response.cookies.name.name, 'name');
-      assert.strictEqual(response.cookies.name.value, 'value');
-      assert.strictEqual(response.cookies.name.path, '/');
-      assert.strictEqual(response.cookies.name.secure, true);
+      response.on('readable', function() {
+        var data = response.read();
 
-      assert(response.body);
-      assert.strictEqual(response.body.length, 4);
-      assert.strictEqual(response.body.toString(), 'pong');
+        if (data) {
+          body.push(data);
+        }
+      });
 
-      done();
+      response.on('end', function() {
+        body = Buffer.concat(body);
+        assert.strictEqual(body.length, 4);
+        assert.strictEqual(body.toString(), 'pong');
+        done();
+      });
     }).end('ping');
   });
 

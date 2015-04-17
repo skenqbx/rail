@@ -3,11 +3,11 @@
     teardown: false, suiteSetup: false, suiteTeardown: false */
 var assert = require('assert');
 var common = require('./common');
-var https = require('https');
+var http2 = require('http2');
 var RAIL = require('../');
 
 
-suite('https', function() {
+suite('http2', function() {
   var rail, server;
   var onrequest;
 
@@ -19,16 +19,17 @@ suite('https', function() {
 
 
   suiteSetup(function(done) {
+    process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+
     rail = new RAIL();
 
     var options = {
       key: common.serverKey,
-      cert: common.serverCert,
-      rejectUnauthorized: false
+      cert: common.serverCert
     };
 
-    server = https.createServer(options, listener);
-    server.listen(57647, done);
+    server = http2.createServer(options, listener);
+    server.listen(common.port, done);
   });
 
 
@@ -38,9 +39,8 @@ suite('https', function() {
     };
 
     rail.call({
-      proto: 'https',
-      port: 57647,
-      rejectUnauthorized: false
+      proto: 'http2',
+      port: common.port
     }, function(response) {
       response.on('readable', function() {
         response.read();
@@ -53,7 +53,9 @@ suite('https', function() {
   });
 
 
-  suiteTeardown(function(done) {
-    server.close(done);
+  suiteTeardown(function() {
+    delete process.env.NODE_TLS_REJECT_UNAUTHORIZED;
+
+    server.close(); // http2 does not emit an event
   });
 });

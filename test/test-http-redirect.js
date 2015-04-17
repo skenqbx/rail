@@ -22,14 +22,14 @@ suite('http:redirect', function() {
     rail = new RAIL({
       proto: 'http',
       request: {
-        port: 57647
+        port: common.port
       }
     });
     rail.use('redirect');
     rail.use('buffer', {default: true});
 
     server = http.createServer(listener);
-    server.listen(57647, done);
+    server.listen(common.port, done);
   });
 
 
