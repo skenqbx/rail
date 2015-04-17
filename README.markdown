@@ -16,13 +16,13 @@ Stability: 1 - Experimental
     - `buffer` - response buffers
     - `cookies` - _what the name says_ (no expiry)
     - `redirect` - _what the name says_ (unlimited)
+    - `json` - json response parsing
 
 ## _Planned_ Features
 
   - **plugins**:
     - `auth` - authentication & authorization
     - `cache` - _what the name says_
-    - `json` - json & json+stream parsing
     - `retry` - timed multi-target retry
     - `validate` - response validation
 
