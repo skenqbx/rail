@@ -9,6 +9,15 @@
 Stability: 1 - Experimental
 ```
 
+## Table of Contents
+
+ - [Features](#features)
+ - [Usage](#usage)
+ - [Tests](#tests)
+ - [Plugin API](./doc/plugins.markdown)
+ - [ChangeLog](./CANGELOG.markdown)
+ - [License](./LICENSE)
+
 ## Features
 
   - **protocols**: `https`, [`http2`](https://www.npmjs.com/package/http2) & `http`
@@ -17,14 +26,10 @@ Stability: 1 - Experimental
     - `cookies` - _what the name says_ (no expiry)
     - `redirect` - _what the name says_ (unlimited)
     - `json` - json response parsing
-
-## _Planned_ Features
-
-  - **plugins**:
-    - `auth` - authentication & authorization
-    - `cache` - _what the name says_
-    - `retry` - timed multi-target retry
-    - `validate` - response validation
+    - `auth` - (wip) authentication & authorization
+    - `cache` - (wip) _what the name says_
+    - `retry` - (wip) timed multi-target retry
+    - `validate` - (wip) response validation
 
 ## Usage
 
