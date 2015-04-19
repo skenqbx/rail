@@ -69,6 +69,31 @@ suite('http:redirect', function() {
   });
 
 
+  test('limit=0', function(done) {
+    onrequest = function(request, response) {
+      assert.strictEqual(request.url, '/');
+
+      response.writeHead(302, {
+        Location: '/home'
+      });
+      response.end();
+    };
+
+    rail.call({
+      path: '/',
+      redirect: {
+        limit: 0
+      }
+    }, function(response) {
+      assert.strictEqual(response.statusCode, 302);
+      assert(!response.body);
+      done();
+    }).on('error', function(err) {
+      console.log('TEST CALL ERROR', err.stack);
+    }).end();
+  });
+
+
   suiteTeardown(function(done) {
     server.close(done);
   });
