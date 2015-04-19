@@ -1,57 +1,36 @@
 # RAIL Plugins
 
+## buffer
 
-## Example
+**options**
 
-```js
-function myPlugin(rail, opt_options) {
-  opt_options = opt_options || {};
+  - `{boolean} default` enable buffering for all requests, defaults to `false`
+  - `{number} max` max buffer size, defaults to `134217728` (128 MiB)
 
-  var pluginOptions = {
+**request options**
 
-  };
+  - `{boolean} buffer` en-/disable buffering
 
+## cookies
 
-  function interceptResponse(call, options, response) {
-    // do something async
-    //   ... then
-    call.__emit('response', response);
-  }
+**options**
 
+  - `{Object} jar` the cookie jar to use, defaults to `{}`
 
-  rail.on('plugin-response', function(call, options, response) {
-    if (options.my) {
-      call.__intercept('response', interceptResponse);
-    }
-  });
+## json
 
-  return pluginOptions;
-}
-module.exports = myPlugin;
-```
+**request options**
 
-## RAIL Plugin Events
+  - `{boolean} json` enable json parsing
 
-### 'plugin-call'
+## redirect
 
-`function(Call, ?Object=)`
+**options**
 
-### 'plugin-configure'
+  - `{number} limit` max number of redirects, defaults to `1`
+  - `{Array} codes` codes to react on, defaults to `[301, 302, 308]`
 
-`function(Call, Object)`
+**request options**
 
-### 'plugin-request'
-
-`function(Call, Object, Request)`
-
-### 'plugin-response'
-
-`function(Call, Object, Response)`
-
-## Interceptable Events
-
-### 'request'
-
-### 'response'
-
-### 'error'
+  - `{Object} redirect`
+    - `{number} limit` see `options`

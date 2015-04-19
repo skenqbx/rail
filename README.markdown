@@ -13,19 +13,20 @@ Stability: 1 - Experimental
 
  - [Features](#features)
  - [Usage](#usage)
+ - [Plugins](./doc/plugins.markdown)
+ - [Plugin API](./doc/plugin-api.markdown)
  - [Tests](#tests)
- - [Plugin API](./doc/plugins.markdown)
- - [ChangeLog](./CANGELOG.markdown)
+ - [ChangeLog](./CHANGELOG.markdown)
  - [License](./LICENSE)
 
 ## Features
 
   - **protocols**: `https`, [`http2`](https://www.npmjs.com/package/http2) & `http`
   - **plugins**:
-    - `buffer` - response buffers
-    - `cookies` - _what the name says_ (no expiry)
-    - `redirect` - _what the name says_ (unlimited)
-    - `json` - json response parsing
+    - [`buffer`](./doc/plugins.markdown#buffer) - response buffering
+    - [`cookies`](./doc/plugins.markdown#cookies) - (no expiry handling yet)
+    - [`redirect`](./doc/plugins.markdown#redirect)
+    - [`json`](./doc/plugins.markdown#json) - json response parsing
     - `auth` - (wip) authentication & authorization
     - `cache` - (wip) _what the name says_
     - `retry` - (wip) timed multi-target retry
