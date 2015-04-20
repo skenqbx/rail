@@ -43,14 +43,19 @@ var client = rail({
     host: 'github.com'  // set default host
   },
   buffer: { // auto-loads buffer plugin
-    default: true // buffer responses by default
-  },
-  redirect: {
-    limit: 2
+    default: true // buffer response bodies by default
   }
 });
 
-// create a request
+// load redirect plugin
+client.use('redirect');
+
+// load json plugin
+client.use('json', {
+  auto: true
+});
+
+// create a call (that might result in multiple requests)
 var call = client.call({
   request: {
     host: '127.0.0.1'   // overwrite default host
@@ -83,7 +88,7 @@ firefox coverage/lcov-report/index.html
 
 ```
 Statements   : 85.48% ( 318/372 )
-Branches     : 75.42% ( 178/236 )
+Branches     : 75.21% ( 179/238 )
 Functions    : 83.72% ( 36/43 )
 Lines        : 85.48% ( 318/372 )
 ```
