@@ -22,14 +22,17 @@ suite('http:redirect', function() {
     rail = new RAIL({
       proto: 'http',
       request: {
-        port: common.port
+        port: common.port,
+        host: '127.0.0.1'
       }
     });
-    rail.use('redirect');
+    rail.use('redirect', {
+      allowUpgrade: false
+    });
     rail.use('buffer', {default: true});
 
     server = http.createServer(listener);
-    server.listen(common.port, done);
+    server.listen(common.port, '127.0.0.1', done);
   });
 
 
@@ -63,6 +66,8 @@ suite('http:redirect', function() {
       assert.strictEqual(response.buffer.length, 6);
       assert.strictEqual(response.buffer.toString(), 'works!');
       done();
+    }).on('warn', function(plugin, status, message) {
+      console.log('warn', plugin, status, message);
     }).on('error', function(err) {
       console.log('TEST CALL ERROR', err.stack);
     }).end();
@@ -99,6 +104,8 @@ suite('http:redirect', function() {
       assert.strictEqual(response.buffer.length, 6);
       assert.strictEqual(response.buffer.toString(), 'works!');
       done();
+    }).on('warn', function(plugin, status, message) {
+      console.log('warn', plugin, status, message);
     }).on('error', function(err) {
       console.log('TEST CALL ERROR', err.stack);
     }).end();
@@ -126,6 +133,37 @@ suite('http:redirect', function() {
       done();
     }).on('error', function(err) {
       console.log('TEST CALL ERROR', err.stack);
+    }).end();
+  });
+
+
+  test('sameHost', function(done) {
+    var warn;
+
+    onrequest = function(request, response) {
+      assert.strictEqual(request.url, '/');
+
+      response.writeHead(302, {
+        Location: 'http://localhost:' + common.port + '/home'
+      });
+
+      response.end();
+    };
+
+    rail.call({
+      path: '/',
+      redirect: {
+        sameHost: true
+      }
+    }, function(response) {
+      assert.strictEqual(response.statusCode, 302);
+      assert(!response.buffer);
+      assert.deepEqual(['redirect', 'blocked', 'different host'], warn);
+      done();
+    }).on('error', function(err) {
+      console.log('TEST CALL ERROR', err.stack);
+    }).on('warn', function(plugin, status, message) {
+      warn = [plugin, status, message];
     }).end();
   });
 

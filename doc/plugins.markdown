@@ -39,6 +39,7 @@ Parse response body. Parsed body is exported as `response.json`.
 
   - `{number} limit` max number of redirects, defaults to `1`
   - `{Array} codes` codes to react on, defaults to `[301, 302, 308]`
+  - `{boolean} sameHost` only allow redirects to the current host, defaults to `false`
   - `{boolean} allowUpgrade` allow switch from `http` to `https`, defaults to `true`
   - `{boolean} allowDowngrade` allow switch from `https` to `http`, defaults to `false`
 
