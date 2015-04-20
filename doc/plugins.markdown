@@ -50,3 +50,5 @@ Parse response body. Parsed body is exported as `response.json`.
     - `{boolean} sameHost` see `options`
     - `{boolean} allowUpgrade` see `options`
     - `{boolean} allowDowngrade` see `options`
+
+### Event: 'redirect'
