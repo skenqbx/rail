@@ -24,7 +24,7 @@ Stability: 1 - Experimental
   - **protocols**: `https`, [`http2`](https://www.npmjs.com/package/http2) & `http`
   - **plugins**:
     - [`buffer`](./doc/plugins.markdown#buffer) - response buffering
-    - [`cookies`](./doc/plugins.markdown#cookies) - (no expiry handling yet)
+    - [`cookies`](./doc/plugins.markdown#cookies)
     - [`redirect`](./doc/plugins.markdown#redirect)
     - [`json`](./doc/plugins.markdown#json) - json response parsing
     - `auth` - (wip) authentication & authorization
@@ -82,8 +82,8 @@ firefox coverage/lcov-report/index.html
 ### Coverage
 
 ```
-Statements   : 85.03% ( 301/354 )
-Branches     : 75.00% ( 168/224 )
+Statements   : 85.48% ( 318/372 )
+Branches     : 75.42% ( 178/236 )
 Functions    : 83.72% ( 36/43 )
-Lines        : 85.03% ( 301/354 )
+Lines        : 85.48% ( 318/372 )
 ```

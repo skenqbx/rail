@@ -23,6 +23,11 @@ Get/Set cookies. Received cookies are exported as `response.cookies`.
 
   - `{Object} jar` the cookie jar to use, defaults to `{}`
 
+
+**request options**
+
+  - `{boolean} cookies` When `false`, the plugin is disabled for this _call_
+
 ## json
 Parse response body. Parsed body is exported as `response.json`.
 
