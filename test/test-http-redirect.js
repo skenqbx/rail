@@ -129,7 +129,7 @@ suite('http:redirect', function() {
       }
     }, function(response) {
       assert.strictEqual(response.statusCode, 302);
-      assert(!response.buffer);
+      assert.strictEqual(response.buffer, null);
       done();
     }).on('error', function(err) {
       console.log('TEST CALL ERROR', err.stack);
@@ -157,8 +157,39 @@ suite('http:redirect', function() {
       }
     }, function(response) {
       assert.strictEqual(response.statusCode, 302);
-      assert(!response.buffer);
+      assert.strictEqual(response.buffer, null);
       assert.deepEqual(['redirect', 'blocked', 'different host'], warn);
+      done();
+    }).on('error', function(err) {
+      console.log('TEST CALL ERROR', err.stack);
+    }).on('warn', function(plugin, status, message) {
+      warn = [plugin, status, message];
+    }).end();
+  });
+
+
+  test('allowUpgrade=false', function(done) {
+    var warn;
+
+    onrequest = function(request, response) {
+      assert.strictEqual(request.url, '/');
+
+      response.writeHead(302, {
+        Location: 'https://localhost:' + common.port + '/home'
+      });
+
+      response.end();
+    };
+
+    rail.call({
+      path: '/',
+      redirect: {
+        allowUpgrade: false
+      }
+    }, function(response) {
+      assert.strictEqual(response.statusCode, 302);
+      assert.strictEqual(response.buffer, null);
+      assert.deepEqual(['redirect', 'blocked', 'protocol upgrade'], warn);
       done();
     }).on('error', function(err) {
       console.log('TEST CALL ERROR', err.stack);
