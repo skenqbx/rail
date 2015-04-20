@@ -2,6 +2,8 @@
 
 ## buffer
 
+Buffers the response body and exports it as `response.buffer`.
+
 **options**
 
   - `{boolean} default` enable buffering for all requests, defaults to `false`
@@ -12,12 +14,18 @@
   - `{boolean} buffer` en-/disable buffering
 
 ## cookies
+Get/Set cookies. Received cookies are exported as `response.cookies`.
 
 **options**
 
   - `{Object} jar` the cookie jar to use, defaults to `{}`
 
 ## json
+Parse response body. Parsed body is exported as `response.json`.
+
+**options**
+
+  - `{boolean} auto` enable auto-parsing when `Content-Type: application/json`
 
 **request options**
 
