@@ -6,7 +6,7 @@
 **_Enhanced HTTP Client_**
 
 ```js
-Stability: 1 - Experimental
+Stability: 2 - Unstable
 ```
 
 ## Table of Contents
