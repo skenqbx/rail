@@ -1,6 +1,6 @@
 {
   "name": "rail",
-  "version": "0.1.0",
+  "version": "0.1.0-alpha",
   "description": "Enhanced HTTP Client",
   "keywords": [
     "REST",
@@ -19,7 +19,6 @@
     "type": "git",
     "url": "https://github.com/skenqbx/rail.git"
   },
-  "private": true,
   "dependencies": {
     "http2": "3.2.0",
     "mgl-validate": "1.0.0"
@@ -38,6 +37,6 @@
   },
   "engines": {
     "node": ">=0.10",
-    "npm": "~2.7.6"
+    "npm": "~2.8.3"
   }
 }
