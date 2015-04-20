@@ -39,18 +39,14 @@ var rail = require('rail');
 
 // create a client that holds defaults & plugins
 var client = rail({
-  proto: 'https',
   request: {
-    method: 'GET',
-    path: '/',
     host: 'github.com'  // set default host
   },
   buffer: { // auto-loads buffer plugin
     default: true // buffer responses by default
   },
   redirect: {
-    limit: 2,
-    codes: [301, 302, 308]
+    limit: 2
   }
 });
 
@@ -59,7 +55,6 @@ var call = client.call({
   request: {
     host: '127.0.0.1'   // overwrite default host
   },
-  buffer: false,  // disable buffering for this call
   redirect: {
     limit: 1        // allow only one redirect
   }
@@ -68,6 +63,10 @@ var call = client.call({
 });
 
 call.on('error', function(err) { /* ... */ });
+
+call.on('warn', function(plugin, status, opt_message) {
+  console.log(plugin, status, opt_message);
+});
 
 call.write('hello');
 call.end('world');
@@ -83,8 +82,8 @@ firefox coverage/lcov-report/index.html
 ### Coverage
 
 ```
-Statements   : 85.47% ( 300/351 )
-Branches     : 75.00% ( 165/220 )
+Statements   : 85.03% ( 301/354 )
+Branches     : 75.00% ( 168/224 )
 Functions    : 83.72% ( 36/43 )
-Lines        : 85.47% ( 300/351 )
+Lines        : 85.03% ( 301/354 )
 ```
