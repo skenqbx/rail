@@ -1,7 +1,6 @@
 # RAIL Plugins
 
 ## buffer
-
 Buffers the response body and exports it as `response.buffer`.
 
 **options**
@@ -12,6 +11,9 @@ Buffers the response body and exports it as `response.buffer`.
 **request options**
 
   - `{boolean} buffer` en-/disable buffering
+
+### buffer.intercept(call)
+Manually intercept (buffer the response body). To be used by other plugins.
 
 ## cookies
 Get/Set cookies. Received cookies are exported as `response.cookies`.
