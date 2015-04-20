@@ -2,6 +2,7 @@
 
 ## buffer
 Buffers the response body and exports it as `response.buffer`.
+When the body is empty its value is `null`, otherwise a `Buffer`.
 
 **options**
 
