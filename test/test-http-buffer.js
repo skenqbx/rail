@@ -41,9 +41,9 @@ suite('http:buffer', function() {
     }, function(response) {
       assert.strictEqual(response.statusCode, 200);
 
-      assert(response.body);
-      assert.strictEqual(response.body.length, 4);
-      assert.strictEqual(response.body.toString(), 'pong');
+      assert(response.buffer);
+      assert.strictEqual(response.buffer.length, 4);
+      assert.strictEqual(response.buffer.toString(), 'pong');
 
       done();
     }).end();

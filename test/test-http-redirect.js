@@ -59,9 +59,9 @@ suite('http:redirect', function() {
       path: r[c].path
     }, function(response) {
       assert.strictEqual(response.statusCode, 200);
-      assert(response.body);
-      assert.strictEqual(response.body.length, 6);
-      assert.strictEqual(response.body.toString(), 'works!');
+      assert(response.buffer);
+      assert.strictEqual(response.buffer.length, 6);
+      assert.strictEqual(response.buffer.toString(), 'works!');
       done();
     }).on('error', function(err) {
       console.log('TEST CALL ERROR', err.stack);
@@ -95,9 +95,9 @@ suite('http:redirect', function() {
       path: '/'
     }, function(response) {
       assert.strictEqual(response.statusCode, 200);
-      assert(response.body);
-      assert.strictEqual(response.body.length, 6);
-      assert.strictEqual(response.body.toString(), 'works!');
+      assert(response.buffer);
+      assert.strictEqual(response.buffer.length, 6);
+      assert.strictEqual(response.buffer.toString(), 'works!');
       done();
     }).on('error', function(err) {
       console.log('TEST CALL ERROR', err.stack);
@@ -122,7 +122,7 @@ suite('http:redirect', function() {
       }
     }, function(response) {
       assert.strictEqual(response.statusCode, 302);
-      assert(!response.body);
+      assert(!response.buffer);
       done();
     }).on('error', function(err) {
       console.log('TEST CALL ERROR', err.stack);

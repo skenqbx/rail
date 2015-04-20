@@ -44,7 +44,7 @@ suite('http:json', function() {
     }, function(response) {
       assert.strictEqual(response.statusCode, 200);
 
-      assert(response.body);
+      assert(response.buffer);
       assert(response.json);
       assert(response.json.hello);
       assert.strictEqual(response.json.hello, 'world');
