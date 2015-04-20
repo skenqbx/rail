@@ -29,6 +29,7 @@ Parse response body. Parsed body is exported as `response.json`.
 **options**
 
   - `{boolean} auto` enable auto-parsing when `Content-Type: application/json`
+  - `{number} max` max buffer size, defaults to `1048576` (1 MiB)
 
 **request options**
 
