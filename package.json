@@ -1,12 +1,13 @@
 {
   "name": "rail",
   "version": "0.2.0-alpha",
-  "description": "Enhanced HTTP Client",
+  "description": "An enhanced HTTP/RESTful API Client",
   "keywords": [
     "REST",
     "RESTful",
     "API",
     "http",
+    "http2",
     "https",
     "client"
   ],
