@@ -19,8 +19,7 @@ suite('http:send-buffer', function() {
 
 
   suiteSetup(function(done) {
-    rail = new RAIL({
-    });
+    rail = new RAIL();
 
     server = http.createServer(listener);
     server.listen(common.port, done);

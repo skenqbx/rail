@@ -4,9 +4,9 @@
 
 ### Notable changes
 
-  - **SendBuffer**: A mechanism for plugins to inspect the complete request body before it is send
-  - **globalClient**: A default client object allows simply calls out-of-the-box
-  - **URL**: An URL can now be passed directly to `rail.call()`
+  - **send-buffer**: A mechanism to inspect the complete _(request)_ body & modify the configuration before the request is created and send
+  - **globalClient**: A default client object allows calls out-of-the-box using `RAIL.call()`
+  - **URL**: An URL can new be passed directly to `rail.call()`
 
 ### Known issues
 

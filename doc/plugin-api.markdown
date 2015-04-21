@@ -49,24 +49,24 @@ Emitted when a new `Call` object is created.
 `function({Call} call, {?Object=} opt_options)`
 
 ### Event: 'plugin-configure'
-Emitted after a new request configuration has been pushed onto the stack.
+Emitted after a new configuration has been pushed onto the stack.
 
 `function({Call} call, {Object} options)`
 
 ### Event: 'plugin-send-buffer'
-Emitted right before the request object is created.
+Emitted right before a request object is created and the buffer is _flushed_ to the `request` object.
 
 `function({Call} call, {Object} options, {SendBuffer} buffer)`
 
 _Note_: A call to `__buffer()` is required to enable this event.
 
 ### Event: 'plugin-request'
-Emitted directly after the request object has been created.
+Emitted directly after a request object has been created.
 
 `function({Call} call, {Object} options, {Request} request)`
 
 ### Event: 'plugin-response'
-Emitted when the response headers have been received.
+Emitted when response headers have been received.
 
 `function({Call} call, {Object} options, {Response} response)`
 
@@ -107,7 +107,9 @@ _Note_: Request options are _copied_, plugin options are _referenced_ when not p
 ### call.\_\_buffer()
 Enables the `plugin-send-buffer` event using `SendBuffer`.
 
+Returns `true` on success, `false` otherwise.
+
 ### call.\_\_request()
 Create a request object when no request is pending and a configuration is available. When no configuration is available, a _non-interceptable_ error is emitted.
 
-Returns `true` when a request is pending, otherwise the newly created `request` object.
+Returns `true` when a request is pending, the newly created `request` object otherwise.
