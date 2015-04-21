@@ -36,6 +36,7 @@
     "lint": "eslint ./",
     "test": "npm run lint && istanbul cover _mocha -- ./test",
     "update": "next-update -k",
+    "changelog": "changelog42 --no-author --commit-url=https://github.com/skenqbx/rail/commit",
     "clean": "rm -rf node_modules/ && rm -rf coverage/ && rm npm-debug.log"
   },
   "engines": {
