@@ -20,6 +20,7 @@
     "url": "https://github.com/skenqbx/rail.git"
   },
   "dependencies": {
+    "lru-cache": "2.6.1",
     "http2": "3.2.0",
     "mgl-validate": "1.0.0"
   },
