@@ -80,20 +80,34 @@ call.end('world');
 ### new RAIL(opt_options)
 Creates a new `RAIL` object.
 
-### rail.plugins
+**opt_options**
+
+  - `{string} proto`
+  - `{Object} request` - holding default request options, see `https.request()`
+  - `{Object} *` - plugin options
+
+#### rail.plugins
 An object holding loaded plugins.
 
-### rail.proto
+#### rail.proto
 The default protocol for all calls.
 
-### rail.defaults
-The default request options for all calls, see `https.request()`.
+#### rail.defaults
+The default request options for all calls.
 
 ### rail.use(plugin, opt_options)
 Loads a plugin. Currently only built-in plugins are supported (you could patch `RAIL.plugins` though).
 
 ### rail.call(opt_options, opt_responseListener)
 Factory method to create new `Call` objects, think `https.request()`.
+
+**opt_options**
+
+  - `{string} proto`
+  - `{Object} request` - request options, see `https.request()`
+  - `{Object|boolean} *` - plugin options
+
+_Note: For convenience & compatibility with node core API, all request options can also be provided directly besides proto & plugin options._
 
 ### new Call(rail, opt_options)
 Creates a new `Call` object. `Call` extends `stream.Writable`.
