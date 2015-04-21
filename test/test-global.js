@@ -45,7 +45,9 @@ suite('global', function() {
 
       response.on('readable', function() {
         var data = response.read();
-        body.push(data);
+        if (data) { // node.js 0.12 tends to return null on first event
+          body.push(data);
+        }
       });
 
       response.on('end', function() {
