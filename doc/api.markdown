@@ -71,6 +71,7 @@ See [writable.write()](https://nodejs.org/api/stream.html#stream_writable_write_
 
 ### call.end(chunk, encoding, opt_callback)
 See [writable.end()](https://nodejs.org/api/stream.html#stream_writable_end_chunk_encoding_callback).
+Always returns `this`.
 
 ### Event 'request'
 

@@ -39,7 +39,7 @@ suite('http', function() {
       response.end('pong');
     };
 
-    rail.call({
+    var call = rail.call({
       proto: 'http',
       port: common.port
     }, function(response) {
@@ -61,6 +61,9 @@ suite('http', function() {
         done();
       });
     }).end('ping');
+
+    assert(call);
+    assert.strictEqual(typeof call.end, 'function');
   });
 
 
