@@ -73,6 +73,11 @@ Registers an interceptor `function(Call, Object, *)` for an event.
 ### call.\_\_clear()
 Removes all registered interceptors.
 
+### call.\_\_request()
+Create a request object when no request is pending and a configuration is available. When no configuration is available, a _non-interceptable_ error is emitted.
+
+Returns `true` when a request is pending, otherwise the newly created `request` object.
+
 ### Event: 'request'
 Emitted one tick after the request object has been created.
 
