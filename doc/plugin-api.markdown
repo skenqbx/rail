@@ -2,8 +2,13 @@
 
 ## Table of Contents
 
- - [RAIL Plugin Events](#rail-plugin-events)
- - [Interceptable Events](#interceptable-events)
+  - [RAIL Plugin Events](#rail-plugin-events)
+  - [Interceptable Events](#interceptable-events)
+  - [Request Management](#request-management)
+
+## Basics
+
+  - Methods beginning with two underscores `__` are defined as plugin API
 
 ## Example
 
@@ -64,8 +69,6 @@ These _interceptable events_ are designed to gain complete control over the requ
 
 As an example for such a non-trivial feature see the [redirect plugin](../lib/plugins/redirect.js).
 
-The methods beginning with two underscores `__` are defined as plugin interface.
-
 ### call.\_\_emit(event, var_args)
 Invokes the next pending interceptor or emits the event.
 
@@ -77,11 +80,6 @@ Registers an interceptor `function({Call} call, {Object} options, {*} object)` f
 ### call.\_\_clear()
 Removes all registered interceptors.
 
-### call.\_\_request()
-Create a request object when no request is pending and a configuration is available. When no configuration is available, a _non-interceptable_ error is emitted.
-
-Returns `true` when a request is pending, otherwise the newly created `request` object.
-
 ### Event: 'request'
 Emitted one tick after the request object has been created.
 
@@ -90,3 +88,16 @@ Emitted after the response headers have been received.
 
 ### Event: 'error'
 Emitted on an error in context of a request.
+
+## Request Management
+All request configurations are stored in `call._stack`, the current configuration is referenced by `call._pointer`.
+
+### call.\_\_configure(options)
+Creates a new request configuration from the given options and increments the internal pointer.
+
+**Note**: Request options are _copied_, plugin options are _referenced_.
+
+### call.\_\_request()
+Create a request object when no request is pending and a configuration is available. When no configuration is available, a _non-interceptable_ error is emitted.
+
+Returns `true` when a request is pending, otherwise the newly created `request` object.

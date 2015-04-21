@@ -15,7 +15,7 @@ Stability: 2 - Unstable
  - [Examples](#examples)
  - [API](./doc/api.markdown)
  - [Plugins](./doc/plugins.markdown)
- - [Plugin API](./doc/plugin-api.markdown)
+ - [Plugin API](./doc/plugin-api.markdown) - _the internals of RAIL_
  - [Tests](#tests)
  - [ChangeLog](./CHANGELOG.markdown)
  - [License](./LICENSE)
