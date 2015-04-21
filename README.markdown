@@ -14,12 +14,15 @@ This allows a seamless integration of redirect and authentication mechanisms tha
 A set of built-in plugins, currently featuring [`buffer`](./doc/plugins.markdown#buffer), [`cookies`](./doc/plugins.markdown#cookies), [`redirect`](./doc/plugins.markdown#redirect) & [`json`](./doc/plugins.markdown#json) make simple requests even simpler,
 and a powerful event-driven plugin interface aids in the implementation of complex RESTful API calls.
 
+RAIL works with [io.js](https://iojs.org/) 1.x and [node.js](https://nodejs.org/) 0.10.x/0.12.x.
+
 ```js
 Stability: 2 - Unstable
 ```
 
 ## Table of Contents
 
+  - [Install](#install)
   - [Examples](#examples)
   - [API](./doc/api.markdown)
   - [Plugins](./doc/plugins.markdown)
@@ -27,6 +30,12 @@ Stability: 2 - Unstable
   - [Tests](#tests)
   - [ChangeLog](./CHANGELOG.markdown)
   - [License](./LICENSE)
+
+## Install
+
+```
+$ npm install rail
+```
 
 ## Examples
 
