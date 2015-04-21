@@ -1,8 +1,9 @@
 # RAIL
 
-[![Build Status](https://secure.travis-ci.org/skenqbx/rail.png)](http://travis-ci.org/skenqbx/rail)
-[![dependencies](https://david-dm.org/skenqbx/rail.svg)](https://github.com/skenqbx/rail)
 [![NPM version](https://img.shields.io/npm/v/rail.svg?style=flat-square)](https://www.npmjs.com/package/rail)
+[![dependencies](https://david-dm.org/skenqbx/rail.svg)](https://github.com/skenqbx/rail)
+[![devDependencies](https://david-dm.org/skenqbx/rail/dev-status.svg)](https://github.com/skenqbx/rail)
+[![Build Status](https://secure.travis-ci.org/skenqbx/rail.png)](http://travis-ci.org/skenqbx/rail)
 
 **_An enhanced HTTP/RESTful API Client_**
 
