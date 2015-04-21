@@ -6,7 +6,7 @@
 
   - **send-buffer**: A mechanism to inspect the complete _(request)_ body & modify the configuration before the request is created and send
   - **globalClient**: A default client object allows calls out-of-the-box using `RAIL.call()`
-  - **URL**: An URL can new be passed directly to `rail.call()`
+  - **URL**: An URL can be passed directly to `rail.call()`
 
 ### Known issues
 
