@@ -65,7 +65,7 @@ The methods beginning with two underscores `__` are defined as plugin interface.
 ### call.\_\_emit(event, var_args)
 Invokes the next pending interceptor or emits the event.
 
-On each call to `__emit()` only one interceptor is invoked, this way plugins can _blackhole_ responses by not calling `__emit()` after the response has been processed.
+On each call to `__emit()` only one interceptor is invoked. This way plugins can _blackhole_ responses by not calling `__emit()`. Creating a new request is obligatory in these cases.
 
 ### call.\_\_intercept(event, interceptor)
 Registers an interceptor `function(Call, Object, *)` for an event.
