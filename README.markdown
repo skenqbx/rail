@@ -77,12 +77,20 @@ call.end('world');
 
 ## API
 
+### RAIL.globalClient
+A global `RAIL` object pre-loaded with `buffer`, `json`, `redirect` & `cookies` plugin.
+
+### RAIL.call(urlOrOptions, responseListener)
+A convenience method ala. `https.request()` using `RAIL.globalClient`.
+
+See [rail.call()](#railcallopt_options-opt_responselistener).
+
 ### new RAIL(opt_options)
 Creates a new `RAIL` object.
 
 **opt_options**
 
-  - `{string} proto`
+  - `{string} proto` - One of `https`, `http2` or `http`, defaults to `https`
   - `{Object} request` - holding default request options, see `https.request()`
   - `{Object} *` - plugin options
 
@@ -103,7 +111,10 @@ Factory method to create new `Call` objects, think `https.request()`.
 
 **opt_options**
 
-  - `{string} proto`
+When `opt_options` is a string, it is handled like `opt_options.url`.
+
+  - `{string} proto` - See [`new RAIL(opt_options)`](#new-railopt_options)
+  - `{string} url` - When given, the request options are set accordingly
   - `{Object} request` - request options, see `https.request()`
   - `{Object|boolean} *` - plugin options
 
@@ -113,7 +124,13 @@ _Note: For convenience & compatibility with node core API, all request options c
 Creates a new `Call` object. `Call` extends `stream.Writable`.
 
 ### Event 'request'
+
+`function({Object} request)`
+
 ### Event 'response'
+
+`function({Object} response)`
+
 ### Event 'warn'
 
 `function({string} plugin, {string} status, {?string} opt_message)`
@@ -130,8 +147,8 @@ firefox coverage/lcov-report/index.html
 ### Coverage
 
 ```
-Statements   : 85.48% ( 318/372 )
-Branches     : 75.21% ( 179/238 )
-Functions    : 83.72% ( 36/43 )
-Lines        : 85.48% ( 318/372 )
+Statements   : 85.93% ( 342/398 )
+Branches     : 77.24% ( 190/246 )
+Functions    : 84.44% ( 38/45 )
+Lines        : 85.93% ( 342/398 )
 ```

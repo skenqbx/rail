@@ -37,22 +37,22 @@ These events are emitted on the `RAIL` object.
 ### Event: 'plugin-call'
 Emitted when a new `Call` object is created.
 
-`function(Call, ?Object=)`
+`function({Call} call, {?Object=} opt_options)`
 
 ### Event: 'plugin-configure'
 Emitted after a new request configuration has been pushed onto the stack.
 
-`function(Call, Object)`
+`function({Call} call, {Object} options)`
 
 ### Event: 'plugin-request'
 Emitted directly after the request object has been created.
 
-`function(Call, Object, Request)`
+`function({Call} call, {Object} options, {Request} request)`
 
 ### Event: 'plugin-response'
 Emitted when the response headers have been received.
 
-`function(Call, Object, Response)`
+`function({Call} call, {Object} options, {Response} response)`
 
 ## Interceptable Events
 Specific events emitted on the `Call` object can be intercepted.
@@ -68,7 +68,7 @@ Invokes the next pending interceptor or emits the event.
 On each call to `__emit()` only one interceptor is invoked. This way plugins can _blackhole_ responses by not calling `__emit()`. Creating a new request is obligatory in these cases.
 
 ### call.\_\_intercept(event, interceptor)
-Registers an interceptor `function(Call, Object, *)` for an event.
+Registers an interceptor `function({Call} call, {Object} options, {*} object)` for an event.
 
 ### call.\_\_clear()
 Removes all registered interceptors.
