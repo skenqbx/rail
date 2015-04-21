@@ -1,5 +1,9 @@
-# RAIL Plugin API
+# [RAIL](../README.markdown) Plugin API
 
+## Table of Contents
+
+ - [RAIL Plugin Events](#rail-plugin-events)
+ - [Interceptable Events](#interceptable-events)
 
 ## Example
 

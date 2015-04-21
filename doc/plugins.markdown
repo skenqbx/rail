@@ -1,4 +1,11 @@
-# RAIL Plugins
+# [RAIL](../README.markdown) Plugins
+
+## Table of Contents
+
+ - [buffer](#buffer)
+ - [cookies](#cookies)
+ - [json](#json)
+ - [redirect](#redirect)
 
 ## buffer
 Buffers the response body and exports it as `response.buffer`.

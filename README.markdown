@@ -12,8 +12,8 @@ Stability: 2 - Unstable
 ## Table of Contents
 
  - [Features](#features)
- - [Usage](#usage)
- - [API](#api)
+ - [Examples](#examples)
+ - [API](./doc/api.markdown)
  - [Plugins](./doc/plugins.markdown)
  - [Plugin API](./doc/plugin-api.markdown)
  - [Tests](#tests)
@@ -33,13 +33,55 @@ Stability: 2 - Unstable
     - `retry` - (wip) timed multi-target retry
     - `validate` - (wip) response validation
 
-## Usage
+## Examples
+
+### globalClient - URL only
 
 ```js
-var rail = require('rail');
+var RAIL = require('rail');
+
+RAIL.call('https://www.github.com/', function(response) {
+  // consume response
+}).end();
+```
+
+### globalClient - URL & plugin options
+
+```js
+var RAIL = require('rail');
+
+RAIL.call({
+  url: 'https://www.github.com/',
+  buffer: true
+}, function(response) {
+  if (response.buffer) {
+    console.log(response.buffer.toString());
+  }
+}).end();
+```
+
+### globalClient - request & plugin options
+
+```js
+var RAIL = require('rail');
+
+RAIL.call({
+  host: 'www.github.com',
+  buffer: true
+}, function(response) {
+  if (response.buffer) {
+    console.log(response.buffer.toString());
+  }
+}).end();
+```
+
+### Custom client
+
+```js
+var RAIL = require('rail');
 
 // create a client that holds defaults & plugins
-var client = rail({
+var client = new RAIL({
   request: {
     host: 'github.com'  // set default host
   },
@@ -74,68 +116,6 @@ call.on('warn', function(plugin, status, opt_message) {
 call.write('hello');
 call.end('world');
 ```
-
-## API
-
-### RAIL.globalClient
-A global `RAIL` object pre-loaded with `buffer`, `json`, `redirect` & `cookies` plugin.
-
-### RAIL.call(urlOrOptions, responseListener)
-A convenience method ala. `https.request()` using `RAIL.globalClient`.
-
-See [rail.call()](#railcallopt_options-opt_responselistener).
-
-### new RAIL(opt_options)
-Creates a new `RAIL` object.
-
-**opt_options**
-
-  - `{string} proto` - One of `https`, `http2` or `http`, defaults to `https`
-  - `{Object} request` - holding default request options, see `https.request()`
-  - `{Object} *` - plugin options
-
-#### rail.plugins
-An object holding loaded plugins.
-
-#### rail.proto
-The default protocol for all calls.
-
-#### rail.defaults
-The default request options for all calls.
-
-### rail.use(plugin, opt_options)
-Loads a plugin. Currently only built-in plugins are supported (you could patch `RAIL.plugins` though).
-
-### rail.call(opt_options, opt_responseListener)
-Factory method to create new `Call` objects, think `https.request()`.
-
-**opt_options**
-
-When `opt_options` is a string, it is handled like `opt_options.url`.
-
-  - `{string} proto` - See [`new RAIL(opt_options)`](#new-railopt_options)
-  - `{string} url` - When given, the request options are set accordingly
-  - `{Object} request` - request options, see `https.request()`
-  - `{Object|boolean} *` - plugin options
-
-_Note: For convenience & compatibility with node core API, all request options can also be provided directly besides proto & plugin options._
-
-### new Call(rail, opt_options)
-Creates a new `Call` object. `Call` extends `stream.Writable`.
-
-### Event 'request'
-
-`function({Object} request)`
-
-### Event 'response'
-
-`function({Object} response)`
-
-### Event 'warn'
-
-`function({string} plugin, {string} status, {?string} opt_message)`
-
-### Event 'error'
 
 ## Tests
 
