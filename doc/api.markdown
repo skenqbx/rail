@@ -57,6 +57,21 @@ _Note: For convenience & compatibility with node core API, all request options c
 ### new Call(rail, opt_options)
 Creates a new `Call` object.
 
+#### call.ended
+A boolean indicating the state of the writable stream.
+
+#### call.request
+The currently active `request` stream, if any.
+
+#### call.response
+The currently active `response` stream, if any.
+
+### call.write(chunk, encoding, opt_callback)
+See [writable.write()](https://nodejs.org/api/stream.html#stream_writable_write_chunk_encoding_callback).
+
+### call.end(chunk, encoding, opt_callback)
+See [writable.end()](https://nodejs.org/api/stream.html#stream_writable_end_chunk_encoding_callback).
+
 ### Event 'request'
 
 `function({Object} request)`
