@@ -13,6 +13,7 @@ Stability: 2 - Unstable
 
  - [Features](#features)
  - [Usage](#usage)
+ - [API](#api)
  - [Plugins](./doc/plugins.markdown)
  - [Plugin API](./doc/plugin-api.markdown)
  - [Tests](#tests)
@@ -43,25 +44,22 @@ var client = rail({
     host: 'github.com'  // set default host
   },
   buffer: { // auto-loads buffer plugin
-    default: true // buffer response bodies by default
+    default: true
   }
 });
 
-// load redirect plugin
+// load plugins (another way)
 client.use('redirect');
-
-// load json plugin
 client.use('json', {
   auto: true
 });
 
 // create a call (that might result in multiple requests)
 var call = client.call({
-  request: {
-    host: '127.0.0.1'   // overwrite default host
-  },
+  path: '/',
   redirect: {
-    limit: 1        // allow only one redirect
+    allowDowngrade: true,
+    limit: 5
   }
 }, function(response) {
   // ... consume the response
@@ -76,6 +74,37 @@ call.on('warn', function(plugin, status, opt_message) {
 call.write('hello');
 call.end('world');
 ```
+
+## API
+
+### new RAIL(opt_options)
+Creates a new `RAIL` object.
+
+### rail.plugins
+An object holding loaded plugins.
+
+### rail.proto
+The default protocol for all calls.
+
+### rail.defaults
+The default request options for all calls, see `https.request()`.
+
+### rail.use(plugin, opt_options)
+Loads a plugin. Currently only built-in plugins are supported (you could patch `RAIL.plugins` though).
+
+### rail.call(opt_options, opt_responseListener)
+Factory method to create new `Call` objects, think `https.request()`.
+
+### new Call(rail, opt_options)
+Creates a new `Call` object. `Call` extends `stream.Writable`.
+
+### Event 'request'
+### Event 'response'
+### Event 'warn'
+
+`function({string} plugin, {string} status, {?string} opt_message)`
+
+### Event 'error'
 
 ## Tests
 
