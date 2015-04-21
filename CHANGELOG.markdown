@@ -4,7 +4,8 @@
 
 ### Notable changes
 
-  - **globalClient**: The addition of a globalClient enables calls without instantiating a client
+  - **SendBuffer**: A mechanism for plugins to inspect the complete request body before it is send
+  - **globalClient**: A default client object allows simply calls out-of-the-box
   - **URL**: An URL can now be passed directly to `rail.call()`
 
 ### Known issues

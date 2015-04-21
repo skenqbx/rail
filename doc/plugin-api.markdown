@@ -53,6 +53,13 @@ Emitted after a new request configuration has been pushed onto the stack.
 
 `function({Call} call, {Object} options)`
 
+### Event: 'plugin-send-buffer'
+Emitted right before the request object is created.
+
+`function({Call} call, {Object} options, {SendBuffer} buffer)`
+
+_Note_: A call to `__buffer()` is required to enable this event.
+
 ### Event: 'plugin-request'
 Emitted directly after the request object has been created.
 
@@ -95,7 +102,10 @@ All request configurations are stored in `call._stack`, the current configuratio
 ### call.\_\_configure(options)
 Creates a new request configuration from the given options and increments the internal pointer.
 
-**Note**: Request options are _copied_, plugin options are _referenced_.
+_Note_: Request options are _copied_, plugin options are _referenced_ when not primitive.
+
+### call.\_\_buffer()
+Enables the `plugin-send-buffer` event using `SendBuffer`.
 
 ### call.\_\_request()
 Create a request object when no request is pending and a configuration is available. When no configuration is available, a _non-interceptable_ error is emitted.
