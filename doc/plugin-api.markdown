@@ -56,7 +56,7 @@ Emitted after a new configuration has been pushed onto the stack.
 ### Event: 'plugin-send-buffer'
 Emitted right before a request object is created and the buffer is _flushed_ to the `request` object.
 
-`function({Call} call, {Object} options, {SendBuffer} buffer)`
+`function({Call} call, {Object} options, {ReplayBuffer} buffer)`
 
 _Note_: A call to `__buffer()` is required to enable this event.
 
@@ -105,7 +105,7 @@ Creates a new request configuration from the given options and increments the in
 _Note_: Request options are _copied_, plugin options are _referenced_ when not primitive.
 
 ### call.\_\_buffer()
-Enables the `plugin-send-buffer` event using `SendBuffer`.
+Enables the `plugin-send-buffer` event using a `ReplayBuffer`.
 
 Returns `true` on success, `false` otherwise.
 
