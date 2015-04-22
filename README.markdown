@@ -23,7 +23,7 @@ Stability: 2 - Unstable
 
 ## Table of Contents
 
-  - [Install](#install)
+  - [Installation](#installation)
   - [Examples](#examples)
   - [API](./doc/api.markdown)
   - [Plugins](./doc/plugins.markdown)
@@ -32,7 +32,7 @@ Stability: 2 - Unstable
   - [ChangeLog](./CHANGELOG.markdown)
   - [License](./LICENSE)
 
-## Install
+## Installation
 
 ```
 $ npm install rail
