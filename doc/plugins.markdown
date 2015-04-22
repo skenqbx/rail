@@ -38,6 +38,8 @@ Get/Set cookies. Received cookies are exported as `response.cookies`.
 ## json
 Parse response body. Parsed body is exported as `response.json`.
 
+Uses the `buffer` plugin.
+
 **options**
 
   - `{boolean} auto` enable auto-parsing when `Content-Type: application/json`

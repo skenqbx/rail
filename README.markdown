@@ -90,16 +90,13 @@ var client = new RAIL({
   request: {
     host: 'github.com'  // set default host
   },
-  buffer: { // auto-loads buffer plugin
-    default: true
+  json: { // configured plugins are loaded on client creation
+    auto: true
   }
 });
 
-// load plugins (another way)
+// load plugins
 client.use('redirect');
-client.use('json', {
-  auto: true
-});
 
 // create a call (that might result in multiple requests)
 var call = client.call({
@@ -109,7 +106,12 @@ var call = client.call({
     limit: 5
   }
 }, function(response) {
-  // ... consume the response
+  if (response.json) {
+    console.log(response.json);
+  } else if (response.buffer) { // buffer might still be available
+                                //   because json uses the buffer plugin
+    console.log(response.buffer.toString());
+  }
 });
 
 call.on('error', function(err) { /* ... */ });
