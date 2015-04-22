@@ -48,7 +48,7 @@ These events are emitted on the `RAIL` object.
 ### Event: 'plugin-call'
 Emitted when a new `Call` object is created.
 
-`function({Call} call, {?Object=} opt_options)`
+`function({Call} call, {Object} options)`
 
 ### Event: 'plugin-configure'
 Emitted after a new configuration has been pushed onto the stack.

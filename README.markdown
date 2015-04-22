@@ -12,7 +12,7 @@ RAIL is a _mostly_ io.js/node.js core compatible HTTP/RESTful API client and sup
 The concept of _a single request_ is extended to _a possible series of requests_ further referenced as a _call_.
 This allows a seamless integration of redirect and authentication mechanisms that require multiple requests to satisfy the original one.
 
-A set of built-in plugins, currently featuring [`buffer`](./doc/plugins.markdown#buffer), [`cookies`](./doc/plugins.markdown#cookies), [`redirect`](./doc/plugins.markdown#redirect) & [`json`](./doc/plugins.markdown#json) make simple requests even simpler,
+A set of built-in plugins, currently featuring [`buffer`](./doc/plugins.markdown#buffer), [`cookies`](./doc/plugins.markdown#cookies), [`redirect`](./doc/plugins.markdown#redirect), [`json`](./doc/plugins.markdown#json) & [`validate`](./doc/plugins.markdown#validate) make simple requests even simpler,
 and a powerful event-driven plugin interface aids in the implementation of complex RESTful API calls.
 
 RAIL works with [io.js](https://iojs.org/) 1.x and [node.js](https://nodejs.org/) 0.10.x/0.12.x.
@@ -144,10 +144,10 @@ firefox coverage/lcov-report/index.html
 ### Coverage
 
 ```
-Statements   : 85.99% ( 399/464 )
-Branches     : 79.64% ( 223/280 )
-Functions    : 83.93% ( 47/56 )
-Lines        : 85.99% ( 399/464 )
+Statements   : 88.21% ( 464/526 )
+Branches     : 80.46% ( 243/302 )
+Functions    : 87.88% ( 58/66 )
+Lines        : 88.21% ( 464/526 )
 ```
 
 [back to top](#table-of-contents)

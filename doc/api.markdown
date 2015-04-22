@@ -4,7 +4,7 @@
 An object holding all built-in [plugins](./doc/plugins.markdown).
 
 ### RAIL.globalClient
-A global `RAIL` object pre-loaded with `buffer`, `json`, `redirect` & `cookies` plugin.
+A global `RAIL` object pre-loaded with `buffer`, `json`, `redirect`, `cookies` & `validate` plugin.
 
 ### RAIL.call(urlOrOptions, responseListener)
 A convenience method ala. `https.request()` using `RAIL.globalClient`.

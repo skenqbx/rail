@@ -6,6 +6,7 @@
   - [cookies](#cookies)
   - [json](#json)
   - [redirect](#redirect)
+  - [validate](#validate)
 
 ## buffer
 Buffers the response body and exports it as `response.buffer`.
@@ -13,12 +14,12 @@ When the body is empty its value is `null`, otherwise a `Buffer`.
 
 **options**
 
-  - `{boolean} default` enable buffering for all requests, defaults to `false`
-  - `{number} max` max buffer size, defaults to `134217728` (128 MiB)
+  - `{boolean} default` Enable buffering for all requests, defaults to `false`
+  - `{number} max` The maximum buffer size, defaults to `134217728` (128 MiB)
 
 **request options**
 
-  - `{boolean} buffer` en-/disable buffering
+  - `{boolean} buffer` En-/disable buffering
 
 ### buffer.intercept(call)
 Manually intercept (buffer the response body). To be used by other plugins.
@@ -30,7 +31,7 @@ Get/Set cookies. Received cookies are exported as `response.cookies`.
 
 **options**
 
-  - `{Object} jar` the cookie jar to use, defaults to `{}`
+  - `{Object} jar` The cookie jar to use, defaults to `{}`
 
 
 **request options**
@@ -46,35 +47,65 @@ Uses the `buffer` plugin.
 
 **options**
 
-  - `{boolean} auto` enable auto-parsing when `Content-Type: application/json`
-  - `{number} max` max buffer size, defaults to `1048576` (1 MiB)
+  - `{boolean} auto` Enable auto-parsing when `Content-Type: application/json`
+  - `{number} max` The maximum buffer size, defaults to `1048576` (1 MiB)
 
 **request options**
 
-  - `{boolean} json` enable json parsing
+  - `{boolean} json` Enable JSON parsing
+
+### json.intercept(call)
+Manually intercept (buffer the response body & try to parse). To be used by other plugins.
 
 [back to top](#table-of-contents)
 
 ## redirect
+A configurable redirect mechanism.
 
 **options**
 
-  - `{Array} codes` codes to react on, defaults to `[301, 302, 308]`
-  - `{number} limit` max number of redirects, defaults to `1`
-  - `{boolean} sameHost` only allow redirects to the current host, defaults to `false`
-  - `{boolean} allowUpgrade` allow switch from `http` to `https/2`, defaults to `true`
-  - `{boolean} allowDowngrade` allow switch from `https/2` to `http`, defaults to `false`
+  - `{Array} codes` HTTP status codes to react on, defaults to `[301, 302, 308]`
+  - `{number} limit` The maximum number of redirects, defaults to `1`
+  - `{boolean} sameHost` Only allow redirects to the current host, defaults to `false`
+  - `{boolean} allowUpgrade` Allow switch from `http` to `https/2`, defaults to `true`
+  - `{boolean} allowDowngrade` Allow switch from `https/2` to `http`, defaults to `false`
 
 **request options**
 
   - `{Object} redirect`
-    - `{number} limit` see `options`
-    - `{boolean} sameHost` see `options`
-    - `{boolean} allowUpgrade` see `options`
-    - `{boolean} allowDowngrade` see `options`
+    - `{number} limit` See `options`
+    - `{boolean} sameHost` See `options`
+    - `{boolean} allowUpgrade` See `options`
+    - `{boolean} allowDowngrade` See `options`
 
 ### Event: 'redirect'
 
 `function({Object} options)`
+
+[back to top](#table-of-contents)
+
+## validate
+A response validation plugin.
+
+Schema definitions & validation are provided by [mgl-validate](https://www.npmjs.com/package/mgl-validate).
+
+  - Body validation only supports JSON responses
+  - Every schema requires a unique `id`
+  - Consider setting `allowUnknownProperties = true` when validating headers
+
+Uses the `buffer` & `json` plugin.
+
+**options**
+
+  - `{Array.<Object>} schemas` An array of schema definitions
+  - `{boolean} breakOnError` Whether to return on first validation error or not, defaults to `true`
+
+**request options**
+
+  - `{Object|string} headers` An existing schema id or a schema definition
+  - `{Object|string} body` An existing schema id or a schema definition
+
+### validate.registry
+The [mgl-validate](https://www.npmjs.com/package/mgl-validate) schema registry.
 
 [back to top](#table-of-contents)
