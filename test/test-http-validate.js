@@ -34,10 +34,6 @@ suite('http:validate', function() {
           properties: {
             date: {
               type: 'string'
-            },
-            'transfer-encoding': {
-              type: 'string',
-              enum: ['chunked']
             }
           },
           allowUnknownProperties: true
