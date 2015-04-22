@@ -1,4 +1,4 @@
-# RAIL
+# rail
 
 [![NPM version](https://img.shields.io/npm/v/rail.svg?style=flat-square)](https://www.npmjs.com/package/rail)
 [![dependencies](https://david-dm.org/skenqbx/rail.svg)](https://github.com/skenqbx/rail)
@@ -7,15 +7,17 @@
 
 **_An enhanced HTTP/RESTful API Client_**
 
-RAIL is a _mostly_ io.js/node.js core compatible HTTP/RESTful API client and supports the current `https`, `http` and [`http2`](https://www.npmjs.com/package/http2) protocols.
+_rail_ is a io.js/node.js HTTP client supporting https, http and [http2](https://www.npmjs.com/package/http2).
 
 The concept of _a single request_ is extended to _a possible series of requests_ further referenced as a _call_.
 This allows a seamless integration of redirect and authentication mechanisms that require multiple requests to satisfy the original one.
 
-A set of built-in plugins, currently featuring [`buffer`](./doc/plugins.markdown#buffer), [`cookies`](./doc/plugins.markdown#cookies), [`redirect`](./doc/plugins.markdown#redirect), [`json`](./doc/plugins.markdown#json) & [`validate`](./doc/plugins.markdown#validate) make simple requests even simpler,
+A set of built-in plugins, currently featuring [`buffer`](./doc/plugins.markdown#buffer), [`cookies`](./doc/plugins.markdown#cookies), [`redirect`](./doc/plugins.markdown#redirect), [`json`](./doc/plugins.markdown#json) & [`validate`](./doc/plugins.markdown#validate), make simple requests even simpler,
 and a powerful event-driven plugin interface aids in the implementation of complex RESTful API calls.
 
-RAIL works with [io.js](https://iojs.org/) 1.x and [node.js](https://nodejs.org/) 0.10.x/0.12.x.
+The API is _mostly_ compatible with `http.request()` & `https.request()` and allows _rail_ to be used as a _drop-in replacement_.
+
+_rail_ works with [io.js](https://iojs.org/) 1.x and [node.js](https://nodejs.org/) 0.10.x/0.12.x.
 
 ```js
 Stability: 2 - Unstable
@@ -29,6 +31,7 @@ Stability: 2 - Unstable
     - [URL & Plugin Options](#url--plugin-options)
     - [Request & Plugin Options](#request--plugin-options)
     - [Custom Client](#custom-client)
+  - [Use as a drop-in replacement](#use-as-a-drop-in-replacement)
   - [API](./doc/api.markdown)
   - [Plugins](./doc/plugins.markdown)
   - [Plugin API](./doc/plugin-api.markdown) - _the internals of RAIL_
@@ -139,6 +142,21 @@ call.end('world');
 ```
 
 [back to top](#table-of-contents)
+
+## Use as a drop-in replacement
+_rail_ does not support the following request options
+
+  - `localAddress`
+  - `socketPath`
+
+**When not using https**: make sure to set the correct default protocol
+
+```js
+var RAIL = require('rail');
+
+RAIL.proto = 'http';
+```
+... or create a custom client.
 
 ## Tests
 
