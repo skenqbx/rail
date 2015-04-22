@@ -25,6 +25,10 @@ Stability: 2 - Unstable
 
   - [Installation](#installation)
   - [Examples](#examples)
+    - [URL Only](#url-only)
+    - [URL & Plugin Options](#url--plugin-options)
+    - [Request & Plugin Options](#request--plugin-options)
+    - [Custom Client](#custom-client)
   - [API](./doc/api.markdown)
   - [Plugins](./doc/plugins.markdown)
   - [Plugin API](./doc/plugin-api.markdown) - _the internals of RAIL_
@@ -40,7 +44,7 @@ $ npm install rail
 
 ## Examples
 
-### globalClient - URL only
+### URL only
 Directly pass an URL that gets parsed into `proto`, `host`, `port` & `path`.
 
 ```js
@@ -53,7 +57,7 @@ RAIL.call('https://www.github.com/skenqbx/rail', function(response) {
 
 [back to top](#table-of-contents)
 
-### globalClient - URL & plugin options
+### URL & Plugin Options
 Again, only pass an URL, but this time as a property to allow passing of plugin options.
 
 ```js
@@ -71,7 +75,7 @@ RAIL.call({
 
 [back to top](#table-of-contents)
 
-### globalClient - request & plugin options
+### Request & Plugin Options
 The usual way of supplying every parameter separately.
 
 ```js
@@ -90,7 +94,7 @@ RAIL.call({
 
 [back to top](#table-of-contents)
 
-### Custom client
+### Custom Client
 
 ```js
 var RAIL = require('rail');
