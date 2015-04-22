@@ -54,6 +54,7 @@ RAIL.call('https://www.github.com/skenqbx/rail', function(response) {
 [back to top](#table-of-contents)
 
 ### globalClient - URL & plugin options
+Again, only pass an URL, but this time as a property to allow passing of plugin options.
 
 ```js
 var RAIL = require('rail');
@@ -71,6 +72,7 @@ RAIL.call({
 [back to top](#table-of-contents)
 
 ### globalClient - request & plugin options
+The usual way of supplying every parameter separately.
 
 ```js
 var RAIL = require('rail');
