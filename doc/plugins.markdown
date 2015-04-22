@@ -23,6 +23,8 @@ When the body is empty its value is `null`, otherwise a `Buffer`.
 ### buffer.intercept(call)
 Manually intercept (buffer the response body). To be used by other plugins.
 
+[back to top](#table-of-contents)
+
 ## cookies
 Get/Set cookies. Received cookies are exported as `response.cookies`.
 
@@ -34,6 +36,8 @@ Get/Set cookies. Received cookies are exported as `response.cookies`.
 **request options**
 
   - `{boolean} cookies` When `false`, the plugin is disabled for this _call_
+
+[back to top](#table-of-contents)
 
 ## json
 Parse response body. Parsed body is exported as `response.json`.
@@ -48,6 +52,8 @@ Uses the `buffer` plugin.
 **request options**
 
   - `{boolean} json` enable json parsing
+
+[back to top](#table-of-contents)
 
 ## redirect
 
@@ -70,3 +76,5 @@ Uses the `buffer` plugin.
 ### Event: 'redirect'
 
 `function({Object} options)`
+
+[back to top](#table-of-contents)

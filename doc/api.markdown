@@ -1,7 +1,5 @@
 # [RAIL](../README.markdown) API
 
-## Static Exports
-
 ### RAIL.plugins
 An object holding all built-in [plugins](./doc/plugins.markdown).
 
@@ -51,6 +49,8 @@ When `opt_options` is a string, it is handled like `opt_options.url`.
 
 _Note: For convenience & compatibility with node core API, all request options can also be provided directly besides proto & plugin options._
 
+[back to top](#railplugins)
+
 ## Class: Call
 `Call` extends `stream.Writable`.
 
@@ -86,3 +86,5 @@ Always returns `this`.
 `function({string} plugin, {string} status, {?string} opt_message)`
 
 ### Event 'error'
+
+[back to top](#railplugins)

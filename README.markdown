@@ -51,6 +51,8 @@ RAIL.call('https://www.github.com/skenqbx/rail', function(response) {
 }).end();
 ```
 
+[back to top](#table-of-contents)
+
 ### globalClient - URL & plugin options
 
 ```js
@@ -65,6 +67,8 @@ RAIL.call({
   }
 }).end();
 ```
+
+[back to top](#table-of-contents)
 
 ### globalClient - request & plugin options
 
@@ -81,6 +85,8 @@ RAIL.call({
   }
 }).end();
 ```
+
+[back to top](#table-of-contents)
 
 ### Custom client
 
@@ -126,6 +132,8 @@ call.write('hello');
 call.end('world');
 ```
 
+[back to top](#table-of-contents)
+
 ## Tests
 
 ```bash
@@ -141,3 +149,5 @@ Branches     : 79.64% ( 223/280 )
 Functions    : 83.93% ( 47/56 )
 Lines        : 85.99% ( 399/464 )
 ```
+
+[back to top](#table-of-contents)

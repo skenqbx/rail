@@ -39,6 +39,8 @@ function myPlugin(rail, opt_options) {
 module.exports = myPlugin;
 ```
 
+[back to top](#table-of-contents)
+
 ## RAIL Plugin Events
 
 These events are emitted on the `RAIL` object.
@@ -70,6 +72,8 @@ Emitted when response headers have been received.
 
 `function({Call} call, {Object} options, {Response} response)`
 
+[back to top](#table-of-contents)
+
 ## Interceptable Events
 Specific events emitted on the `Call` object can be intercepted.
 These _interceptable events_ are designed to gain complete control over the request workflow and allow implementing even non-trivial & asynchronous features as a plugin.
@@ -96,6 +100,8 @@ Emitted after the response headers have been received.
 ### Event: 'error'
 Emitted on an error in context of a request.
 
+[back to top](#table-of-contents)
+
 ## Request Management
 All request configurations are stored in `call._stack`, the current configuration is referenced by `call._pointer`.
 
@@ -113,3 +119,5 @@ Returns `true` on success or when buffering is already enabled, `false` otherwis
 Create a request object when no request is pending and a configuration is available. When no configuration is available, a _non-interceptable_ error is emitted.
 
 Returns `true` when a request is pending, the newly created `request` object otherwise.
+
+[back to top](#table-of-contents)
