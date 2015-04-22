@@ -1,4 +1,4 @@
-# [RAIL](../README.markdown) Plugin API
+# [rail](../README.markdown) Plugin API
 
 ## Table of Contents
 

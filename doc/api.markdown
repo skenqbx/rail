@@ -1,4 +1,4 @@
-# [RAIL](../README.markdown) API
+# [rail](../README.markdown) API
 
 ### RAIL.plugins
 An object holding all built-in [plugins](./doc/plugins.markdown).
