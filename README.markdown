@@ -41,11 +41,12 @@ $ npm install rail
 ## Examples
 
 ### globalClient - URL only
+Directly pass an URL that gets parsed into `proto`, `host`, `port` & `path`.
 
 ```js
 var RAIL = require('rail');
 
-RAIL.call('https://www.github.com/', function(response) {
+RAIL.call('https://www.github.com/skenqbx/rail', function(response) {
   // consume response
 }).end();
 ```
@@ -56,7 +57,7 @@ RAIL.call('https://www.github.com/', function(response) {
 var RAIL = require('rail');
 
 RAIL.call({
-  url: 'https://www.github.com/',
+  url: 'https://www.github.com/skenqbx/rail',
   buffer: true
 }, function(response) {
   if (response.buffer) {
@@ -72,6 +73,7 @@ var RAIL = require('rail');
 
 RAIL.call({
   host: 'www.github.com',
+  path: '/skenqbx/rail',
   buffer: true
 }, function(response) {
   if (response.buffer) {
@@ -100,7 +102,7 @@ client.use('redirect');
 
 // create a call (that might result in multiple requests)
 var call = client.call({
-  path: '/',
+  path: '/skenqbx/rail',
   redirect: {
     allowDowngrade: true,
     limit: 5

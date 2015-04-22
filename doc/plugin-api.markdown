@@ -107,7 +107,7 @@ _Note_: Request options are _copied_, plugin options are _referenced_ when not p
 ### call.\_\_buffer()
 Enables the `plugin-send-buffer` event using a `ReplayBuffer`.
 
-Returns `true` on success, `false` otherwise.
+Returns `true` on success or when buffering is already enabled, `false` otherwise.
 
 ### call.\_\_request()
 Create a request object when no request is pending and a configuration is available. When no configuration is available, a _non-interceptable_ error is emitted.
