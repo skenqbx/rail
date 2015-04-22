@@ -39,7 +39,7 @@ suite('http:send-buffer', function() {
 
       request.once('end', function() {
         body = Buffer.concat(body);
-        assert.strictEqual(body.toString(), 'ping');
+        assert.strictEqual(body.toString(), 'abcdefg');
         response.end('pong');
       });
     };
@@ -72,14 +72,20 @@ suite('http:send-buffer', function() {
         assert.strictEqual(body.toString(), 'pong');
 
         assert(sendbuffer);
-        assert.strictEqual(sendbuffer.toString(), 'ping');
+        assert.strictEqual(sendbuffer.toString(), 'abcdefg');
         done();
       });
     });
 
     call.__buffer();
 
-    call.end('ping');
+    call.write('a');
+    call.write('b');
+    call.write('c');
+    call.write('d');
+    call.write('e');
+    call.write('f');
+    call.end('g');
   });
 
 
