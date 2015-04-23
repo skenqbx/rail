@@ -28,6 +28,19 @@ suite('public-api', function() {
   });
 
 
+  test('rail.use', function() {
+    var client = rail();
+    var buffer = client.use('buffer', rail.plugins.buffer);
+    var validate = client.use('validate');
+
+    assert(buffer);
+    assert.strictEqual(typeof buffer._setup, 'function');
+
+    assert(validate);
+    assert.strictEqual(typeof validate._setup, 'function');
+  });
+
+
   test('rail.call', function() {
     var client = rail();
 

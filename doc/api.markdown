@@ -11,7 +11,7 @@
       - [rail.plugins](#railplugins-1)
       - [rail.proto](#railproto)
       - [rail.defaults](#raildefaults)
-    - [rail.use(plugin, opt_options)](#railuseplugin-opt_options)
+    - [rail.use(name, opt_plugin, opt_options)](#railusename-opt_plugin-opt_options)
     - [rail.call(opt_options, opt_responseListener)](#railcallopt_options-opt_responselistener)
   - [Class: Call](#class-call)
     - [new Call(rail, opt_options)](#new-callrail-opt_options)
@@ -63,8 +63,19 @@ The default protocol for all calls.
 #### rail.defaults
 The default request options for all calls.
 
-### rail.use(plugin, opt_options)
-Loads a plugin. Currently only built-in plugins are supported (you could patch `RAIL.plugins` though).
+### rail.use(name, opt_plugin, opt_options)
+Loads a plugin.
+
+  - `{string} name` The name of the plugin
+  - `{?function=} opt_plugin` A plugin constructor
+  - `{?Object=} opt_options` Optional plugin options
+
+Returns the newly loaded plugin on success, `null` when the plugin is already loaded and `false` when no constructor could be located.
+
+```js
+rail.use('buffer'/*, opt_options */);        // load built-in plugin
+rail.use('my', MyPlugin/*, opt_options */);  // load a custom plugin
+```
 
 ### rail.call(opt_options, opt_responseListener)
 Factory method to create new `Call` objects, think `https.request()`.
@@ -73,10 +84,10 @@ Factory method to create new `Call` objects, think `https.request()`.
 
 When `opt_options` is a string, it is handled like `opt_options.url`.
 
-  - `{string} proto` - See [`new RAIL(opt_options)`](#new-railopt_options)
-  - `{string} url` - When given, the request options are set accordingly
-  - `{Object} request` - request options, see [io.js](https://iojs.org/api/https.html#https_https_request_options_callback) or [node.js](https://nodejs.org/api/https.html#https_https_request_options_callback)
-  - `{Object|boolean} *` - plugin options
+  - `{string} proto` See [`new RAIL(opt_options)`](#new-railopt_options)
+  - `{string} url` When given, the request options are set accordingly
+  - `{Object} request` The request options, see [io.js](https://iojs.org/api/https.html#https_https_request_options_callback) or [node.js](https://nodejs.org/api/https.html#https_https_request_options_callback)
+  - `{Object|boolean} *` Any plugin options, configured plugins are auto-loaded
 
 _Notes_
 
