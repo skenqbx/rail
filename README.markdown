@@ -152,7 +152,7 @@ When **not** using **https**, make sure to set the correct default protocol
 
 ```js
 var RAIL = require('rail');
-RAIL.proto = 'http';
+RAIL.globalClient.proto = 'http';
 ```
 ... and then replace every call to `http.request` with `RAIL.call`.
 
