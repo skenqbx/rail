@@ -21,7 +21,7 @@ suite('http:timeout', function() {
   suiteSetup(function(done) {
     rail = new RAIL();
     rail.use('timeout', {
-      response: 500
+      response: 50
     });
 
     server = http.createServer(listener);
