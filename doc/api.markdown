@@ -75,10 +75,13 @@ When `opt_options` is a string, it is handled like `opt_options.url`.
 
   - `{string} proto` - See [`new RAIL(opt_options)`](#new-railopt_options)
   - `{string} url` - When given, the request options are set accordingly
-  - `{Object} request` - request options, see `https.request()`
+  - `{Object} request` - request options, see [io.js](https://iojs.org/api/https.html#https_https_request_options_callback) or [node.js](https://nodejs.org/api/https.html#https_https_request_options_callback)
   - `{Object|boolean} *` - plugin options
 
-_Note: For convenience & compatibility with node core API, all request options can also be provided directly besides proto & plugin options._
+_Notes_
+
+  - _request options `hostname`, `localAddress` & `socketPath` are not supported_
+  - _request options can also be provided directly besides proto & plugin options_
 
 [back to top](#table-of-contents)
 

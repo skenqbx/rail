@@ -82,6 +82,7 @@ A configurable redirect mechanism.
 _Note_: When no request options are supplied, the plugin defaults apply.
 
 ### Event: 'redirect'
+Emitted when `request.end()` of a redirected request has been called.
 
 `function({Object} options)`
 
@@ -105,7 +106,7 @@ _Note_: The socket idle timeout is only supported for https & http.
 _Note_: When no request options are supplied, the plugin defaults apply.
 
 ### Event: 'timeout'
-Emitted on the `call` object when a timeout occurs.
+Emitted on the `call` object when a timeout occurs. It is up to the user to abort the call.
 
 `function({string} type, {Object} options)`
 

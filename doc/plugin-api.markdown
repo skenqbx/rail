@@ -1,47 +1,48 @@
 # [rail](../README.markdown) Plugin API
 
+The `RAIL` object emits `plugin-*` events that correspond to different states of a single request inside a call.
+These events enable plugins to monitor the state of a request, as well as modify the request configuration and when necessary intercept _user_ events on the `Call` object.
+
+The `Call` object provides a plugin interface for interception of _user_ events & request management.
+
+All methods for the plugin interface begin with two underscores `__`.
+
 ## Table of Contents
 
-  - [RAIL Plugin Events](#rail-plugin-events)
+  - [Plugin Events](#plugin-events)
   - [Interceptable Events](#interceptable-events)
   - [Request Management](#request-management)
 
-## Basics
-
-  - Methods beginning with two underscores `__` are defined as plugin API
-
 ## Example
+A _class_ implementing a very simple plugin that emits `my` event every time a request configuration has been created.
 
 ```js
-function myPlugin(rail, opt_options) {
-  opt_options = opt_options || {};
-
-  var pluginOptions = {
-
-  };
-
-
-  function interceptResponse(call, options, response) {
-    // do something async
-    //   ... then
-    call.__emit('response', response);
+function MyPlugin(rail, options) {
+  if (!(this instanceof MyPlugin)) {
+    return new MyPlugin(rail, options);
   }
+  this._rail = rail;
+
+  this._setup();
+}
+module.exports = MyPlugin;
 
 
-  rail.on('plugin-response', function(call, options, response) {
+MyPlugin.prototype._setup = function() {
+  var self = this;
+  var rail = this._rail;
+
+  rail.on('plugin-configure', function(call, options) {
     if (options.my) {
-      call.__intercept('response', interceptResponse);
+      call.emit('my', 'works!');
     }
   });
-
-  return pluginOptions;
-}
-module.exports = myPlugin;
+};
 ```
 
 [back to top](#table-of-contents)
 
-## RAIL Plugin Events
+## Plugin Events
 
 These events are emitted on the `RAIL` object.
 

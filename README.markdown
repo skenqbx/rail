@@ -7,7 +7,7 @@
 
 **_An enhanced HTTP/RESTful API Client_**
 
-_rail_ is a io.js/node.js HTTP client supporting https, http and [http2](https://www.npmjs.com/package/http2).
+_rail_ is an io.js/node.js HTTP client supporting https, http and [http2](https://www.npmjs.com/package/http2).
 
 A set of built-in plugins, currently featuring [`buffer`](./doc/plugins.markdown#buffer), [`cookies`](./doc/plugins.markdown#cookies), [`redirect`](./doc/plugins.markdown#redirect), [`json`](./doc/plugins.markdown#json), [`timeout`](./doc/plugins.markdown#timeout) & [`validate`](./doc/plugins.markdown#validate) simplify making requests,
 and a powerful event-driven plugin interface aids in the implementation of complex automated RESTful API calls.
@@ -32,9 +32,9 @@ Stability: 2 - Unstable
     - [Request & Plugin Options](#request--plugin-options)
     - [Custom Client](#custom-client)
   - [Use as a drop-in replacement](#use-as-a-drop-in-replacement)
-  - [API](./doc/api.markdown)
   - [Plugins](./doc/plugins.markdown)
-  - [Plugin API](./doc/plugin-api.markdown) - _the internals of RAIL_
+  - [API](./doc/api.markdown)
+  - [Plugin API](./doc/plugin-api.markdown)
   - [Tests](#tests)
   - [ChangeLog](./CHANGELOG.markdown)
   - [License](./LICENSE)
@@ -144,23 +144,17 @@ call.end('world');
 [back to top](#table-of-contents)
 
 ## Use as a drop-in replacement
-_rail_ does not support the following request options
+_rail_ does **not** support the `hostname`, `localAddress` & `socketPath` options, see [rail.call()](./doc/api.markdown#railcallopt_options-opt_responselistener) for more information.
 
-  - `hostname`
-  - `localAddress`
-  - `socketPath`
-
-**When not using https**: make sure to set the correct default protocol
+When **not** using **https**, make sure to set the correct default protocol
 
 ```js
 var RAIL = require('rail');
-
 RAIL.proto = 'http';
-
 ```
-... then replace every call to `http.request` with `RAIL.call`.
+... and then replace every call to `http.request` with `RAIL.call`.
 
-Alternatively create a custom client with defaults & plugins configured to your needs.
+_Alternatively_ create a custom client with defaults & plugins configured to your needs.
 
 [back to top](#table-of-contents)
 
