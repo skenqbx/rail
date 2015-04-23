@@ -1,5 +1,20 @@
 # [rail](./README.markdown) ChangeLog
 
+## 2015-04-24, [v0.4.0](https://github.com/skenqbx/rail/tree/v0.4.0) **_<small>unstable</small>_**
+
+### Notable changes
+
+  - Use **custom plugins** with the upgraded `rail.use()`
+
+### Commits
+  - [[`6a325e2376`](https://github.com/skenqbx/rail/commit/6a325e2376adad4d73f9fed67821c7cb64875d94)] - **call**: update abort mechanism
+  - [[`df2fc9954e`](https://github.com/skenqbx/rail/commit/df2fc9954ec60b3f123e68cdc2c5b128755cbe6e)] - **deps**: changelog42 0.3.0 -> 0.4.0
+  - [[`8592de21a8`](https://github.com/skenqbx/rail/commit/8592de21a856ed886132f18e06138c9e15875890)] - **doc**: fix drop-in default protocol
+  - [[`3785c454d8`](https://github.com/skenqbx/rail/commit/3785c454d82dfb0a903fa5fb37a9da84cfea2590)] - **rail**: add support for custom plugins to `rail.use()`
+  - [[`e8b5e1dec4`](https://github.com/skenqbx/rail/commit/e8b5e1dec4c12702efd42b03fe230f1e48d728a2)] - **retry**: comment out unused code
+  - [[`74e5eb2291`](https://github.com/skenqbx/rail/commit/74e5eb22913c7fcd6080a3c455ae01fde48e2bb9)] - **test**: extend retry, timeout & call tests
+
+
 ## 2015-04-23, [v0.3.0](https://github.com/skenqbx/rail/tree/v0.3.0) **_<small>unstable</small>_**
 
 _rail_ is ready for some _real-world_ aka. production testing. All _public_ API's are documented and
