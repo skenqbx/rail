@@ -9,8 +9,8 @@
 
 _rail_ is a io.js/node.js HTTP client supporting https, http and [http2](https://www.npmjs.com/package/http2).
 
-A set of built-in plugins, currently featuring [`buffer`](./doc/plugins.markdown#buffer), [`cookies`](./doc/plugins.markdown#cookies), [`redirect`](./doc/plugins.markdown#redirect), [`json`](./doc/plugins.markdown#json) & [`validate`](./doc/plugins.markdown#validate), make simple requests even simpler,
-and a powerful event-driven plugin interface aids in the implementation of complex RESTful API calls.
+A set of built-in plugins, currently featuring [`buffer`](./doc/plugins.markdown#buffer), [`cookies`](./doc/plugins.markdown#cookies), [`redirect`](./doc/plugins.markdown#redirect), [`json`](./doc/plugins.markdown#json), [`timeout`](./doc/plugins.markdown#timeout) & [`validate`](./doc/plugins.markdown#validate) simplify making requests,
+and a powerful event-driven plugin interface aids in the implementation of complex automated RESTful API calls.
 
 The concept of _a single request_ is extended to _a possible series of requests_ further referenced as a _call_.
 This allows a seamless integration of redirect and authentication mechanisms that require multiple requests to satisfy the original one.

@@ -6,6 +6,7 @@
   - [cookies](#cookies)
   - [json](#json)
   - [redirect](#redirect)
+  - [timeout](#timeout)
   - [validate](#validate)
 
 ## buffer
@@ -84,8 +85,32 @@ A configurable redirect mechanism.
 
 [back to top](#table-of-contents)
 
+## timeout
+Comprehensive response & socket timeout detection.
+
+**options**
+
+  - `{number} response` The response timeout in ms, defaults to `60000` (1 min)
+  - `{number} socket` The socket idle timeout in ms, defaults to `120000` (2 min)
+
+_Note_: The socket idle timeout is only supported for https & http.
+
+**request options**
+
+  - `{number} response` Set to `0` to disable the timeout, also see `options`
+  - `{number} socket` Set to `0` to disable the timeout, also see `options`
+
+### Event: 'timeout'
+Emitted on the `call` object when a timeout occurs.
+
+`function({string} type, {Object} options)`
+
+Where `type` is either `'response'` or `'socket'`, and `options` is the request configuration.
+
+[back to top](#table-of-contents)
+
 ## validate
-A response validation plugin.
+Response header & JSON body validation.
 
 Schema definitions & validation are provided by [mgl-validate](https://www.npmjs.com/package/mgl-validate).
 
