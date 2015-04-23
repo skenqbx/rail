@@ -57,6 +57,9 @@ _Note: For convenience & compatibility with node core API, all request options c
 ### new Call(rail, opt_options)
 Creates a new `Call` object.
 
+#### call.aborted
+A boolean indicating the state of the call.
+
 #### call.ended
 A boolean indicating the state of the writable stream.
 
@@ -66,12 +69,18 @@ The currently active `request` stream, if any.
 #### call.response
 The currently active `response` stream, if any.
 
+### call.abort()
+Immediately abort any request, free the send-buffer & prevent any further requests.
+
+_Note_: An `error` is very likely to be emitted after a call to `abort()`.
+
 ### call.write(chunk, encoding, opt_callback)
 See [writable.write()](https://nodejs.org/api/stream.html#stream_writable_write_chunk_encoding_callback).
 
 ### call.end(chunk, encoding, opt_callback)
 See [writable.end()](https://nodejs.org/api/stream.html#stream_writable_end_chunk_encoding_callback).
-Always returns `this`.
+
+Returns `this`.
 
 ### Event 'request'
 

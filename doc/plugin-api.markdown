@@ -120,4 +120,9 @@ Create a request object when no request is pending and a configuration is availa
 
 Returns `true` when a request is pending, the newly created `request` object otherwise.
 
+### call.\_\_abort(opt_reason)
+Aborts the current request and response, if any.
+
+_Note_: An _interceptable_ `error` is very likely to be emitted after a call to `__abort()`.
+
 [back to top](#table-of-contents)
