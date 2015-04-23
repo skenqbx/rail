@@ -42,4 +42,67 @@ suite('public-api', function() {
       }
     }, function() {});
   });
+
+
+  test('call.__intercept "interceptor should be a function"', function() {
+    var client = rail();
+    var call = client.call();
+
+    assert.throws(function() {
+      call.__intercept('response');
+    }, TypeError, 'interceptor should be a function');
+  });
+
+
+  test('call.abort "Not connected"', function(done) {
+    var client = rail();
+    var call = client.call();
+    assert(call.__request());
+
+    call.once('error', function(err) {
+      assert(err);
+      assert(err.message, 'Not connected');
+      done();
+    });
+
+    call.abort();
+    call.abort();
+    call.end();
+  });
+
+
+  test('call.__request "No configuration available"', function(done) {
+    var client = rail();
+    var call = client.call();
+
+    call.once('error', function(err) {
+      assert(err);
+      assert(err.message, 'No configuration available');
+      done();
+    });
+
+    ++call._pointer;
+    call.__request();
+  });
+
+  test('call._urlToOptions', function() {
+    var client = rail();
+    var call = client.call();
+
+    var options = call._urlToOptions({
+      request: {
+        method: 'POST'
+      }
+    }, 'http://github.com');
+
+    assert.deepEqual(options, {
+      proto: 'http',
+      request: {
+        method: 'POST',
+        host: 'github.com',
+        path: '/',
+        port: null
+      }
+    });
+  });
 });

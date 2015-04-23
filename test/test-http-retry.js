@@ -30,6 +30,21 @@ suite('http:retry', function() {
   });
 
 
+  test('configure', function() {
+    var options = {
+      retry: {}
+    };
+    rail.plugins.retry._configure(options);
+    assert.deepEqual(options, {retry: {interval: 20, limit: 3}});
+
+    options = {
+      retry: false
+    };
+    rail.plugins.retry._configure(options);
+    assert.deepEqual(options, {retry: {limit: 0}});
+  });
+
+
   test('call', function(done) {
     var retries = 0;
 

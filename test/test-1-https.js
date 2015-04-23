@@ -40,7 +40,8 @@ suite('https', function() {
 
     rail.call({
       proto: 'https',
-      port: common.port
+      port: common.port,
+      agent: null
     }, function(response) {
       response.on('readable', function() {
         response.read();

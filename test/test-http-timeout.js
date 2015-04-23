@@ -21,7 +21,8 @@ suite('http:timeout', function() {
   suiteSetup(function(done) {
     rail = new RAIL();
     rail.use('timeout', {
-      response: 50
+      response: 20,
+      socket: 20
     });
 
     server = http.createServer(listener);
@@ -29,7 +30,7 @@ suite('http:timeout', function() {
   });
 
 
-  test('call', function(done) {
+  test('repsonse timeout', function(done) {
     onrequest = function(request, response) {
       response.end('pong');
     };
@@ -37,11 +38,40 @@ suite('http:timeout', function() {
     var call = rail.call({
       proto: 'http',
       host: 'github.com',
-      port: 55555
+      port: 55555,
+      timeout: {
+        socket: 0
+      }
     }).on('timeout', function(type) {
+      assert.strictEqual(type, 'response');
       call.abort();
     }).on('error', function(err) {
       assert(err);
+      assert.strictEqual(err.message, 'socket hang up');
+      assert.strictEqual(err.reason, 'user');
+      done();
+    }).end();
+  });
+
+
+  test('socket timeout', function(done) {
+    onrequest = function(request, response) {
+      response.end('pong');
+    };
+
+    var call = rail.call({
+      proto: 'http',
+      host: 'github.com',
+      port: 55555,
+      timeout: {
+        response: 0
+      }
+    }).on('timeout', function(type) {
+      assert.strictEqual(type, 'socket');
+      call.abort();
+    }).on('error', function(err) {
+      assert(err);
+      assert.strictEqual(err.message, 'socket hang up');
       assert.strictEqual(err.reason, 'user');
       done();
     }).end();
