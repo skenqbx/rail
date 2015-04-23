@@ -6,6 +6,7 @@
   - [cookies](#cookies)
   - [json](#json)
   - [redirect](#redirect)
+  - [retry](#retry)
   - [timeout](#timeout)
   - [validate](#validate)
 
@@ -79,10 +80,37 @@ A configurable redirect mechanism.
     - `{boolean} allowUpgrade` See `options`
     - `{boolean} allowDowngrade` See `options`
 
-_Note_: When no request options are supplied, the plugin defaults apply.
+_Note_: Undefined request options are set to plugin defaults.
 
 ### Event: 'redirect'
 Emitted when `request.end()` of a redirected request has been called.
+
+`function({Object} options)`
+
+[back to top](#table-of-contents)
+
+## retry
+Conditional request retry.
+
+_Initial Implementation, more to come ..._
+
+Reacts on `syscall: connect` with `code: ECONNREFUSED` or `code: ETIMEDOUT`
+
+**options**
+
+  - `{number} interval` Retry interval in ms, defaults to `2000`
+  - `{number} limit` Retry limit, defaults to `0`
+
+**request options**
+
+  - `{Object|boolean} retry` Set to `false` to disable the plugin
+    - `{number} interval` See `options`
+    - `{number} limit` See `options`
+
+_Note_: Undefined request options are set to plugin defaults.
+
+### Event: 'retry'
+Emitted when `request.end()` of a repeated request has been called.
 
 `function({Object} options)`
 
@@ -100,10 +128,11 @@ _Note_: The socket idle timeout is only supported for https & http.
 
 **request options**
 
-  - `{number} response` Set to `0` to disable the timeout, also see `options`
-  - `{number} socket` Set to `0` to disable the timeout, also see `options`
+  - `{Object} timeout`
+    - `{number} response` Set to `0` to disable the timeout, also see `options`
+    - `{number} socket` Set to `0` to disable the timeout, also see `options`
 
-_Note_: When no request options are supplied, the plugin defaults apply.
+_Note_: Undefined request options are set to plugin defaults.
 
 ### Event: 'timeout'
 Emitted on the `call` object when a timeout occurs. It is up to the user to abort the call.
@@ -132,8 +161,9 @@ Uses the `buffer` & `json` plugin.
 
 **request options**
 
-  - `{Object|string} headers` An existing schema id or a schema definition
-  - `{Object|string} body` An existing schema id or a schema definition
+  - `{Object} validate`
+    - `{Object|string} headers` An existing schema id or a schema definition
+    - `{Object|string} body` An existing schema id or a schema definition
 
 Validation results are exported as `response.validate = null` when all validations passed, and an object when a validation failed;
 
