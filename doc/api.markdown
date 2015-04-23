@@ -1,5 +1,34 @@
 # [rail](../README.markdown) API
 
+## Table of Contents
+
+  - [Exports](#exports)
+    - [RAIL.plugins](#railplugins)
+    - [RAIL.globalClient](#railglobalclient)
+    - [RAIL.call(urlOrOptions, responseListener)](#railcallurloroptions-responselistener)
+  - [Class: RAIL](#class-rail)
+    - [new RAIL(opt_options)](#new-railopt_options)
+      - [rail.plugins](#railplugins-1)
+      - [rail.proto](#railproto)
+      - [rail.defaults](#raildefaults)
+    - [rail.use(plugin, opt_options)](#railuseplugin-opt_options)
+    - [rail.call(opt_options, opt_responseListener)](#railcallopt_options-opt_responselistener)
+  - [Class: Call](#class-call)
+    - [new Call(rail, opt_options)](#new-callrail-opt_options)
+      - [call.aborted](#callaborted)
+      - [call.ended](#callended)
+      - [call.request](#callrequest)
+      - [call.response](#callresponse)
+    - [call.abort()](#callabort)
+    - [call.write(chunk, encoding, opt_callback)](#callwritechunk-encoding-opt_callback)
+    - [call.end(chunk, encoding, opt_callback)](#callendchunk-encoding-opt_callback)
+    - [Event: 'request'](#event-request)
+    - [Event: 'response'](#event-repsonse)
+    - [Event: 'warn'](#event-warn)
+    - [Event: 'error'](#event-error)
+
+## Exports
+
 ### RAIL.plugins
 An object holding all built-in [plugins](./doc/plugins.markdown).
 
@@ -10,6 +39,8 @@ A global `RAIL` object pre-loaded with `buffer`, `json`, `redirect`, `cookies`, 
 A convenience method ala. `https.request()` using `RAIL.globalClient`.
 
 See [rail.call()](#railcallopt_options-opt_responselistener).
+
+[back to top](#table-of-contents)
 
 ## Class: RAIL
 `RAIL` extends `events.EventEmitter`.
@@ -49,7 +80,7 @@ When `opt_options` is a string, it is handled like `opt_options.url`.
 
 _Note: For convenience & compatibility with node core API, all request options can also be provided directly besides proto & plugin options._
 
-[back to top](#railplugins)
+[back to top](#table-of-contents)
 
 ## Class: Call
 `Call` extends `stream.Writable`.
@@ -96,4 +127,4 @@ Returns `this`.
 
 ### Event 'error'
 
-[back to top](#railplugins)
+[back to top](#table-of-contents)
