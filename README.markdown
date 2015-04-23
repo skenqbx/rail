@@ -146,6 +146,7 @@ call.end('world');
 ## Use as a drop-in replacement
 _rail_ does not support the following request options
 
+  - `hostname`
   - `localAddress`
   - `socketPath`
 
@@ -155,8 +156,13 @@ _rail_ does not support the following request options
 var RAIL = require('rail');
 
 RAIL.proto = 'http';
+
 ```
-... or create a custom client.
+... then replace every call to `http.request` with `RAIL.call`.
+
+Alternatively create a custom client with defaults & plugins configured to your needs.
+
+[back to top](#table-of-contents)
 
 ## Tests
 

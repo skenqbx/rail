@@ -92,7 +92,7 @@ Registers an interceptor `function({Call} call, {Object} options, {*} object)` f
 Removes all registered interceptors.
 
 ### Event: 'request'
-Emitted one tick after the request object has been created.
+Emitted after the request object has been created and the send-buffer has been flushed.
 
 ### Event: 'response'
 Emitted after the response headers have been received.

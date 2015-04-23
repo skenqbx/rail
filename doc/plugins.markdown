@@ -79,6 +79,8 @@ A configurable redirect mechanism.
     - `{boolean} allowUpgrade` See `options`
     - `{boolean} allowDowngrade` See `options`
 
+_Note_: When no request options are supplied, the plugin defaults apply.
+
 ### Event: 'redirect'
 
 `function({Object} options)`
@@ -99,6 +101,8 @@ _Note_: The socket idle timeout is only supported for https & http.
 
   - `{number} response` Set to `0` to disable the timeout, also see `options`
   - `{number} socket` Set to `0` to disable the timeout, also see `options`
+
+_Note_: When no request options are supplied, the plugin defaults apply.
 
 ### Event: 'timeout'
 Emitted on the `call` object when a timeout occurs.
