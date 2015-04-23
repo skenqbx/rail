@@ -30,7 +30,7 @@
     "istanbul": "0.3.13",
     "mocha": "2.2.4",
     "next-update": "0.7.6",
-    "changelog42": "0.3.0"
+    "changelog42": "0.4.0"
   },
   "scripts": {
     "lint": "eslint ./",
