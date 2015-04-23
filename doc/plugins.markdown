@@ -110,7 +110,7 @@ Reacts on `syscall: connect` with `code: ECONNREFUSED` or `code: ETIMEDOUT`
 _Note_: Undefined request options are set to plugin defaults.
 
 ### Event: 'retry'
-Emitted when `request.end()` of a repeated request has been called.
+Emitted when a retry has been scheduled.
 
 `function({Object} options)`
 
