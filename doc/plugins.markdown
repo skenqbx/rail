@@ -130,6 +130,31 @@ Uses the `buffer` & `json` plugin.
   - `{Object|string} headers` An existing schema id or a schema definition
   - `{Object|string} body` An existing schema id or a schema definition
 
+Validation results are exported as `response.validate = null` when all validations passed, and an object when a validation failed;
+
+```js
+response.validate = {
+  headers: null,
+  body: [
+    ['hello', 'number', 'type', 'world']
+  ]
+};
+```
+
+**Headers Schema Definition Example**
+
+This example shows how-to validate that the `Content-Type` header equals `'application/json'`.
+
+```js
+{
+  type: 'object',
+  properties: {
+    'content-type': 'application/json'
+  },
+  allowUnknownProperties: true
+}
+```
+
 ### validate.registry
 The [mgl-validate](https://www.npmjs.com/package/mgl-validate) schema registry.
 

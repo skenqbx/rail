@@ -46,7 +46,7 @@ suite('http:validate', function() {
   });
 
 
-  test('call', function(done) {
+  test('OK', function(done) {
     onrequest = function(request, response) {
       response.end(JSON.stringify({
         hello: 'world'
@@ -54,7 +54,6 @@ suite('http:validate', function() {
     };
 
     rail.call({
-      json: true,
       validate: {
         headers: 'headers',
         body: {
@@ -73,11 +72,174 @@ suite('http:validate', function() {
       assert(response.json.hello);
       assert.strictEqual(response.json.hello, 'world');
 
-      assert.strictEqual(response.validate, true);
+      assert.strictEqual(response.validate, null);
 
       done();
-    }).on('warn', function(plugin, status, opt_message, opt_whatever) {
-      console.log(plugin, status, opt_message, opt_whatever);
+    }).end();
+  });
+
+
+  test('failed (body)', function(done) {
+    onrequest = function(request, response) {
+      response.end(JSON.stringify({
+        hello: 'world'
+      }));
+    };
+
+    rail.call({
+      validate: {
+        headers: 'headers',
+        body: {
+          id: 'simple-body',
+          type: 'object',
+          properties: {
+            hello: {
+              type: 'number'
+            }
+          }
+        }
+      }
+    }, function(response) {
+      assert.strictEqual(response.statusCode, 200);
+
+      assert(response.buffer);
+      assert(response.json);
+      assert(response.json.hello);
+      assert.strictEqual(response.json.hello, 'world');
+
+      assert(response.validate);
+      assert.strictEqual(response.validate.headers, null);
+      assert.deepEqual(response.validate.body,
+          [['hello', 'number', 'type', 'world']]);
+
+      done();
+    }).end();
+  });
+
+
+  test('failed (headers)', function(done) {
+    onrequest = function(request, response) {
+      response.end(JSON.stringify({
+        hello: 'world'
+      }));
+    };
+
+    rail.call({
+      validate: {
+        headers: {
+          id: 'failing-headers',
+          type: 'object',
+          properties: {
+            hello: {
+              type: 'number'
+            }
+          },
+          allowUnknownProperties: true
+        }
+      },
+      buffer: true
+    }, function(response) {
+      assert.strictEqual(response.statusCode, 200);
+
+      assert(response.buffer);
+
+      assert(response.validate);
+      assert.strictEqual(response.validate.body, null);
+      assert.deepEqual(response.validate.headers,
+          [[null, 'object', 'undefined', 'hello']]);
+
+      done();
+    }).end();
+  });
+
+
+  test('failed (no-body)', function(done) {
+    onrequest = function(request, response) {
+      response.end();
+    };
+
+    rail.call({
+      validate: {
+        body: {
+          id: 'simple-body',
+          type: 'object',
+          properties: {
+            hello: {
+              type: 'number'
+            }
+          }
+        }
+      }
+    }, function(response) {
+      assert.strictEqual(response.statusCode, 200);
+
+      assert(response.validate);
+      assert.strictEqual(response.validate.headers, null);
+      assert.deepEqual(response.validate.body,
+          [[null, 'object', 'undefined', null]]);
+
+      done();
+    }).end();
+  });
+
+
+  test('invalid schema #1', function(done) {
+    onrequest = function(request, response) {
+      response.end(JSON.stringify({
+        hello: 'world'
+      }));
+    };
+
+    rail.call({
+      validate: {
+        body: 1234
+      }
+    }).on('error', function(err) {
+      assert(err);
+      assert.strictEqual(err.message, 'Invalid schema');
+      done();
+    }).end();
+  });
+
+
+  test('invalid schema #2', function(done) {
+    onrequest = function(request, response) {
+      response.end(JSON.stringify({
+        hello: 'world'
+      }));
+    };
+
+    rail.call({
+      validate: {
+        body: {
+          xyz: 1
+        }
+      }
+    }).on('error', function(err) {
+      assert(err);
+      assert.strictEqual(err.message, 'Invalid schema id');
+      done();
+    }).end();
+  });
+
+
+  test('invalid schema #3', function(done) {
+    onrequest = function(request, response) {
+      response.end(JSON.stringify({
+        hello: 'world'
+      }));
+    };
+
+    rail.call({
+      validate: {
+        body: {
+          id: 'invalid-schema'
+        }
+      }
+    }).on('error', function(err) {
+      assert(err);
+      assert.strictEqual(err.message, 'Invalid type definition');
+      done();
     }).end();
   });
 
