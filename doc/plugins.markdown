@@ -86,7 +86,7 @@ A configurable redirect mechanism.
 [back to top](#table-of-contents)
 
 ## timeout
-Comprehensive response & socket timeout detection.
+Response & socket timeout detection.
 
 **options**
 
