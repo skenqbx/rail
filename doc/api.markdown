@@ -144,6 +144,9 @@ Emitted after the request object has been created and the send-buffer has been f
 
 `function({Object} request)`
 
+### Event 'abort'
+Emitted when a pending connect or active request is aborted.
+
 ### Event 'response'
 Emitted after the response headers have been received.
 

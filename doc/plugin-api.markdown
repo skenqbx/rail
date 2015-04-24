@@ -68,6 +68,11 @@ Emitted directly after a request object has been created.
 
 `function({Call} call, {Object} options, {Request} request)`
 
+### Event: 'plugin-abort'
+Emitted when a pending connect or active request is aborted.
+
+`function({Call} call, {Object} options)`
+
 ### Event: 'plugin-response'
 Emitted when response headers have been received.
 
