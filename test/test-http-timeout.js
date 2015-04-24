@@ -45,12 +45,7 @@ suite('http:timeout', function() {
     }).on('timeout', function(type) {
       assert.strictEqual(type, 'response');
       call.abort();
-    }).on('error', function(err) {
-      assert(err);
-      assert.strictEqual(err.message, 'socket hang up');
-      assert.strictEqual(err.reason, 'user');
-      done();
-    }).end();
+    }).on('abort', done).end();
   });
 
 
@@ -69,12 +64,7 @@ suite('http:timeout', function() {
     }).on('timeout', function(type) {
       assert.strictEqual(type, 'socket');
       call.abort();
-    }).on('error', function(err) {
-      assert(err);
-      assert.strictEqual(err.message, 'socket hang up');
-      assert.strictEqual(err.reason, 'user');
-      done();
-    }).end();
+    }).on('abort', done).end();
   });
 
 

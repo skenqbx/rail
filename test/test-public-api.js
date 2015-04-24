@@ -67,48 +67,11 @@ suite('public-api', function() {
   });
 
 
-  test('call.abort "Not connected"', function(done) {
-    var client = rail();
-    var call = client.call();
-    assert(call.__request());
-
-    call.once('error', function(err) {
-      assert(err);
-      assert(err.message, 'Not connected');
-      done();
-    });
-
-    call.abort();
-    call.abort();
-    call.end();
-  });
-
-
-  test('call.abort dump', function(done) {
-    var client = rail();
-    var call = client.call();
-    assert(call.__buffer());
-    assert(call.__request());
-
-    call.once('error', function(err) {
-      assert(err);
-      assert(err.message, 'Not connected');
-      done();
-    });
-
-    call.write('HELLO');
-
-    call.abort();
-    call.abort();
-    call.end();
-  });
-
-
   test('call.__request "No configuration available"', function(done) {
     var client = rail();
     var call = client.call();
 
-    call.once('error', function(err) {
+    call.on('error', function(err) {
       assert(err);
       assert(err.message, 'No configuration available');
       done();
