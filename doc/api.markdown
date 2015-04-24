@@ -23,9 +23,20 @@
     - [call.write(chunk, encoding, opt_callback)](#callwritechunk-encoding-opt_callback)
     - [call.end(chunk, encoding, opt_callback)](#callendchunk-encoding-opt_callback)
     - [Event: 'request'](#event-request)
-    - [Event: 'response'](#event-repsonse)
+    - [Event: 'response'](#event-response)
     - [Event: 'warn'](#event-warn)
     - [Event: 'error'](#event-error)
+  - [Class: ReplayBuffer](#class-replaybuffer)
+    - [new ReplayBuffer(opt_max)](#new-replaybufferopt_max)
+      - [replayBuffer.max](#replaybuffermax)
+      - [replayBuffer.length](#replaybufferlength)
+      - [replayBuffer.closed](#replaybufferclosed)
+      - [replayBuffer.bailout](#replaybufferbailout)
+    - [replayBuffer.out(writable, opt_callback)](#replaybufferoutwritable-opt_callback)
+    - [replayBuffer.push(chunk, opt_encoding)](#replaybufferpushchunk-opt_encoding)
+    - [replayBuffer.replay(writable, callback)](#replaybufferreplaywritable-callback)
+    - [replayBuffer.dump()](#replaybufferdump)
+    - [replayBuffer.close()](#replaybufferclose)
 
 ## Exports
 
@@ -116,6 +127,7 @@ The currently active `response` stream, if any.
 
 ### call.abort()
 Immediately abort any request, free the send-buffer & prevent any further requests.
+Internally, either `request.abort()` or `request.socket.destroy()` is called, depending on what is available.
 
 _Note_: An `error` is very likely to be emitted after a call to `abort()`.
 
@@ -128,10 +140,12 @@ See [writable.end()](https://nodejs.org/api/stream.html#stream_writable_end_chun
 Returns `this`.
 
 ### Event 'request'
+Emitted after the request object has been created and the send-buffer has been flushed.
 
 `function({Object} request)`
 
 ### Event 'response'
+Emitted after the response headers have been received.
 
 `function({Object} response)`
 
@@ -142,3 +156,38 @@ Returns `this`.
 ### Event 'error'
 
 [back to top](#table-of-contents)
+
+## Class: ReplayBuffer
+The `ReplayBuffer` is used to buffer the request body in case of redirects, retries or other use-cases.
+
+The plugin API offers [call.__buffer()](./plugin-api.markdown#call__buffer) to enable this buffer.
+
+### new ReplayBuffer(opt_max)
+Creates a new `ReplayBuffer` object.
+
+#### replayBuffer.max
+The maximum number of bytes allowed to buffer.
+
+#### replayBuffer.length
+The current number of bytes buffered.
+
+#### replayBuffer.closed
+A boolean indicating if the buffer accepts more data.
+
+#### replayBuffer.bailout
+A boolean indicating that the buffer size is exceeding the maximum allowed size.
+
+### replayBuffer.out(writable, opt_callback)
+Set a writable stream to receive all chunks, existing & new ones.
+
+### replayBuffer.push(chunk, opt_encoding)
+Push a new chunk to the buffer.
+
+### replayBuffer.replay(writable, callback)
+_Copy_ all buffered chunks to the writable stream.
+
+### replayBuffer.dump()
+Empties the buffer.
+
+### replayBuffer.close()
+Prevents further additon of chunks and clear the writable stream.

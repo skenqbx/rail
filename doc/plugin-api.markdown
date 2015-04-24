@@ -87,7 +87,7 @@ Invokes the next pending interceptor or emits the event.
 On each call to `__emit()` only one interceptor is invoked. This way plugins can _blackhole_ responses by not calling `__emit()`. Creating a new request is obligatory in these cases.
 
 ### call.\_\_intercept(event, interceptor)
-Registers an interceptor `function({Call} call, {Object} options, {*} object)` for an event.
+Registers an interceptor for an event.
 
 ### call.\_\_clear()
 Removes all registered interceptors.
@@ -95,11 +95,17 @@ Removes all registered interceptors.
 ### Event: 'request'
 Emitted after the request object has been created and the send-buffer has been flushed.
 
+`function({Call} call, {Object} options, {Object} request)`
+
 ### Event: 'response'
 Emitted after the response headers have been received.
 
+`function({Call} call, {Object} options, {Object} response)`
+
 ### Event: 'error'
-Emitted on an error in context of a request.
+Emitted on an error.
+
+`function({Error} err)`
 
 [back to top](#table-of-contents)
 
@@ -116,8 +122,10 @@ Enables the `plugin-send-buffer` event using a `ReplayBuffer`.
 
 Returns `true` on success or when buffering is already enabled, `false` otherwise.
 
-### call.\_\_request()
+### call.\_\_request(opt_callback)
 Create a request object when no request is pending and a configuration is available. When no configuration is available, a _non-interceptable_ error is emitted.
+
+  - `{function({?Error} err, {?Object=} request)} opt_callback` Called after the request object has been created and the send-buffer has been flushed, a possible connect error is passed to the callback _(that error has already been emitted)_
 
 Returns `true` when a request is pending, the newly created `request` object otherwise.
 

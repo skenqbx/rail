@@ -19,7 +19,10 @@ suite('http:retry', function() {
 
 
   suiteSetup(function(done) {
-    rail = new RAIL();
+    rail = new RAIL({
+      proto: 'http'
+    });
+
     rail.use('retry', {
       limit: 3,
       interval: 20
@@ -45,13 +48,12 @@ suite('http:retry', function() {
   });
 
 
-  test('call', function(done) {
+  test('connect errors', function(done) {
     var retries = 0;
     var errors = 0;
     var ended = false;
 
     rail.call({
-      proto: 'http',
       port: 55555
     }).on('error', function(err) {
       assert(err);

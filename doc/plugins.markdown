@@ -19,6 +19,8 @@ When the body is empty its value is `null`, otherwise a `Buffer`.
   - `{boolean} default` Enable buffering for all requests, defaults to `false`
   - `{number} max` The maximum buffer size, defaults to `134217728` (128 MiB)
 
+_Note_: When the maximum buffer size is reached, a _bailout_ is performed putting all buffered data back into the response stream and emitting the response.
+
 **request options**
 
   - `{boolean} buffer` En-/disable buffering
@@ -50,7 +52,9 @@ Uses the `buffer` plugin.
 **options**
 
   - `{boolean} auto` Enable auto-parsing when `Content-Type: application/json`
-  - `{number} max` The maximum buffer size, defaults to `1048576` (1 MiB)
+  - `{number} max` The maximum JSON size, defaults to `1048576` (1 MiB)
+
+_Note_: When the JSON size exeeds the maximum size, it's not parsed. The `response.buffer` is still available for manual parsing though.
 
 **request options**
 
