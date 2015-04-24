@@ -9,7 +9,12 @@
     "http",
     "http2",
     "https",
-    "client"
+    "client",
+    "redirect",
+    "retry",
+    "cookies",
+    "validate",
+    "json"
   ],
   "license": "MIT",
   "author": {
