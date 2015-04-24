@@ -36,6 +36,22 @@ suite('http:redirect', function() {
   });
 
 
+  test('configure', function() {
+    var options = {
+      redirect: {}
+    };
+    rail.plugins.redirect._configure(options);
+    assert.deepEqual(options,
+        {redirect: {limit: 1, sameHost: false, allowDowngrade: false, allowUpgrade: false}});
+
+    options = {
+      redirect: false
+    };
+    rail.plugins.redirect._configure(options);
+    assert.deepEqual(options, {redirect: {limit: 0}});
+  });
+
+
   test('relative', function(done) {
     var c = 0;
     var r = [

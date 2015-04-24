@@ -74,7 +74,7 @@ A configurable redirect mechanism.
 
 **request options**
 
-  - `{Object} redirect`
+  - `{Object|boolean} redirect` Set to `false` to disable the plugin
     - `{number} limit` See `options`
     - `{boolean} sameHost` See `options`
     - `{boolean} allowUpgrade` See `options`
