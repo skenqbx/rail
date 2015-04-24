@@ -47,20 +47,33 @@ suite('http:retry', function() {
 
   test('call', function(done) {
     var retries = 0;
+    var errors = 0;
+    var ended = false;
 
     rail.call({
       proto: 'http',
       port: 55555
     }).on('error', function(err) {
       assert(err);
-      assert.strictEqual(retries, 3);
-      assert.strictEqual(err.code, 'ECONNREFUSED');
-      done();
+
+      switch (++errors) {
+        case 1:
+          assert.strictEqual(err.message, 'Trying to write after end');
+          break;
+        case 2:
+          assert(ended);
+          assert.strictEqual(retries, 3);
+          assert.strictEqual(err.code, 'ECONNREFUSED');
+          done();
+          break;
+      }
     }).on('retry', function(options) {
       assert(options);
       assert(options.retry);
       ++retries;
-    }).end();
+    }).end('TEST', function() {
+      ended = true;
+    }).end('ERR');
   });
 
 

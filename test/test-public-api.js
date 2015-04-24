@@ -84,6 +84,26 @@ suite('public-api', function() {
   });
 
 
+  test('call.abort dump', function(done) {
+    var client = rail();
+    var call = client.call();
+    assert(call.__buffer());
+    assert(call.__request());
+
+    call.once('error', function(err) {
+      assert(err);
+      assert(err.message, 'Not connected');
+      done();
+    });
+
+    call.write('HELLO');
+
+    call.abort();
+    call.abort();
+    call.end();
+  });
+
+
   test('call.__request "No configuration available"', function(done) {
     var client = rail();
     var call = client.call();
