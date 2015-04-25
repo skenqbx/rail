@@ -43,7 +43,7 @@ Stability: 2 - Unstable
 ## Installation
 
 ```
-$ npm install rail
+$ npm install rail --save-exact
 ```
 
 ## Examples
@@ -113,16 +113,15 @@ var client = new RAIL({
   }
 });
 
-// load plugins
-client.use('redirect');
+// load redirect plugin
+client.use('redirect', {
+  allowDowngrade: true,
+  limit: 5
+});
 
 // create a call (that might result in multiple requests)
 var call = client.call({
-  path: '/skenqbx/rail',
-  redirect: {
-    allowDowngrade: true,
-    limit: 5
-  }
+  path: '/skenqbx/rail'
 }, function(response) {
   if (response.json) {
     console.log(response.json);
@@ -133,10 +132,6 @@ var call = client.call({
 });
 
 call.on('error', function(err) { /* ... */ });
-
-call.on('warn', function(plugin, status, opt_message) {
-  console.log(plugin, status, opt_message);
-});
 
 call.write('hello');
 call.end('world');
@@ -161,18 +156,19 @@ _Alternatively_ create a custom client with defaults & plugins configured to you
 
 ## Tests
 
-```bash
-npm test
-firefox coverage/lcov-report/index.html
-```
+  - **npm lint** Lint the code using [eslint](https://www.npmjs.com/package/eslint) and these [rules](./.eslintrc)
+  - **npm test** Lint the code, run tests with [mocha](https://www.npmjs.com/package/mocha) & collect coverage with [istanbul](https://www.npmjs.com/package/istanbul)
+  - coverage report is available at `coverage/lcov-report/index.html`
+  - run `./tools/cross-test.sh` to test all relevant io.js/node.js versions, uses [nvm](https://github.com/creationix/nvm/)
+  - dependency update tests are performed by [next-update](https://www.npmjs.com/package/next-update)
 
 ### Coverage
 
 ```
-Statements   : 95.79% ( 705/736 )
-Branches     : 89.19% ( 330/370 )
-Functions    : 96.84% ( 92/95 )
-Lines        : 95.79% ( 705/736 )
+Statements   : 95.86% ( 718/749 )
+Branches     : 89.47% ( 340/380 )
+Functions    : 97.98% ( 97/99 )
+Lines        : 95.86% ( 718/749 )
 ```
 
 [back to top](#table-of-contents)
