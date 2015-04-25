@@ -57,6 +57,15 @@ suite('public-api', function() {
   });
 
 
+  test('call.abort() -> __request()', function() {
+    var client = rail();
+    var call = client.call();
+    call.abort();
+    var ret = call.__request();
+    assert(ret === false);
+  });
+
+
   test('call.__intercept "interceptor should be a function"', function() {
     var client = rail();
     var call = client.call();
@@ -79,26 +88,5 @@ suite('public-api', function() {
 
     ++call._pointer;
     call.__request();
-  });
-
-  test('call._urlToOptions', function() {
-    var client = rail();
-    var call = client.call();
-
-    var options = call._urlToOptions({
-      request: {
-        method: 'POST'
-      }
-    }, 'http://github.com');
-
-    assert.deepEqual(options, {
-      proto: 'http',
-      request: {
-        method: 'POST',
-        host: 'github.com',
-        path: '/',
-        port: null
-      }
-    });
   });
 });

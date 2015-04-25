@@ -84,8 +84,6 @@ suite('http:redirect', function() {
       done();
     }).on('warn', function(plugin, status, message) {
       console.log('warn', plugin, status, message);
-    }).on('error', function(err) {
-      console.log('TEST CALL ERROR', err.stack);
     }).end();
   });
 
@@ -122,8 +120,6 @@ suite('http:redirect', function() {
       done();
     }).on('warn', function(plugin, status, message) {
       console.log('warn', plugin, status, message);
-    }).on('error', function(err) {
-      console.log('TEST CALL ERROR', err.stack);
     }).end();
   });
 
@@ -147,8 +143,6 @@ suite('http:redirect', function() {
       assert.strictEqual(response.statusCode, 302);
       assert.strictEqual(response.buffer, null);
       done();
-    }).on('error', function(err) {
-      console.log('TEST CALL ERROR', err.stack);
     }).end();
   });
 
@@ -176,8 +170,6 @@ suite('http:redirect', function() {
       assert.strictEqual(response.buffer, null);
       assert.deepEqual(['redirect', 'blocked', 'different host'], warn);
       done();
-    }).on('error', function(err) {
-      console.log('TEST CALL ERROR', err.stack);
     }).on('warn', function(plugin, status, message) {
       warn = [plugin, status, message];
     }).end();
@@ -207,8 +199,6 @@ suite('http:redirect', function() {
       assert.strictEqual(response.buffer, null);
       assert.deepEqual(['redirect', 'blocked', 'protocol upgrade'], warn);
       done();
-    }).on('error', function(err) {
-      console.log('TEST CALL ERROR', err.stack);
     }).on('warn', function(plugin, status, message) {
       warn = [plugin, status, message];
     }).end();

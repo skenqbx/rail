@@ -89,6 +89,26 @@ suite('http:send-buffer', function() {
   });
 
 
+  test('abort', function() {
+    onrequest = function(request, response) {
+    };
+
+    var call = rail.call({
+      proto: 'http',
+      port: common.port,
+      method: 'POST'
+    });
+
+    call.__buffer();
+
+    call.write('a');
+    call.write('b');
+    call.write('c');
+    call.abort();
+    assert(call._buffer === null);
+  });
+
+
   suiteTeardown(function(done) {
     server.close(done);
   });

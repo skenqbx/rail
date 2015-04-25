@@ -118,7 +118,9 @@ Emitted on an error.
 All request configurations are stored in `call._stack`, the current configuration is referenced by `call._pointer`.
 
 ### call.\_\_configure(options)
-Creates a new request configuration from the given options and increments the internal pointer.
+Creates a new request configuration and increments the internal pointer.
+
+The current configuration is always the default, meaning `options` only needs to contain changes.
 
 _Note_: Request options are _copied_, plugin options are _referenced_ when not primitive.
 

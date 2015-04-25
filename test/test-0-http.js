@@ -60,7 +60,13 @@ suite('http', function() {
         assert.strictEqual(body.toString(), 'pong');
         done();
       });
-    }).end('ping');
+    });
+
+    call.write('start');
+
+    setImmediate(function() {
+      call.end('ping');
+    });
 
     assert(call);
     assert.strictEqual(typeof call.end, 'function');

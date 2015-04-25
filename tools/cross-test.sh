@@ -8,14 +8,18 @@
 # $ git clone https://github.com/creationix/nvm.git ~/.nvm && cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`
 # $ echo "source ~/.nvm/nvm.sh" >> ~/.bashrc
 #
+# $ nvm install -s 0.10
+# $ nvm install -s 0.12
+# $ nvm install iojs
+#
 
 source ~/.nvm/nvm.sh
 
-nvm install iojs
+nvm use iojs
 node_modules/.bin/_mocha ./test
 
-nvm install 0.12.2
+nvm use 0.12
 node_modules/.bin/_mocha ./test
 
-nvm install 0.10.38
+nvm use 0.10
 node_modules/.bin/_mocha ./test
