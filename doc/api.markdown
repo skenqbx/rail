@@ -4,6 +4,7 @@
 
   - [Exports](#exports)
     - [RAIL.plugins](#railplugins)
+    - [RAIL.tools](#railtools)
     - [RAIL.globalClient](#railglobalclient)
     - [RAIL.call(urlOrOptions, responseListener)](#railcallurloroptions-responselistener)
   - [Class: RAIL](#class-rail)
@@ -42,6 +43,20 @@
 
 ### RAIL.plugins
 An object holding all built-in [plugins](./doc/plugins.markdown).
+
+### RAIL.tools
+
+#### tools.copyHeaders(target, source, defaults)
+Copies all properties, _headers_ in this case, from either the `source` or the `defaults` to the `target`.
+
+#### tools.copy(target, source, defaults, keys)
+Copies all properties in `keys` from either the `source` or the `defaults` to the `target`.
+
+#### tools.parseURL(url)
+Parses an URL into an object with `proto`, `host`, `port` & `path`.
+
+#### tools.applyURL(target, url)
+Applies `proto`, `host`, `port` & `path` of an URL to the `target`.
 
 ### RAIL.globalClient
 A global `RAIL` object pre-loaded with `buffer`, `json`, `redirect`, `cookies`, `timeout`, `validate` & `retry` plugin.
