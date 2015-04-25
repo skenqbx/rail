@@ -38,7 +38,7 @@ suite('http:retry', function() {
       retry: {}
     };
     rail.plugins.retry._configure(options);
-    assert.deepEqual(options, {retry: {interval: 20, limit: 3}});
+    assert.deepEqual(options, {retry: {interval: 20, limit: 3, validate: false}});
 
     options = {
       retry: false

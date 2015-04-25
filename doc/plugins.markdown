@@ -96,20 +96,20 @@ Emitted when `request.end()` of a redirected request has been called.
 ## retry
 Conditional request retry.
 
-_Initial Implementation, more to come ..._
-
-Reacts on `syscall: connect` with `code: ECONNREFUSED` or `code: ETIMEDOUT`
+Retry requests on connect errors `ECONNREFUSED`, `ECONNRESET` & `ETIMEDOUT` and failed repsonse [validation](#validate).
 
 **options**
 
   - `{number} interval` Retry interval in ms, defaults to `2000`
   - `{number} limit` Retry limit, defaults to `0`
+  - `{boolean} validate` Retry when `response.validate` is set aka. the validate plugin is not satisfied
 
 **request options**
 
   - `{Object|boolean} retry` Set to `false` to disable the plugin
     - `{number} interval` See `options`
     - `{number} limit` See `options`
+    - `{boolean} validate` See `options`
 
 _Note_: Undefined request options are set to plugin defaults.
 
