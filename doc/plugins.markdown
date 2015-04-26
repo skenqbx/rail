@@ -70,7 +70,7 @@ A configurable redirect mechanism.
 
 **options**
 
-  - `{Array} codes` HTTP status codes to react on, defaults to `[301, 302, 308]`
+  - `{Array} codes` HTTP status codes to redirect, defaults to `[301, 302, 308]`
   - `{number} limit` The maximum number of redirects, defaults to `1`
   - `{boolean} sameHost` Only allow redirects to the current host, defaults to `false`
   - `{boolean} allowUpgrade` Allow switch from `http` to `https/2`, defaults to `true`
@@ -89,7 +89,7 @@ _Note_: Undefined request options are set to plugin defaults.
 ### Event: 'redirect'
 Emitted when `request.end()` of a redirected request has been called.
 
-`function({Object} options)`
+`function({Object} options, {Object} response)`
 
 [back to top](#table-of-contents)
 

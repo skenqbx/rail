@@ -90,8 +90,10 @@ suite('http:validate:retry', function() {
           [['hello', 'number', 'type', 'world']]);
 
       done();
-    }).on('retry', function() {
+    }).on('retry', function(options, response, reason) {
       ++retries;
+      assert.strictEqual(response.statusCode, 200);
+      assert.strictEqual(reason, 'validate');
     }).end();
   });
 

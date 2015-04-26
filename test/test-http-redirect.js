@@ -82,8 +82,6 @@ suite('http:redirect', function() {
       assert.strictEqual(response.buffer.length, 6);
       assert.strictEqual(response.buffer.toString(), 'works!');
       done();
-    }).on('warn', function(plugin, status, message) {
-      console.log('warn', plugin, status, message);
     }).end();
   });
 
@@ -118,6 +116,8 @@ suite('http:redirect', function() {
       assert.strictEqual(response.buffer.length, 6);
       assert.strictEqual(response.buffer.toString(), 'works!');
       done();
+    }).on('redirect', function(options, response) {
+      assert.strictEqual(response.statusCode, 302);
     }).end();
   });
 
