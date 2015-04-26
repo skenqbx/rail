@@ -96,10 +96,11 @@ Emitted when `request.end()` of a redirected request has been called.
 ## retry
 Conditional request retry.
 
-Retry requests on connect errors `ECONNREFUSED`, `ECONNRESET` & `ETIMEDOUT` and failed repsonse [validation](#validate).
+Retry requests on connect errors, on specfifc http status codes and failed repsonse [validation](#validate).
 
 **options**
 
+  - `{Array|boolean} codes` HTTP status codes to retry, set to `false` to disable. Defaults to `[500, 501, 502, 503]`
   - `{number} interval` Retry interval in ms, defaults to `2000`
   - `{number} limit` Retry limit, defaults to `0`
   - `{boolean} validate` Retry when `response.validate` is set aka. the validate plugin is not satisfied
@@ -107,6 +108,7 @@ Retry requests on connect errors `ECONNREFUSED`, `ECONNRESET` & `ETIMEDOUT` and 
 **request options**
 
   - `{Object|boolean} retry` Set to `false` to disable the plugin
+    - `{Array|boolean} codes` HTTP status codes to retry, set to `false` to disable. Plugin defaults will be added when an array is passed.
     - `{number} interval` See `options`
     - `{number} limit` See `options`
     - `{boolean} validate` See `options`
@@ -116,7 +118,9 @@ _Note_: Undefined request options are set to plugin defaults.
 ### Event: 'retry'
 Emitted when a retry has been scheduled.
 
-`function({Object} options)`
+`function({Object} options, {?Object} response, {string} reason)`
+
+Possible reasons are `connect`, `codes` or `validate` and for reason `connect` the `response` is `null`.
 
 [back to top](#table-of-contents)
 
