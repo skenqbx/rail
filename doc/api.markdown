@@ -36,7 +36,7 @@
       - [replayBuffer.bailout](#replaybufferbailout)
     - [replayBuffer.pipe(writable, opt_callback)](#replaybufferpipewritable-opt_callback)
     - [replayBuffer.unpipe(writable)](#replaybufferunpipewritable)
-    - [replayBuffer.push(chunk, opt_encoding)](#replaybufferpushchunk-opt_encoding)
+    - [replayBuffer.push(chunk)](#replaybufferpushchunk)
     - [replayBuffer.replay(writable, callback)](#replaybufferreplaywritable-callback)
     - [replayBuffer.dump()](#replaybufferdump)
     - [replayBuffer.end()](#replaybufferend)
@@ -206,8 +206,11 @@ Copy buffered chunks to `writable` using `replayBuffer.replay()` and relay all f
 
 ### replayBuffer.unpipe(writable)
 
-### replayBuffer.push(chunk, opt_encoding)
+### replayBuffer.push(chunk)
 Push a new chunk to the buffer.
+
+Throws an error when the buffer has already `ended`.
+Returns `false` when the buffer size exceeds `max`, otherwise `true`.
 
 ### replayBuffer.replay(writable, callback)
 _Copy_ all buffered chunks to `writable`.

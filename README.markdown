@@ -159,7 +159,7 @@ _Alternatively_ create a custom client with defaults & plugins configured to you
   - **npm run lint** Lint the code using [eslint](https://www.npmjs.com/package/eslint) and these [rules](./.eslintrc)
   - **npm test** Lint the code, run tests with [mocha](https://www.npmjs.com/package/mocha) & collect coverage with [istanbul](https://www.npmjs.com/package/istanbul)
     - detailed coverage report is available at `coverage/lcov-report/index.html`
-  - **npm run update** dependency update tests performed by [next-update](https://www.npmjs.com/package/next-update)
+  - **npm run update** Dependency update tests performed by [next-update](https://www.npmjs.com/package/next-update)
   - run `./tools/cross-test.sh` to test all relevant io.js/node.js versions, uses [nvm](https://github.com/creationix/nvm/)
 
 ### Coverage
