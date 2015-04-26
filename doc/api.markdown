@@ -119,7 +119,7 @@ When `opt_options` is a string, it is handled like `opt_options.url`.
 
 _Notes_
 
-  - _request options `hostname`, `localAddress` & `socketPath` are not supported_
+  - _request options `hostname`, `auth`, `localAddress` & `socketPath` are not supported_
   - _request options can also be provided directly besides proto & plugin options_
 
 [back to top](#table-of-contents)

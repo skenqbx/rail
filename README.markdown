@@ -140,7 +140,7 @@ call.end('world');
 [back to top](#table-of-contents)
 
 ## Use as a drop-in replacement
-_rail_ does **not** support the `hostname`, `localAddress` & `socketPath` options, see [rail.call()](./doc/api.markdown#railcallopt_options-opt_responselistener) for more information.
+_rail_ does **not** support the `hostname`, `auth`, `localAddress` & `socketPath` options, see [rail.call()](./doc/api.markdown#railcallopt_options-opt_responselistener) for more information.
 
 When **not** using **https**, make sure to set the correct default protocol
 
