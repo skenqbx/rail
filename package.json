@@ -1,6 +1,6 @@
 {
   "name": "rail",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "An enhanced HTTP/RESTful API Client",
   "keywords": [
     "REST",
