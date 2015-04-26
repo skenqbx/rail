@@ -131,7 +131,7 @@ _Notes_
 `Call` extends `stream.Writable`.
 
 ### new Call(rail, opt_options)
-Creates a new `Call` object.
+Creates a new `Call` object. Not supposed to be used directly, see [rail.call()](#railcallopt_options-opt_responselistener).
 
 #### call.aborted
 A boolean indicating the state of the call.
@@ -226,5 +226,6 @@ Empties the buffer and sets `replayBuffer.buffer` to `false`.
 Prevents further additon of chunks and clear the writable stream.
 
 ### Event: 'end'
+Emitted when the buffer is ended. This is the last moment a can modify the request configuration.
 
 [back to top](#table-of-contents)

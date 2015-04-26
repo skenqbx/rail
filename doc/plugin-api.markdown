@@ -57,7 +57,7 @@ Emitted after a new configuration has been pushed onto the stack.
 `function({Call} call, {Object} options)`
 
 ### Event: 'plugin-replay-buffer'
-Emitted when a `ReplayBuffer` has been created.
+Emitted when a request body buffer has been created. See [Class: ReplayBuffer](./api.markdown##class-replaybuffer) for API of buffer.
 
 `function({Call} call, {Object} options, {ReplayBuffer} buffer)`
 

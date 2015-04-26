@@ -15,8 +15,8 @@ and a powerful event-driven plugin interface aids in the implementation of compl
 The concept of _a single request_ is extended to _a possible series of requests_ further referenced as a _call_.
 This allows a seamless integration of redirect and authentication mechanisms that require multiple requests to satisfy the original one.
 
-The API is mostly compatible with `http.request()` & `https.request()` and allows _rail_ to be used as a _drop-in replacement_.
-A completely _transparent_ plugin integration enables scenarios with automated retries on _upload_ stream errors, while still exhibiting a `https.request()` compatible behavior.
+The API is mostly compatible with `https.request()` and allows _rail_ to be used as a _[drop-in replacement](#use-as-a-drop-in-replacement)_.
+A completely _transparent_ plugin integration enables scenarios with automated retries on _upload_ stream errors, while still exhibiting a behavior similar to `https.request()`.
 
 _rail_ works with [io.js](https://iojs.org/) 1.x and [node.js](https://nodejs.org/) 0.10.x/0.12.x.
 
@@ -100,41 +100,59 @@ RAIL.call({
 
 ### Custom Client
 
+A custom client allows to define default options and configure a set of plugins for all _calls_ made with that client.
+
 ```js
 var RAIL = require('rail');
 
-// create a client that holds defaults & plugins
 var client = new RAIL({
+  // set default request options
   request: {
     host: 'github.com'  // set default host
   },
-  json: { // configured plugins are loaded on client creation
-    auto: true
+  // load & configure the buffer plugin
+  buffer: {
+    default: true // buffer all repsonses by default
+  },
+  // load & configure the json plugin
+  json: {
+    auto: true // try to parse all reponses with content-type equal to application/json
+  },
+  // load & configure the redirect plugin
+  redirect: {
+    limit: 3 // allow a maximum of three redirects for each call
   }
 });
 
-// load redirect plugin
-client.use('redirect', {
-  allowDowngrade: true,
-  limit: 5
-});
+// load custom "my" plugin
+client.use('my', MyPlugin/*, pluginOptions */);
+```
 
-// create a call (that might result in multiple requests)
+Now use the custom client the same way as the globalClient above
+
+```js
 var call = client.call({
   path: '/skenqbx/rail'
 }, function(response) {
+  // check if we got a json response
   if (response.json) {
     console.log(response.json);
-  } else if (response.buffer) { // buffer might still be available
-                                //   because json uses the buffer plugin
+
+  // alternatively use the raw response body
+  } else if (response.buffer) {
     console.log(response.buffer.toString());
+
+  // ... or if a bailout happend (buffer max size exceeded)
+  } else if (response.buffer !== null) {
+    // consume the response
+    response.on('readable', function() { /* ... */ });
+    response.on('end', function() { /* ... */ });
   }
 });
 
 call.on('error', function(err) { /* ... */ });
 
-call.write('hello');
-call.end('world');
+call.end();
 ```
 
 [back to top](#table-of-contents)
@@ -150,7 +168,7 @@ RAIL.globalClient.proto = 'http';
 ```
 ... and then replace every call to `http.request` with `RAIL.call`.
 
-_Alternatively_ create a custom client with defaults & plugins configured to your needs.
+_Alternatively_ create a [custom client](#custom-client) with defaults & [plugins](./doc/plugins.markdown) configured to your needs.
 
 [back to top](#table-of-contents)
 
