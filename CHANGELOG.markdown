@@ -1,7 +1,49 @@
 # [rail](./README.markdown) ChangeLog
 
-## 2015-04-24, [v0.4.0](https://github.com/skenqbx/rail/tree/v0.4.0) **_<small>unstable</small>_**
+## 2015-04-26, [v0.5.0](https://github.com/skenqbx/rail/tree/v0.5.0) **_<small>unstable</small>_**
+### Notable changes
 
+  - Differences in io.js/node.js `request.abort()` API have been addressed; Additionally new **abort** & **plugin-abort** events have been added.
+  - The **replay-buffer** has received _major aka. breaking_  improvements and is now fully tested & documented
+  - **plugin-send-buffer** event has been **removed** in favor of a **plugin-replay-buffer** event to better expose the new replay-buffer API
+  - A new **configuration management** simplifies request configuration and corrects inheritance behaviour
+  - An upgraded **retry plugin** now supports retries on **validation** failures and http **status codes**
+
+### Commits
+
+  - [[`ce523fa891`](https://github.com/skenqbx/rail/commit/ce523fa891da8dbb9ff52565b5ea028b241b431a)] - **call**: fix plugin-configure event
+  - [[`e14ae0efb7`](https://github.com/skenqbx/rail/commit/e14ae0efb7b9b332939c3c78fe1c2afb7a90b8ec)] - **call**: close buffer before ending the stream
+  - [[`36af6779ec`](https://github.com/skenqbx/rail/commit/36af6779ecde00f965db00cbeaa99f0948995d0b)] - **call**: refactor abort() to handle differences in node versions
+  - [[`ad9137c6eb`](https://github.com/skenqbx/rail/commit/ad9137c6ebcdfe47ee2cd750574c196bf283417f)] - **call**: actually cleanup the send-buffer on abort
+  - [[`960ce2d15a`](https://github.com/skenqbx/rail/commit/960ce2d15aab0657837b884d907b173251a488e1)] - **deps**: eslint 0.20.0
+  - [[`d38075d13a`](https://github.com/skenqbx/rail/commit/d38075d13a4081349a57949878a9daef54061ca7)] - **deps**: changelog42 0.5.0
+  - [[`7c7de2eef4`](https://github.com/skenqbx/rail/commit/7c7de2eef4bb3d55eb59ad97054c535f6bd50c55)] - **deps**: lru-cache 2.6.2
+  - [[`f43a4d51b8`](https://github.com/skenqbx/rail/commit/f43a4d51b845a7df8ce71036c56abda63bb1e880)] - **doc**: typos & fixes
+  - [[`93e5e4455c`](https://github.com/skenqbx/rail/commit/93e5e4455ce9e5888c0a7977c7d20728fc6a6d66)] - **doc**: update tests and add missing replay-buffer API
+  - [[`35a71b4979`](https://github.com/skenqbx/rail/commit/35a71b49790e253277f6e24ccc33b3074787b842)] - **doc**: cleanup example & update tests
+  - [[`cec05fdc74`](https://github.com/skenqbx/rail/commit/cec05fdc74f10bc58e94055df254ba3024938093)] - **doc**: add tools
+  - [[`6d1625ae80`](https://github.com/skenqbx/rail/commit/6d1625ae805c8037ece87de174f9ead87cdcc2a6)] - **lib**: lint'd
+  - [[`b542b74bd9`](https://github.com/skenqbx/rail/commit/b542b74bd92563b76b3514690c10075f1bdcc014)] - **lib**: new configuration management
+  - [[`8fc4f167ef`](https://github.com/skenqbx/rail/commit/8fc4f167ef115f5a8c5451878812c525332e96f2)] - **package**: add tools to npmignore
+  - [[`b54e681685`](https://github.com/skenqbx/rail/commit/b54e6816855385cc5746c4bbd52e722115200db5)] - **package**: update engines and scripts
+  - [[`041bda66d6`](https://github.com/skenqbx/rail/commit/041bda66d63b9bcf1a260f0d2371a6d7ae8ab3d4)] - **package**: add new keywords
+  - [[`8646b7d488`](https://github.com/skenqbx/rail/commit/8646b7d488be0802b295995db9319cda4077b4f6)] - **plugins**: wip
+  - [[`06e83c3e82`](https://github.com/skenqbx/rail/commit/06e83c3e82f365dde8399f04b60fc690f39d82d8)] - **redirect**: add response to redirect event arguments
+  - [[`914a0d5f30`](https://github.com/skenqbx/rail/commit/914a0d5f30ae7337924b674a228d8ebb3e9fd4ed)] - **redirect**: rewrite as class
+  - [[`3cda5ae72c`](https://github.com/skenqbx/rail/commit/3cda5ae72ca217dfa6d1a29eab17dacd7b1a76de)] - **replay-buffer**: inherit EE plus end event and pipe & unpipe
+  - [[`020c208581`](https://github.com/skenqbx/rail/commit/020c208581bd400deefff7bb2de8ff5ecddc155f)] - **replay-buffer**: allow writable streams to be replaced
+  - [[`8f8c0fb128`](https://github.com/skenqbx/rail/commit/8f8c0fb12893368e2a5e77c4299eb2519b26554e)] - **reply-buffer**: upgrade, document & update affected plugins
+  - [[`19df59c299`](https://github.com/skenqbx/rail/commit/19df59c299117784f969c49439a50d595e8910ef)] - **request-options**: un-support auth option
+  - [[`1fd99987d5`](https://github.com/skenqbx/rail/commit/1fd99987d5180cc63b87a3938a8eb7f329624900)] - **retry**: remove obsolete error code check
+  - [[`7f5e7b860a`](https://github.com/skenqbx/rail/commit/7f5e7b860af58607a327576f3f26a8d3faab623c)] - **retry**: support retry on status code
+  - [[`3dbd78a550`](https://github.com/skenqbx/rail/commit/3dbd78a550056f71faae04506f94a35ead6e11ff)] - **retry**: support for validation triggered retries
+  - [[`ceeee0afbc`](https://github.com/skenqbx/rail/commit/ceeee0afbc53d60ad3c32ff92d13a002616fac90)] - **retry**: add ECONNRESET support and remove obsolete argument
+  - [[`a1f461b6c3`](https://github.com/skenqbx/rail/commit/a1f461b6c337cf2d85005a425f495619cea7dd13)] - **test**: fix redirect tests
+  - [[`70fb672f89`](https://github.com/skenqbx/rail/commit/70fb672f89307edfa435a9022b7eca0e5d484ba2)] - **test**: adapt to new abort event
+  - [[`17b31fbae4`](https://github.com/skenqbx/rail/commit/17b31fbae4befa68b071f301345c1fff5830ee40)] - **tools**: add cross-test.sh
+
+
+## 2015-04-24, [v0.4.0](https://github.com/skenqbx/rail/tree/v0.4.0) **_<small>unstable</small>_**
 ### Notable changes
 
   - Use **custom plugins** with the upgraded `rail.use()`
@@ -116,3 +158,7 @@ the plugin interface is _generally stable (besides one or two timing issues)_.
 ## 2015-04-21, [v0.1.0-alpha](https://github.com/skenqbx/rail/tree/v0.1.0-alpha) **_<small>unstable</small>_**
 
 First release.
+
+---
+
+_The commit log is generated with [changelog42](https://www.npmjs.com/package/changelog42)._

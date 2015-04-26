@@ -122,7 +122,7 @@ Creates a new request configuration and increments the internal pointer.
 
 The current configuration is always the default, meaning `options` only needs to contain changes.
 
-_Note_: Request options are _copied_, plugin options are _referenced_ when not primitive.
+_Note_: Request options are _copied_, plugin options are _referenced_ when not a primitive.
 
 ### call.\_\_buffer()
 Enable request body buffering.
