@@ -31,6 +31,7 @@
     - [new ReplayBuffer(opt_max)](#new-replaybufferopt_max)
       - [replayBuffer.max](#replaybuffermax)
       - [replayBuffer.length](#replaybufferlength)
+      - [replayBuffer.buffer](#replaybufferbuffer)
       - [replayBuffer.ended](#replaybufferended)
       - [replayBuffer.bailout](#replaybufferbailout)
     - [replayBuffer.pipe(writable, opt_callback)](#replaybufferpipewritable-opt_callback)
@@ -191,6 +192,9 @@ The maximum number of bytes allowed to buffer.
 #### replayBuffer.length
 The current number of bytes buffered.
 
+#### replayBuffer.buffer
+A boolean _controlling_ if the buffer is active or in streaming mode.
+
 #### replayBuffer.ended
 A boolean indicating if the buffer accepts more data.
 
@@ -198,7 +202,7 @@ A boolean indicating if the buffer accepts more data.
 A boolean indicating that the buffer size is exceeding the maximum allowed size.
 
 ### replayBuffer.pipe(writable, opt_callback)
-Set a writable stream to receive all chunks, existing & new ones.
+Copy buffered chunks to `writable` using `replayBuffer.replay()` and relay all future chunks to `writable`.
 
 ### replayBuffer.unpipe(writable)
 
@@ -206,12 +210,14 @@ Set a writable stream to receive all chunks, existing & new ones.
 Push a new chunk to the buffer.
 
 ### replayBuffer.replay(writable, callback)
-_Copy_ all buffered chunks to the writable stream.
+_Copy_ all buffered chunks to `writable`.
 
 ### replayBuffer.dump()
-Empties the buffer.
+Empties the buffer and sets `replayBuffer.buffer` to `false`.
 
 ### replayBuffer.end()
 Prevents further additon of chunks and clear the writable stream.
 
 ### Event: 'end'
+
+[back to top](#table-of-contents)

@@ -156,19 +156,19 @@ _Alternatively_ create a custom client with defaults & plugins configured to you
 
 ## Tests
 
-  - **npm lint** Lint the code using [eslint](https://www.npmjs.com/package/eslint) and these [rules](./.eslintrc)
+  - **npm run lint** Lint the code using [eslint](https://www.npmjs.com/package/eslint) and these [rules](./.eslintrc)
   - **npm test** Lint the code, run tests with [mocha](https://www.npmjs.com/package/mocha) & collect coverage with [istanbul](https://www.npmjs.com/package/istanbul)
-  - coverage report is available at `coverage/lcov-report/index.html`
+    - detailed coverage report is available at `coverage/lcov-report/index.html`
+  - **npm run update** dependency update tests performed by [next-update](https://www.npmjs.com/package/next-update)
   - run `./tools/cross-test.sh` to test all relevant io.js/node.js versions, uses [nvm](https://github.com/creationix/nvm/)
-  - dependency update tests are performed by [next-update](https://www.npmjs.com/package/next-update)
 
 ### Coverage
 
 ```
-Statements   : 95.86% ( 718/749 )
-Branches     : 89.47% ( 340/380 )
-Functions    : 97.98% ( 97/99 )
-Lines        : 95.86% ( 718/749 )
+Statements   : 95.98% ( 764/796 )
+Branches     : 89.22% ( 356/399 )
+Functions    : 97.22% ( 105/108 )
+Lines        : 95.98% ( 764/796 )
 ```
 
 [back to top](#table-of-contents)
