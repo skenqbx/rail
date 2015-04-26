@@ -82,6 +82,7 @@ Creates a new `RAIL` object.
   - `{string} proto` - One of `https`, `http2` or `http`, defaults to `https`
   - `{Object} request` - holding default request options, see `https.request()`
   - `{Object} *` - plugin options
+  - `{number} maxReplayBuffer` The maximum size of a buffered request body, see [Class: ReplayBuffer](#class-replaybuffer)
 
 #### rail.plugins
 An object holding loaded plugins.
@@ -117,6 +118,7 @@ When `opt_options` is a string, it is handled like `opt_options.url`.
   - `{string} url` When given, the request options are set accordingly
   - `{Object} request` The request options, see [io.js](https://iojs.org/api/https.html#https_https_request_options_callback) or [node.js](https://nodejs.org/api/https.html#https_https_request_options_callback)
   - `{Object|boolean} *` Any plugin options, configured plugins are auto-loaded
+  - `{number} maxReplayBuffer` The maximum size of a buffered request body, see [Class: ReplayBuffer](#class-replaybuffer)
 
 _Notes_
 

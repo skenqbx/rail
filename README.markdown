@@ -165,10 +165,10 @@ _Alternatively_ create a custom client with defaults & plugins configured to you
 ### Coverage
 
 ```
-Statements   : 95.97% ( 763/795 )
-Branches     : 89.17% ( 354/397 )
-Functions    : 97.22% ( 105/108 )
-Lines        : 95.97% ( 763/795 )
+Statements   : 96.64% ( 777/804 )
+Branches     : 89.33% ( 360/403 )
+Functions    : 98.17% ( 107/109 )
+Lines        : 96.64% ( 777/804 )
 ```
 
 [back to top](#table-of-contents)
