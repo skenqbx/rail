@@ -56,8 +56,8 @@ Emitted after a new configuration has been pushed onto the stack.
 
 `function({Call} call, {Object} options)`
 
-### Event: 'plugin-send-buffer'
-Emitted right before a request object is created and the buffer is _flushed_ to the `request` object.
+### Event: 'plugin-replay-buffer'
+Emitted when a `ReplayBuffer` has been created.
 
 `function({Call} call, {Object} options, {ReplayBuffer} buffer)`
 
@@ -98,7 +98,7 @@ Registers an interceptor for an event.
 Removes all registered interceptors.
 
 ### Event: 'request'
-Emitted after the request object has been created and the send-buffer has been flushed.
+Emitted after the request object has been created and the `ReplayBuffer` has been flushed.
 
 `function({Call} call, {Object} options, {Object} request)`
 
@@ -125,14 +125,16 @@ The current configuration is always the default, meaning `options` only needs to
 _Note_: Request options are _copied_, plugin options are _referenced_ when not primitive.
 
 ### call.\_\_buffer()
-Enables the `plugin-send-buffer` event using a `ReplayBuffer`.
+Enable request body buffering.
 
-Returns `true` on success or when buffering is already enabled, `false` otherwise.
+A `plugin-replay-buffer` event is emitted when the buffer is created.
+
+Returns the current `ReplayBuffer`, `false` otherwise.
 
 ### call.\_\_request(opt_callback)
 Create a request object when no request is pending and a configuration is available. When no configuration is available, a _non-interceptable_ error is emitted.
 
-  - `{function({?Error} err, {?Object=} request)} opt_callback` Called after the request object has been created and the send-buffer has been flushed, a possible connect error is passed to the callback _(that error has already been emitted)_
+  - `{function({?Error} err, {?Object=} request)} opt_callback` Called after the request object has been created and the `ReplayBuffer` has been flushed, a possible connect error is passed to the callback _(that error has already been emitted)_
 
 Returns `true` when a request is pending, the newly created `request` object otherwise.
 

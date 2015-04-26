@@ -7,7 +7,7 @@ var http = require('http');
 var RAIL = require('../');
 
 
-suite('http:send-buffer', function() {
+suite('http:replay-buffer', function() {
   var rail, server;
   var onrequest;
 
@@ -32,6 +32,7 @@ suite('http:send-buffer', function() {
 
       request.on('readable', function() {
         var data = request.read();
+
         if (data) {
           body.push(data);
         }
@@ -44,10 +45,10 @@ suite('http:send-buffer', function() {
       });
     };
 
-    var sendbuffer;
+    var replayBuffer;
 
-    rail.once('plugin-send-buffer', function(call_, options, buffer) {
-      sendbuffer = Buffer.concat(buffer.chunks);
+    rail.once('plugin-replay-buffer', function(call_, options, buffer) {
+      replayBuffer = buffer;
     });
 
     var call = rail.call({
@@ -71,8 +72,9 @@ suite('http:send-buffer', function() {
         assert.strictEqual(body.length, 4);
         assert.strictEqual(body.toString(), 'pong');
 
-        assert(sendbuffer);
-        assert.strictEqual(sendbuffer.toString(), 'abcdefg');
+        assert(replayBuffer);
+        assert.strictEqual(
+            Buffer.concat(replayBuffer.chunks).toString(), 'abcdefg');
         done();
       });
     });

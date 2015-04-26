@@ -61,7 +61,7 @@ suite('replay-buffer', function() {
 
     assert.strictEqual(buffer.length, 2048);
 
-    buffer.out(writable, function() {
+    buffer.pipe(writable, function() {
       var more;
 
       assert.strictEqual(writable.chunks.length, 8);
@@ -75,6 +75,9 @@ suite('replay-buffer', function() {
       assert(!more);
 
       assert(buffer.bailout);
+
+      buffer.dump();
+
       assert.strictEqual(buffer.length, 0);
       assert.strictEqual(buffer.chunks.length, 0);
 
@@ -83,12 +86,12 @@ suite('replay-buffer', function() {
   });
 
 
-  test('push - closed', function() {
+  test('push - end', function() {
     var buffer = new RAIL.ReplayBuffer();
 
-    buffer.close();
-
-    var more = buffer.push(new Buffer('123'));
-    assert(!more);
+    buffer.end();
+    assert.throws(function() {
+      buffer.push(new Buffer('123'));
+    });
   });
 });
