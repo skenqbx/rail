@@ -188,6 +188,8 @@ The plugin API offers [call.__buffer()](./plugin-api.markdown#call__buffer) to e
 ### new ReplayBuffer(opt_max)
 Creates a new `ReplayBuffer` object.
 
+  - `{number} opt_max` is the maximum size of all buffered chunks, defaults to `134217728` (128 MiB)
+
 #### replayBuffer.max
 The maximum number of bytes allowed to buffer.
 
