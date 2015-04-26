@@ -91,6 +91,60 @@ suite('http:replay-buffer', function() {
   });
 
 
+  test('bailout', function(done) {
+    onrequest = function(request, response) {
+      var body = [];
+
+      request.on('readable', function() {
+        var data = request.read();
+        if (data) {
+          body.push(data);
+        }
+      });
+
+      request.on('end', function() {
+        body = Buffer.concat(body);
+        assert.strictEqual(body.toString(), 'abcdefghijklmnopqr');
+        response.end('pong');
+      });
+    };
+
+    var call = rail.call({
+      proto: 'http',
+      port: common.port,
+      method: 'PUT',
+      maxReplayBuffer: 12
+    }, function(response) {
+      var body = [];
+
+      assert.strictEqual(response.statusCode, 200);
+
+      response.on('readable', function() {
+        var data = response.read();
+        if (data) {
+          body.push(data);
+        }
+      });
+
+      response.on('end', function() {
+        body = Buffer.concat(body);
+        assert.strictEqual(body.length, 4);
+        assert.strictEqual(body.toString(), 'pong');
+        assert.strictEqual(call._buffer, null);
+
+        done();
+      });
+    });
+
+    call.__buffer();
+
+    call.write('abcdef');
+    call.write('ghijkl');
+
+    call.end('mnopqr');
+  });
+
+
   test('abort', function() {
     onrequest = function(request, response) {
     };
