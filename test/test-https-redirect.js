@@ -42,39 +42,25 @@ suite('https:redirect', function() {
 
 
   test('allowDowngrade=false', function(done) {
-    var c = 0;
-    var r = [
-      {path: '/home/test', status: 302, location: '../other'},
-      {path: '/home/other', status: 200}
-    ];
+    var warn;
 
     onrequest = function(request, response) {
-      assert.strictEqual(request.url, r[c].path);
+      assert.strictEqual(request.url, '/home/test');
 
-      if (r[c].location) {
-        response.writeHead(r[c].status, {
-          Location: r[c].location
-        });
-        response.end();
-      } else {
-        response.writeHead(r[c].status);
-        response.end('works!');
-      }
-      ++c;
+      response.writeHead(302, {
+        Location: 'http://localhost:' + common.port + '/home/other'
+      });
+      response.end();
     };
 
     rail.call({
-      path: r[c].path
+      path: '/home/test'
     }, function(response) {
-      assert.strictEqual(response.statusCode, 200);
-      assert(response.buffer);
-      assert.strictEqual(response.buffer.length, 6);
-      assert.strictEqual(response.buffer.toString(), 'works!');
+      assert.strictEqual(response.statusCode, 302);
+      assert.deepEqual(warn, ['redirect', 'blocked', 'protocol downgrade']);
       done();
     }).on('warn', function(plugin, status, message) {
-      console.log('warn', plugin, status, message);
-    }).on('error', function(err) {
-      console.log('TEST CALL ERROR', err.stack);
+      warn = [plugin, status, message];
     }).end();
   });
 
