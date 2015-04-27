@@ -1,5 +1,21 @@
 # [rail](./README.markdown) ChangeLog
 
+## 2015-04-27, [v0.6.0](https://github.com/skenqbx/rail/tree/v0.6.0) **_<small>unstable</small>_**
+### Notable changes
+
+  - Add `maxReplayBuffer` option for `RAIl` and `Call` to control buffer size
+
+### Commits
+
+  - [[`254dd1b660`](https://github.com/skenqbx/rail/commit/254dd1b660b49ac2cad4e8118d046d1e5fcc8585)] - **call**: unpipe request on end/bailout
+  - [[`b56b4a5a17`](https://github.com/skenqbx/rail/commit/b56b4a5a179b2bab8b7b1fd8245a5107ad335260)] - **deps**: mgl-validate 1.0.1
+  - [[`4e00b06fdc`](https://github.com/skenqbx/rail/commit/4e00b06fdc4811210ff5eefa2e865fcbbecd93a6)] - **doc**: better custom client example and api additions
+  - [[`1b9ff60ea6`](https://github.com/skenqbx/rail/commit/1b9ff60ea6c33152411218c696bd67daf749fbd2)] - **doc**: describe opt_max argument
+  - [[`bc7c3a9535`](https://github.com/skenqbx/rail/commit/bc7c3a953523941cc78ab6de78da818d68477b5e)] - **rail, call**: add maxReplayBuffer option
+  - [[`1e79d2617e`](https://github.com/skenqbx/rail/commit/1e79d2617efa51574010d0c18db55be446e56bde)] - **retry**: add 504 to default retry codes
+  - [[`8ba0ce71dd`](https://github.com/skenqbx/rail/commit/8ba0ce71dd14ed11ea47777aad83a18192be1938)] - **test**: add new replay-buffer bailout test
+
+
 ## 2015-04-26, [v0.5.0](https://github.com/skenqbx/rail/tree/v0.5.0) **_<small>unstable</small>_**
 ### Notable changes
 
