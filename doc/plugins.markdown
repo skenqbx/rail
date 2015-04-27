@@ -100,7 +100,7 @@ Retry requests on connect errors, on specfifc http status codes and failed repso
 
 **options**
 
-  - `{Array|boolean} codes` HTTP status codes to retry, set to `false` to disable. Defaults to `[500, 501, 502, 503]`
+  - `{Array|boolean} codes` HTTP status codes to retry, set to `false` to disable. Defaults to `[500, 501, 502, 503, 504]`
   - `{number} interval` Retry interval in ms, defaults to `2000`
   - `{number} limit` Retry limit, defaults to `0`
   - `{boolean} validate` Retry when `response.validate` is set aka. the validate plugin is not satisfied

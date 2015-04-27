@@ -39,7 +39,7 @@ suite('http:retry', function() {
     };
     rail.plugins.retry._configure(options);
     assert.deepEqual(options, {retry:
-        {codes: [500, 501, 502, 503], interval: 20, limit: 3, validate: false}});
+        {codes: [500, 501, 502, 503, 504], interval: 20, limit: 3, validate: false}});
 
     options = {
       retry: false
