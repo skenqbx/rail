@@ -15,7 +15,7 @@ and a powerful event-driven plugin interface aids in the implementation of compl
 The concept of _a single request_ is extended to _a possible series of requests_ further referenced as a _call_.
 This allows a seamless integration of redirect and authentication mechanisms that require multiple requests to satisfy the original one.
 
-The API is mostly compatible with `https.request()` and allows _rail_ to be used as a _[drop-in replacement](#use-as-a-drop-in-replacement)_.
+The API is mostly compatible with `https.request()` and allows _rail_ to be used as a [_drop-in replacement_](#use-as-a-drop-in-replacement).
 A completely _transparent_ plugin integration enables scenarios with automated retries on _upload_ stream errors, while still exhibiting a behavior similar to `https.request()`.
 
 _rail_ works with [io.js](https://iojs.org/) 1.x and [node.js](https://nodejs.org/) 0.10.x/0.12.x.

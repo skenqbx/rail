@@ -3,7 +3,7 @@
 ## 2015-04-27, [v0.6.0](https://github.com/skenqbx/rail/tree/v0.6.0) **_<small>unstable</small>_**
 ### Notable changes
 
-  - Add `maxReplayBuffer` option for `RAIl` and `Call` to control buffer size
+  - Add `maxReplayBuffer` option for `RAIL` and `Call` to control buffer size
 
 ### Commits
 

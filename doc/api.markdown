@@ -181,7 +181,7 @@ Emitted after the response headers have been received.
 [back to top](#table-of-contents)
 
 ## Class: ReplayBuffer
-The `ReplayBuffer` is used to buffer the request body in case of redirects, retries or other use-cases.
+The `ReplayBuffer` is used to buffer the request body in case of redirects, retries or other use-cases. `ReplayBuffer` is an EE.
 
 The plugin API offers [call.__buffer()](./plugin-api.markdown#call__buffer) to enable this buffer.
 
