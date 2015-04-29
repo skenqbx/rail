@@ -1,5 +1,13 @@
 # [rail](./README.markdown) ChangeLog
 
+## 2015-04-29, [v0.6.1](https://github.com/skenqbx/rail/tree/v0.6.1) **_<small>unstable</small>_**
+
+### Commits
+
+  - [[`1bbdb9092a`](https://github.com/skenqbx/rail/commit/1bbdb9092a0874632c9e3478c6cff604e78c1150)] - **call**: fix write() for active request
+  - [[`8a61521d20`](https://github.com/skenqbx/rail/commit/8a61521d20b5aaf3e42c590db063874ad50366cc)] - **doc**: fix typos
+
+
 ## 2015-04-27, [v0.6.0](https://github.com/skenqbx/rail/tree/v0.6.0) **_<small>unstable</small>_**
 ### Notable changes
 
