@@ -80,6 +80,50 @@ suite('global', function() {
   });
 
 
+  test('call with body', function(done) {
+    var path = '/some/other/path/on/the/service';
+    var url = 'https://localhost:' + common.port + path;
+
+    onrequest = function(request, response) {
+      assert.strictEqual(request.url, path);
+      var body = [];
+
+      request.on('readable', function() {
+        var data = request.read();
+
+        if (data) {
+          body.push(data);
+        }
+      });
+
+      request.on('end', function() {
+        body = Buffer.concat(body);
+
+        assert.strictEqual(body.toString(), 'HELLO WORLD!');
+
+        response.end('pong');
+      });
+    };
+
+    var call = RAIL.call({
+      url: url,
+      method: 'PUT',
+      buffer: true
+    }, function(response) {
+      assert.strictEqual(response.statusCode, 200);
+      assert(response.buffer);
+      assert.strictEqual(response.buffer.toString(), 'pong');
+      done();
+    });
+
+    call.write('HELLO ');
+
+    setTimeout(function() {
+      call.end('WORLD!');
+    }, 25);
+  });
+
+
   suiteTeardown(function(done) {
     delete process.env.NODE_TLS_REJECT_UNAUTHORIZED;
 
