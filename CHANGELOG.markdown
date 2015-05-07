@@ -1,5 +1,13 @@
 # [rail](./README.markdown) ChangeLog
 
+## 2015-05-07, [v0.6.2](https://github.com/skenqbx/rail/tree/v0.6.2) **_<small>unstable</small>_**
+
+### Commits
+
+  - [[`f2ccecdf50`](https://github.com/skenqbx/rail/commit/f2ccecdf50897bdc2a0aa9f81cf2c677a7587116)] - **call**: fix write on error
+  - [[`b467b09d88`](https://github.com/skenqbx/rail/commit/b467b09d8894d4fbe416123d609f2390d2bf587e)] - **package**: npm 2.9.0
+
+
 ## 2015-04-29, [v0.6.1](https://github.com/skenqbx/rail/tree/v0.6.1) **_<small>unstable</small>_**
 
 ### Commits
