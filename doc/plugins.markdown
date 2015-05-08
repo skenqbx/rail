@@ -118,7 +118,7 @@ _Note_: Undefined request options are set to plugin defaults.
 ### Event: 'retry'
 Emitted when a retry has been scheduled.
 
-`function({Object} options, {?Object} response, {string} reason)`
+`function({Object} options, {?Object} response, {string} reason, {?string} code)`
 
 Possible reasons are `connect`, `codes` or `validate` and for reason `connect` the `response` is `null`.
 
