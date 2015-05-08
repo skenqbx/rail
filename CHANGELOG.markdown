@@ -1,5 +1,12 @@
 # [rail](./README.markdown) ChangeLog
 
+## 2015-05-08, [v0.6.3](https://github.com/skenqbx/rail/tree/v0.6.3) **_<small>unstable</small>_**
+
+### Commits
+
+  - [[`225eee008b`](https://github.com/skenqbx/rail/commit/225eee008b1d4d1cd0c4241448d817e69b1a8080)] - **call**: fix __abort() timing issue
+
+
 ## 2015-05-07, [v0.6.2](https://github.com/skenqbx/rail/tree/v0.6.2) **_<small>unstable</small>_**
 
 ### Commits
