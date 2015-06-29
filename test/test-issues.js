@@ -51,7 +51,9 @@ suite('issues', function() {
 
     call.on('error', function(err) {
       assert.strictEqual(err.code, 'ENOTFOUND');
-      done();
+
+      setImmediate(done);
+      // done();
     });
 
     call.write('no way');
