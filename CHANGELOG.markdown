@@ -1,5 +1,12 @@
 # [rail](./README.markdown) ChangeLog
 
+## 2015-07-28, [v0.6.4](https://github.com/skenqbx/rail/tree/v0.6.4) **_<small>unstable</small>_**
+
+### Commits
+
+  - [[`99b8169c20`](https://github.com/skenqbx/rail/commit/99b8169c20d4f5a0b28bf5a558c3df7a6fea8944)] - **json**: handle application/json media-types containing parameters
+
+
 ## 2015-05-08, [v0.6.3](https://github.com/skenqbx/rail/tree/v0.6.3) **_<small>unstable</small>_**
 
 ### Commits
