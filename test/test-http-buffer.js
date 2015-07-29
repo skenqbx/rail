@@ -50,6 +50,37 @@ suite('http:buffer', function() {
   });
 
 
+  test('call w/ buffer=false (request)', function(done) {
+    onrequest = function(request, response) {
+      response.end('pong');
+    };
+
+    rail.call({
+      proto: 'http',
+      port: common.port,
+      buffer: false
+    }, function(response) {
+      assert.strictEqual(response.statusCode, 200);
+
+      assert(!response.buffer);
+      assert(response instanceof http.IncomingMessage);
+
+      var data = [];
+      response.on('readable', function() {
+        data.push(new Buffer(response.read()));
+      });
+
+      response.on('end', function() {
+        var data_ = Buffer.concat(data);
+        assert.strictEqual(data_.length, 4);
+        assert.strictEqual(data_.toString(), 'pong');
+        done();
+      });
+
+    }).end();
+  });
+
+
   suiteTeardown(function(done) {
     server.close(done);
   });
