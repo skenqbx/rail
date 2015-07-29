@@ -21,7 +21,8 @@ suite('http:buffer', function() {
   suiteSetup(function(done) {
     rail = new RAIL({
       buffer: {
-        default: true
+        default: true,
+        max: 10
       }
     });
 
@@ -47,6 +48,46 @@ suite('http:buffer', function() {
 
       done();
     }).end();
+  });
+
+
+  test('call w/ buffer exceeding given max size', function(done) {
+    var warningEmitted = false;
+    onrequest = function(request, response) {
+      response.end('pongpongpong');
+    };
+
+    var call = rail.call({
+      proto: 'http',
+      port: common.port
+    }, function(response) {
+      assert(!response.buffer);
+      assert(response.bailout);
+      assert(response instanceof http.IncomingMessage);
+      assert.strictEqual(response.statusCode, 200);
+      assert.strictEqual(warningEmitted, true);
+
+      var data = [];
+      response.on('readable', function() {
+        data.push(new Buffer(response.read()));
+      });
+
+      response.on('end', function() {
+        var data_ = Buffer.concat(data);
+        assert.strictEqual(data_.length, 12);
+        assert.strictEqual(data_.toString(), 'pongpongpong');
+        done();
+      });
+    }).end();
+
+
+    call.on('warn', function(plugin, type, message) {
+      if (plugin === 'buffer' && type === 'bailout' && message === 'max length exceeded') {
+        warningEmitted = true;
+      }
+    });
+
+    call.end();
   });
 
 
