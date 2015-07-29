@@ -1,5 +1,12 @@
 # [rail](./README.markdown) ChangeLog
 
+## 2015-07-29, [v0.6.6](https://github.com/skenqbx/rail/tree/v0.6.6) **_<small>unstable</small>_**
+
+### Commits
+
+  - [[`d5ec31aeb5`](https://github.com/skenqbx/rail/commit/d5ec31aeb5fd75aa163240eeb2f9c8ed01d234cc)] - **doc/plugins**: document bailout state for exceeded buffer
+  - [[`fbb20d2dfd`](https://github.com/skenqbx/rail/commit/fbb20d2dfda1afd95ac45e670d1263dd5de0d15f)] - **plugins.buffer**: fix test for maximum length && add ability to reattach listeners
+
 ## 2015-07-29, [v0.6.5](https://github.com/skenqbx/rail/tree/v0.6.5) **_<small>unstable</small>_**
 
 ### Commits
