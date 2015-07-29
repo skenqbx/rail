@@ -1,5 +1,12 @@
 # [rail](./README.markdown) ChangeLog
 
+## 2015-07-29, [v0.6.5](https://github.com/skenqbx/rail/tree/v0.6.5) **_<small>unstable</small>_**
+
+### Commits
+
+  - [[`ff19bab386`](https://github.com/skenqbx/rail/commit/ff19bab386b5b2c3296827e8a975ccec0fbb46ea)] - **plugins.buffer**: do not ignore `buffer:false` on request level
+
+
 ## 2015-07-28, [v0.6.4](https://github.com/skenqbx/rail/tree/v0.6.4) **_<small>unstable</small>_**
 
 ### Commits
