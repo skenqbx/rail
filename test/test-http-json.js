@@ -51,7 +51,7 @@ suite('http:json', function() {
       var data_ = [];
 
       response.on('readable', function() {
-        data_.push(new Buffer(response.read()).toString('utf8'));
+        data_.push(new Buffer(response.read()));
       });
 
       response.on('end', function() {
@@ -121,7 +121,7 @@ suite('http:json', function() {
       var data_ = [];
 
       response.on('readable', function() {
-        data_.push(new Buffer(response.read()).toString('utf8'));
+        data_.push(new Buffer(response.read()));
       });
 
       response.on('end', function() {
