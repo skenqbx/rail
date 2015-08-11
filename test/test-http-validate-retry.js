@@ -54,6 +54,7 @@ suite('http:validate:retry', function() {
 
   test('failed (body)', function(done) {
     onrequest = function(request, response) {
+      response.setHeader('Content-Type', 'application/json');
       response.end(JSON.stringify({
         hello: 'world'
       }));

@@ -48,6 +48,7 @@ suite('http:validate', function() {
 
   test('OK', function(done) {
     onrequest = function(request, response) {
+      response.setHeader('Content-Type', 'application/json');
       response.end(JSON.stringify({
         hello: 'world'
       }));
@@ -81,6 +82,7 @@ suite('http:validate', function() {
 
   test('failed (body)', function(done) {
     onrequest = function(request, response) {
+      response.setHeader('Content-Type', 'application/json');
       response.end(JSON.stringify({
         hello: 'world'
       }));
