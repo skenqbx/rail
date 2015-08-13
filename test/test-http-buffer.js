@@ -69,7 +69,7 @@ suite('http:buffer', function() {
 
       var data = [];
       response.on('readable', function() {
-        data.push(new Buffer(response.read()));
+        data.push(response.read());
       });
 
       response.on('end', function() {
@@ -108,7 +108,7 @@ suite('http:buffer', function() {
 
       var data = [];
       response.on('readable', function() {
-        data.push(new Buffer(response.read()));
+        data.push(response.read());
       });
 
       response.on('end', function() {
