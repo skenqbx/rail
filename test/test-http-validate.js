@@ -121,6 +121,7 @@ suite('http:validate', function() {
 
   test('failed (headers)', function(done) {
     onrequest = function(request, response) {
+      response.setHeader('Content-Type', 'application/json');
       response.end(JSON.stringify({
         hello: 'world'
       }));
@@ -157,6 +158,7 @@ suite('http:validate', function() {
 
   test('failed (no-body)', function(done) {
     onrequest = function(request, response) {
+      response.setHeader('Content-Type', 'application/json');
       response.end();
     };
 
@@ -187,6 +189,7 @@ suite('http:validate', function() {
 
   test('invalid schema #1', function(done) {
     onrequest = function(request, response) {
+      response.setHeader('Content-Type', 'application/json');
       response.end(JSON.stringify({
         hello: 'world'
       }));
@@ -206,6 +209,7 @@ suite('http:validate', function() {
 
   test('invalid schema #2', function(done) {
     onrequest = function(request, response) {
+      response.setHeader('Content-Type', 'application/json');
       response.end(JSON.stringify({
         hello: 'world'
       }));
@@ -227,6 +231,7 @@ suite('http:validate', function() {
 
   test('invalid schema #3', function(done) {
     onrequest = function(request, response) {
+      response.setHeader('Content-Type', 'application/json');
       response.end(JSON.stringify({
         hello: 'world'
       }));
