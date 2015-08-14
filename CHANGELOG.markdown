@@ -1,5 +1,16 @@
 # [rail](./README.markdown) ChangeLog
 
+## 2015-08-14, [v0.6.7](https://github.com/skenqbx/rail/tree/v0.6.7) **_<small>unstable</small>_**
+
+### Commits
+
+  - [[`c78630056a`](https://github.com/skenqbx/rail/commit/c78630056a32b550670eef5d7d3ad7a88417fdc6)] - **config**: travis uses iojs v2.5.0
+  - [[`2dee40e196`](https://github.com/skenqbx/rail/commit/2dee40e19669a5b1d3626539e9b6655b4604012e)] - **doc**: update code coverage
+  - [[`34d59ea2d3`](https://github.com/skenqbx/rail/commit/34d59ea2d31fc0da9ce9fb0d4aa3c782e3c78874)] - **plugins.json**: always reset test variable on plugin-response
+  - [[`3219ad3286`](https://github.com/skenqbx/rail/commit/3219ad328637c605a0beb30efe9630aa51d0ff4c)] - **plugins.json**: fix test for options & defaults on `plugin-response`
+  - [[`4756861ea9`](https://github.com/skenqbx/rail/commit/4756861ea9a978af69f5645380676ebd230cba37)] - **test**: remove superfluous Buffer instantiations
+  - [[`552a002527`](https://github.com/skenqbx/rail/commit/552a002527327e944f8292d09bdcecce81fe1e1c)] - **test**: do not convert incoming Buffer to string
+
 ## 2015-07-29, [v0.6.6](https://github.com/skenqbx/rail/tree/v0.6.6) **_<small>unstable</small>_**
 
 ### Commits
