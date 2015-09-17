@@ -28,7 +28,7 @@
   "dependencies": {
     "http2": "3.2.0",
     "lru-cache": "2.7.0",
-    "mgl-validate": "1.0.1"
+    "mgl-validate": "1.0.2"
   },
   "devDependencies": {
     "changelog42": "0.7.0",
