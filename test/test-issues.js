@@ -57,4 +57,19 @@ suite('issues', function() {
     call.write('no way');
     call.end();
   });
+
+
+  test('cb is not a function', function(done) {
+    var call = RAIL.call({
+      host: '127.0.0.1',
+      port: 24945
+    });
+
+    call.on('error', function(err) {
+      assert.strictEqual(err.code, 'ECONNREFUSED');
+      setImmediate(done);
+    });
+
+    call.end('no way');
+  });
 });
