@@ -1,8 +1,6 @@
 # rail
 
 [![NPM version](https://img.shields.io/npm/v/rail.svg?style=flat-square)](https://www.npmjs.com/package/rail)
-[![dependencies](https://david-dm.org/skenqbx/rail.svg)](https://github.com/skenqbx/rail)
-[![devDependencies](https://david-dm.org/skenqbx/rail/dev-status.svg)](https://github.com/skenqbx/rail)
 [![Build Status](https://secure.travis-ci.org/skenqbx/rail.png)](http://travis-ci.org/skenqbx/rail)
 
 **_An enhanced HTTP/RESTful API Client_**
@@ -18,11 +16,7 @@ This allows a seamless integration of redirect and authentication mechanisms tha
 The API is mostly compatible with `https.request()` and allows _rail_ to be used as a [_drop-in replacement_](#use-as-a-drop-in-replacement).
 A completely _transparent_ plugin integration enables scenarios with automated retries on _upload_ stream errors, while still exhibiting a behavior similar to `https.request()`.
 
-_rail_ works with [io.js](https://iojs.org/) 1.x and [node.js](https://nodejs.org/) 0.10.x/0.12.x.
-
-```js
-Stability: 2 - Unstable
-```
+_rail_ works with [io.js](https://iojs.org/), [node.js](https://nodejs.org/) 0.10.x & 4.1.
 
 ## Table of Contents
 
