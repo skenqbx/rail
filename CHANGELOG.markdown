@@ -1,5 +1,18 @@
 # [rail](./README.markdown) ChangeLog
 
+## 2015-09-17, [v0.7.0](https://github.com/skenqbx/rail/tree/v0.7.0) **_<small>unstable</small>_**
+
+### Commits
+
+  - [[`32c8da6ff1`](https://github.com/skenqbx/rail/commit/32c8da6ff1cd5af4a2e6d2336607085ed4a62d25)] - **README**: remove faulty badges & update node version
+  - [[`b80a507bf3`](https://github.com/skenqbx/rail/commit/b80a507bf3a33a4908341e74ff288dd8bba3b4ab)] - **call/__request**: fix double callback invocation
+  - [[`0cdfc64501`](https://github.com/skenqbx/rail/commit/0cdfc645011d3a92a6c6fd932f9408a8ce8a6c07)] - **deps**: mgl-validate 1.0.2
+  - [[`44c8da3acd`](https://github.com/skenqbx/rail/commit/44c8da3acd6b25668bfb931073440cba1712d82c)] - **deps**: lru-cache 2.7.0
+  - [[`de5422ce1c`](https://github.com/skenqbx/rail/commit/de5422ce1c4101f721bdb8947674af9a438aa625)] - **deps**: update dev dependencies
+  - [[`ae192bb945`](https://github.com/skenqbx/rail/commit/ae192bb945ccf30d4644c8d5aab1d485ae39fb36)] - **eslint**: update rules for 1.x
+  - [[`81b05a82fd`](https://github.com/skenqbx/rail/commit/81b05a82fde901775da0f0e8dbceb2f4e1e40ea8)] - **package**: update to node 4.1
+
+
 ## 2015-08-14, [v0.6.7](https://github.com/skenqbx/rail/tree/v0.6.7) **_<small>unstable</small>_**
 
 ### Commits

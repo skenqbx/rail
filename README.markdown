@@ -177,10 +177,10 @@ _Alternatively_ create a [custom client](#custom-client) with defaults & [plugin
 ### Coverage
 
 ```
-Statements   : 97.65% ( 791/810 )
-Branches     : 91.24% ( 375/411 )
-Functions    : 98.15% ( 106/108 )
-Lines        : 97.65% ( 791/810 )
+Statements   : 97.91% ( 795/812 )
+Branches     : 90.8% ( 375/413 )
+Functions    : 100% ( 108/108 )
+Lines        : 97.91% ( 795/812 )
 ```
 
 [back to top](#table-of-contents)
