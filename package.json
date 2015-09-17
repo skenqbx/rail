@@ -45,7 +45,6 @@
     "clean": "rm -rf node_modules/ && rm -rf coverage/ && rm npm-debug.log"
   },
   "engines": {
-    "node": ">= 0.10.38 < 2.0.0",
-    "npm": "~2.9.0"
+    "node": ">= 0.10.40 < 5.0.0"
   }
 }
