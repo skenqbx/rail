@@ -106,11 +106,11 @@ var client = new RAIL({
   },
   // load & configure the buffer plugin
   buffer: {
-    default: true // buffer all repsonses by default
+    default: true // buffer all responses by default
   },
   // load & configure the json plugin
   json: {
-    auto: true // try to parse all reponses with content-type equal to application/json
+    auto: true // try to parse all responses with content-type equal to application/json
   },
   // load & configure the redirect plugin
   redirect: {
@@ -136,7 +136,7 @@ var call = client.call({
   } else if (response.buffer) {
     console.log(response.buffer.toString());
 
-  // ... or if a bailout happend (buffer max size exceeded)
+  // ... or if a bailout happened (buffer max size exceeded)
   } else if (response.buffer !== null) {
     // consume the response
     response.on('readable', function() { /* ... */ });

@@ -1,6 +1,6 @@
 # [rail](./README.markdown) ChangeLog
 
-## 2015-10-01, [v0.8.0](https://github.com/skenqbx/rail/tree/v0.8.0) **_<small>unstable</small>_**
+## 2015-10-02, [v0.8.0](https://github.com/skenqbx/rail/tree/v0.8.0) **_<small>unstable</small>_**
 
 ### Commits
 

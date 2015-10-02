@@ -223,7 +223,7 @@ _Copy_ all buffered chunks to `writable`.
 Empties the buffer and sets `replayBuffer.buffer` to `false`.
 
 ### replayBuffer.end()
-Prevents further additon of chunks and clear the writable stream.
+Prevents further addition of chunks and clear the writable stream.
 
 ### Event: 'end'
 Emitted when the buffer is ended. This is the last moment a can modify the request configuration.

@@ -54,7 +54,7 @@ Uses the `buffer` plugin.
   - `{boolean} auto` Enable auto-parsing when `Content-Type: application/json`
   - `{number} max` The maximum JSON size, defaults to `1048576` (1 MiB)
 
-_Note_: When the JSON size exeeds the maximum size, it's not parsed. The `response.buffer` is still available for manual parsing, though.
+_Note_: When the JSON size exceeds the maximum size, it's not parsed. The `response.buffer` is still available for manual parsing, though.
 
 **request options**
 
@@ -96,7 +96,7 @@ Emitted when `request.end()` of a redirected request has been called.
 ## retry
 Conditional request retry.
 
-Retry requests on connect errors, on specfifc http status codes and failed repsonse [validation](#validate).
+Retry requests on connect errors, on specific http status codes and failed response [validation](#validate).
 
 **options**
 
