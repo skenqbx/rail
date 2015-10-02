@@ -1,5 +1,13 @@
 # [rail](./README.markdown) ChangeLog
 
+## 2015-10-01, [v0.8.0](https://github.com/skenqbx/rail/tree/v0.8.0) **_<small>unstable</small>_**
+
+### Commits
+
+  - [[`a8fcbbd62d`](https://github.com/skenqbx/rail/commit/a8fcbbd62dd3b419d67e0e404672b363bba58e4d)] - **package**: update toolchain
+  - [[`0d9725886d`](https://github.com/skenqbx/rail/commit/0d9725886d935c5b45bf37432b92872196be1952)] - **retry**: allow modification of options in retry listener
+
+
 ## 2015-09-17, [v0.7.0](https://github.com/skenqbx/rail/tree/v0.7.0) **_<small>unstable</small>_**
 
 ### Commits
