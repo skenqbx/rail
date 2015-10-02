@@ -122,6 +122,24 @@ Emitted when a retry has been scheduled.
 
 Possible reasons are `connect`, `codes` or `validate` and for reason `connect` the `response` is `null`.
 
+**Example: modify request options**
+
+```js
+var hosts = [
+  'ww1.example.com',
+  'ww2.example.com',
+  'ww3.example.com'
+];
+
+call.on('retry', function(options, response, reason) {
+  if (hosts.length > 0) {
+    options.request.host = hosts.shift();
+  } else {
+    call.abort();
+  }
+});
+```
+
 [back to top](#table-of-contents)
 
 ## timeout

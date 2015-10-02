@@ -111,6 +111,49 @@ suite('http:retry', function() {
     }).end();
   });
 
+
+  test('modify request', function(done) {
+    onrequest = function(request, response) {
+      var host = request.headers.host;
+
+      if (host === '127.0.0.1:' + common.port) {
+        response.writeHead(503);
+        response.end();
+
+      } else if (host === 'localhost:' + common.port) {
+        response.writeHead(200);
+        response.end();
+      }
+    };
+
+    var retries = 0;
+
+    rail.call({
+      port: common.port
+    }, function(response) {
+      assert.strictEqual(response.statusCode, 200);
+      assert.strictEqual(retries, 1);
+
+      response.on('readable', function() {
+        response.read();
+      });
+
+      response.on('end', function() {
+        done();
+      });
+
+    }).on('retry', function(options, response, reason) {
+      ++retries;
+
+      assert(options.retry);
+      assert.strictEqual(response.statusCode, 503);
+      assert.strictEqual(reason, 'codes');
+
+      options.request.host = 'localhost';
+    }).end();
+  });
+
+
   suiteTeardown(function(done) {
     server.close(done);
   });
