@@ -4,14 +4,21 @@
 var assert = require('assert');
 var common = require('./common');
 var http = require('http');
+var https = require('https');
 var RAIL = require('../');
 
 
 suite('http:redirect', function() {
-  var rail, server;
-  var onrequest;
+  var rail, server, SSLServer;
+  var onrequest, onSSLRequest;
 
   var listener = function(request, response) {
+    if (typeof onrequest === 'function') {
+      onrequest(request, response);
+    }
+  };
+
+  var SSLListener = function(request, response) {
     if (typeof onrequest === 'function') {
       onrequest(request, response);
     }
@@ -32,7 +39,17 @@ suite('http:redirect', function() {
     rail.use('buffer', {default: true});
 
     server = http.createServer(listener);
-    server.listen(common.port, '127.0.0.1', done);
+    server.listen(common.port, '127.0.0.1', function(err) {
+      if (err) {
+        return done(err);
+      }
+
+      SSLServer = https.createServer({
+        key: common.serverKey,
+        cert: common.serverCert
+      }, SSLListener);
+      SSLServer.listen(common.sslPort, '127.0.0.1', done);
+    });
   });
 
 
@@ -110,6 +127,46 @@ suite('http:redirect', function() {
 
     rail.call({
       path: '/'
+    }, function(response) {
+      assert.strictEqual(response.statusCode, 200);
+      assert(response.buffer);
+      assert.strictEqual(response.buffer.length, 6);
+      assert.strictEqual(response.buffer.toString(), 'works!');
+      done();
+    }).on('redirect', function(options, response) {
+      assert.strictEqual(response.statusCode, 302);
+    }).end();
+  });
+
+
+  test('absolute - no port', function(done) {
+    var c = 0;
+    var r = [
+      {path: '/', status: 302, location: 'https://localhost/home/test'},
+      {path: '/home/test', status: 200}
+    ];
+
+
+    onrequest = function(request, response) {
+      assert.strictEqual(request.url, r[c].path);
+
+      if (r[c].location) {
+        response.writeHead(r[c].status, {
+          Location: r[c].location
+        });
+        response.end();
+      } else {
+        response.writeHead(r[c].status);
+        response.end('works!');
+      }
+      ++c;
+    };
+
+    rail.call({
+      path: '/',
+      redirect: {
+        allowUpgrade: true
+      }
     }, function(response) {
       assert.strictEqual(response.statusCode, 200);
       assert(response.buffer);

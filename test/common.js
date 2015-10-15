@@ -8,5 +8,6 @@ exports.serverKey = fs.readFileSync(exports.fixtures + '/server.key');
 exports.serverCert = fs.readFileSync(exports.fixtures + '/server.crt');
 
 exports.port = 57647;
+exports.sslPort = 443;
 
 exports.Writable = require('./fixtures/writable');
