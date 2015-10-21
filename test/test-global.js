@@ -19,12 +19,12 @@ suite('global', function() {
 
 
   suiteSetup(function(done) {
-    process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
-
     var options = {
       key: common.serverKey,
       cert: common.serverCert
     };
+
+    RAIL.globalClient.defaults.rejectUnauthorized = false;
 
     server = https.createServer(options, listener);
     server.listen(common.port, done);
@@ -45,7 +45,7 @@ suite('global', function() {
 
       response.on('readable', function() {
         var data = response.read();
-        if (data) { // node.js 0.12 tends to return null on first event
+        if (data) {
           body.push(data);
         }
       });
@@ -125,8 +125,6 @@ suite('global', function() {
 
 
   suiteTeardown(function(done) {
-    delete process.env.NODE_TLS_REJECT_UNAUTHORIZED;
-
     server.close(done);
   });
 });

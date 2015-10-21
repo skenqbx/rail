@@ -55,7 +55,6 @@ suite('http2', function() {
 
   suiteTeardown(function() {
     delete process.env.NODE_TLS_REJECT_UNAUTHORIZED;
-
     server.close(); // http2 does not emit an event
   });
 });

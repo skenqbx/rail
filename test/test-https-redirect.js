@@ -19,12 +19,11 @@ suite('https:redirect', function() {
 
 
   suiteSetup(function(done) {
-    process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
-
     rail = new RAIL({
       proto: 'https',
       request: {
-        port: common.port
+        port: common.port,
+        rejectUnauthorized: false
       }
     });
     rail.use('redirect', {
