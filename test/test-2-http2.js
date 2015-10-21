@@ -21,7 +21,11 @@ suite('http2', function() {
   suiteSetup(function(done) {
     process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
-    rail = new RAIL();
+    rail = new RAIL({
+      request: {
+        rejectUnauthorized: false
+      }
+    });
 
     var options = {
       key: common.serverKey,

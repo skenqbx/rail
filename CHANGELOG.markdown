@@ -1,5 +1,16 @@
 # [rail](./README.markdown) ChangeLog
 
+## 2015-10-21, [v0.9.0](https://github.com/skenqbx/rail/tree/v0.9.0) **_<small>unstable</small>_**
+
+### Commits
+
+  - [[`2371449e2d`](https://github.com/skenqbx/rail/commit/2371449e2d0607f8446e4783b48dd755f9551f1f)] - **deps**: update dev dependencies
+  - [[`6bab48f4fe`](https://github.com/skenqbx/rail/commit/6bab48f4fe93690667ec0b7549bdbf7c68cdf2b2)] - **doc**: fix typos
+  - [[`399266fbfd`](https://github.com/skenqbx/rail/commit/399266fbfd39512a3e6fd81f075762c06ddeecce)] - **redirect**: pass correct options to 'redirect' event
+  - [[`a15bec10b6`](https://github.com/skenqbx/rail/commit/a15bec10b68d59f80060b3778afaf153a7b2c9c1)] - **request-options**: default rejectUnauthorized to true
+  - [[`6b8c1e606c`](https://github.com/skenqbx/rail/commit/6b8c1e606cf407857e55b3a65ca7d07befa06c51)] - **tools/parseURL**: correctly preserve port
+
+
 ## 2015-10-02, [v0.8.0](https://github.com/skenqbx/rail/tree/v0.8.0) **_<small>unstable</small>_**
 
 ### Commits
