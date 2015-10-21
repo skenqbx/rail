@@ -91,6 +91,8 @@ Emitted when `request.end()` of a redirected request has been called.
 
 `function({Object} options, {Object} response)`
 
+Where `options` is the `Configuration` object for the redirected request and `response` is the original response object containing the `Location` header.
+
 [back to top](#table-of-contents)
 
 ## retry
