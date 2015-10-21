@@ -32,10 +32,10 @@
   },
   "devDependencies": {
     "changelog42": "0.7.0",
-    "eslint": "1.5.1",
-    "istanbul": "0.3.21",
+    "eslint": "1.7.2",
+    "istanbul": "0.4.0",
     "mocha": "2.3.3",
-    "next-update": "0.9.2"
+    "next-update": "0.9.5"
   },
   "scripts": {
     "lint": "eslint ./",
@@ -43,8 +43,5 @@
     "update": "next-update -k",
     "log": "changelog42 --no-author --commit-url=https://github.com/skenqbx/rail/commit",
     "clean": "rm -rf node_modules/ && rm -rf coverage/ && rm -f npm-debug.log"
-  },
-  "engines": {
-    "node": ">= 0.10.40 < 5.0.0"
   }
 }
