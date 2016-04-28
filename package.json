@@ -31,16 +31,14 @@
     "mgl-validate": "1.0.2"
   },
   "devDependencies": {
-    "changelog42": "0.7.0",
-    "eslint": "1.7.2",
-    "istanbul": "0.4.0",
-    "mocha": "2.3.3",
-    "next-update": "0.9.5"
+    "changelog42": "0.9.0",
+    "eslint": "2.8.0",
+    "istanbul": "0.4.3",
+    "mocha": "2.4.5"
   },
   "scripts": {
     "lint": "eslint ./",
     "test": "npm run lint && istanbul cover _mocha -- ./test",
-    "update": "next-update -k",
     "log": "changelog42 --no-author --commit-url=https://github.com/skenqbx/rail/commit",
     "clean": "rm -rf node_modules/ && rm -rf coverage/ && rm -f npm-debug.log"
   }
