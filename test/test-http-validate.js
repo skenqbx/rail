@@ -223,7 +223,7 @@ suite('http:validate', function() {
       }
     }).on('error', function(err) {
       assert(err);
-      assert.strictEqual(err.message, 'Invalid schema id');
+      assert.strictEqual(err.message, 'Missing schema id');
       done();
     }).end();
   });
