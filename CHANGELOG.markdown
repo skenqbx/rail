@@ -1,5 +1,16 @@
 # [rail](./README.markdown) ChangeLog
 
+## 2016-05-04, [v0.9.1](https://github.com/skenqbx/rail/tree/v0.9.1) **_<small>unstable</small>_**
+
+### Commits
+
+  - [[`cb955d5605`](https://github.com/skenqbx/rail/commit/cb955d56051764f5476fde0b58d913f9de2981e6)] - **deps**: mgl-validate v2.0.0
+  - [[`12a6425078`](https://github.com/skenqbx/rail/commit/12a642507836717290509b8e3f6ac00873fb2fab)] - **deps**: http2 v3.2.0, lru-cache v2.7.0
+  - [[`619a6fd210`](https://github.com/skenqbx/rail/commit/619a6fd2100fa5dc1507dd1fce334f8705d93ffc)] - **deps**: eslint v2.8.0 + config, changelog42 v0.9.0, mocha v2.4.5
+  - [[`79cf6ccbf1`](https://github.com/skenqbx/rail/commit/79cf6ccbf12f4575aa33f2e4c21b068d49eae49a)] - **lib/test**: update code for mgl-validate v2.x+
+  - [[`b1ed50d235`](https://github.com/skenqbx/rail/commit/b1ed50d23572571d82f3b2f7610fd85a7108bc3c)] - **tools**: update cross-version test to only include node LTS versions
+
+
 ## 2015-10-21, [v0.9.0](https://github.com/skenqbx/rail/tree/v0.9.0) **_<small>unstable</small>_**
 
 ### Commits
